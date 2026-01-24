@@ -1,0 +1,49 @@
+# --- Kullanıcı Referanslı Temel Dosyalar ---
+.godot/                # Godot 4+ yerel ayarları ve önbelleği
+.nomedia               # Medya tarayıcılarını engeller
+.import/               # Godot 3 & 4 asset metadata dosyaları
+export.cfg             # Eski Godot export ayarları
+export_credentials.cfg # Hassas kullanıcı bilgileri (Mutlaka ignore edilmeli!)
+
+# Otomatik oluşturulan çeviri dosyaları
+*.translation
+
+# Mono/C# Özel (Kullanmasan bile kalması güvenlidir)
+.mono/
+data_*/
+mono_crash.*.json
+
+# --- Android & Mobil Export (Goktasi2 Özel) ---
+# Play Store'a yüklediğin o devasa APK ve AAB dosyalarını engeller
+export/
+build/
+android/build/         # Custom Build kullanıyorsan burası şişer
+*.apk
+*.aab
+*.pck
+
+# --- Güvenlik (Kritik!) ---
+# Keystore dosyaları asla repoya girmemeli
+*.keystore
+*.jks
+*.pub
+*.sig
+
+# --- Masaüstü ve Diğer Çıktılar ---
+bin/
+*.exe
+*.zip
+*.dmg
+*.app
+*.html
+*.js
+*.wasm
+
+# --- İşletim Sistemi ve IDE Dosyaları ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.vscode/
+.idea/
+*.swp

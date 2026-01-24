@@ -1,0 +1,167 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://GUI/Inventory Panel/InventoryPanelNew.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/back_icon.png" type="Texture" id=2]
+[ext_resource path="res://GUI/Store/StoreGUI.gd" type="Script" id=3]
+[ext_resource path="res://GUI/Multiple Buy Slider/MultipleBuySlider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Images/shopping.png" type="Texture" id=5]
+[ext_resource path="res://GUI/Item Amount Label/ItemAmountLabel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Images/icon_confirm.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="Theme" id=3]
+PanelContainer/styles/panel = SubResource( 4 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 64, 64 )
+
+[node name="StoreGUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+
+[node name="CoinBox" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 600.0
+margin_bottom = 36.0
+
+[node name="Title" type="Label" parent="VBoxContainer/CoinBox"]
+margin_right = 95.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0.992157, 1, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "Para : "
+
+[node name="ItemAmountLabel" parent="VBoxContainer/CoinBox" instance=ExtResource( 6 )]
+margin_left = 99.0
+margin_right = 99.0
+margin_bottom = 36.0
+valign = 1
+item = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 40.0
+margin_right = 600.0
+margin_bottom = 168.0
+theme = SubResource( 3 )
+
+[node name="Infos" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+margin_right = 600.0
+margin_bottom = 128.0
+
+[node name="ItemInfo" type="RichTextLabel" parent="VBoxContainer/PanelContainer/Infos"]
+margin_right = 298.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+custom_fonts/normal_font = ExtResource( 7 )
+text = "..."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/Infos"]
+margin_left = 302.0
+margin_right = 600.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+
+[node name="ItemValue" type="HBoxContainer" parent="VBoxContainer/PanelContainer/Infos/VBoxContainer"]
+margin_right = 298.0
+margin_bottom = 36.0
+
+[node name="Title" type="Label" parent="VBoxContainer/PanelContainer/Infos/VBoxContainer/ItemValue"]
+margin_right = 115.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0.772549, 1, 0.776471, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "Değer : "
+
+[node name="Value" type="Label" parent="VBoxContainer/PanelContainer/Infos/VBoxContainer/ItemValue"]
+margin_left = 119.0
+margin_right = 119.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 7 )
+
+[node name="HSplitContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 172.0
+margin_right = 600.0
+margin_bottom = 846.0
+size_flags_vertical = 3
+
+[node name="PlayerInv" parent="VBoxContainer/HSplitContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 298.0
+margin_bottom = 674.0
+size_flags_horizontal = 3
+
+[node name="StoreInv" parent="VBoxContainer/HSplitContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 302.0
+margin_right = 600.0
+margin_bottom = 674.0
+size_flags_horizontal = 3
+
+[node name="Buttons" type="PanelContainer" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+margin_top = 850.0
+margin_right = 600.0
+margin_bottom = 992.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Buttons"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 593.0
+margin_bottom = 135.0
+alignment = 2
+
+[node name="Return" type="TextureButton" parent="VBoxContainer/Buttons/HBoxContainer"]
+margin_left = 326.0
+margin_right = 454.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 3
+
+[node name="Activate" type="TextureButton" parent="VBoxContainer/Buttons/HBoxContainer"]
+visible = false
+margin_left = 326.0
+margin_right = 454.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 3
+
+[node name="Action" type="TextureButton" parent="VBoxContainer/Buttons/HBoxContainer"]
+margin_left = 458.0
+margin_right = 586.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture_normal = SubResource( 1 )
+expand = true
+stretch_mode = 3
+
+[node name="MultipleBuySlider" parent="VBoxContainer/Buttons/HBoxContainer/Action" instance=ExtResource( 4 )]
+margin_left = -49.0
+margin_top = -281.0
+margin_right = -25.0
+margin_bottom = -141.0
+
+[connection signal="press_empty" from="VBoxContainer/HSplitContainer/PlayerInv" to="." method="_on_PlayerInv_press_empty"]
+[connection signal="slot_selected" from="VBoxContainer/HSplitContainer/PlayerInv" to="." method="_on_PlayerInv_slot_selected"]
+[connection signal="press_empty" from="VBoxContainer/HSplitContainer/StoreInv" to="." method="_on_StoreInv_press_empty"]
+[connection signal="slot_selected" from="VBoxContainer/HSplitContainer/StoreInv" to="." method="_on_StoreInv_slot_selected"]
+[connection signal="pressed" from="VBoxContainer/Buttons/HBoxContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/HBoxContainer/Activate" to="." method="_on_Activate_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/HBoxContainer/Action" to="." method="_on_Action_pressed"]
+[connection signal="update_item_amount" from="VBoxContainer/Buttons/HBoxContainer/Action/MultipleBuySlider" to="." method="_on_MultipleBuySlider_update_item_amount"]

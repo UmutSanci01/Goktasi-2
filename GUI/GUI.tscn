@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://GUI/GUI.gd" type="Script" id=1]
+[ext_resource path="res://GUI/GameOver/GameOver.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/Store/StoreGUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUI/Map/Map.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/Settings/Settings.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/Title/Title.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GUI/InGame/InGame.tscn" type="PackedScene" id=7]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Settings" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="Title" parent="." instance=ExtResource( 6 )]
+
+[node name="InGame" parent="." instance=ExtResource( 7 )]
+visible = false
+mouse_filter = 2
+
+[node name="GameOver" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="Map" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="StoreGUI" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[connection signal="press_map" from="Title" to="." method="_on_Title_press_map"]
+[connection signal="press_quit" from="Title" to="." method="_on_Title_press_quit"]
+[connection signal="press_settings" from="Title" to="." method="_on_Title_press_settings"]
+[connection signal="press_start" from="Title" to="." method="_on_Title_press_start"]
+[connection signal="press_store" from="Title" to="." method="_on_Title_press_store"]

@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Font/Arial_Title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Images/back_icon.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Settings/Settings.gd" type="Script" id=4]
+[ext_resource path="res://GUI/Setting Slider/SettingSlider.tscn" type="PackedScene" id=5]
+
+[node name="Settings" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+custom_constants/separation = 32
+alignment = 1
+script = ExtResource( 4 )
+
+[node name="Title" type="Label" parent="."]
+margin_top = 362.0
+margin_right = 600.0
+margin_bottom = 470.0
+custom_fonts/font = ExtResource( 2 )
+text = "Ayarlar"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Reset" type="TextureButton" parent="."]
+margin_top = 502.0
+margin_right = 600.0
+margin_bottom = 566.0
+rect_min_size = Vector2( 0, 64 )
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Reset"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Veriyi Sıfırla"
+align = 1
+valign = 1
+
+[node name="ReturnTitle" type="TextureButton" parent="."]
+margin_top = 598.0
+margin_right = 600.0
+margin_bottom = 662.0
+rect_min_size = Vector2( 0, 64 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="ReturnTitle"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Menüye Dön"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SideNum" parent="." instance=ExtResource( 5 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 598.0
+margin_right = 600.0
+margin_bottom = 634.0
+data_name = "side_num"
+
+[node name="Title" parent="SideNum" index="0"]
+margin_left = 21.0
+margin_top = 0.0
+margin_right = 175.0
+margin_bottom = 36.0
+text = "Kenar Mik."
+
+[node name="HSlider" parent="SideNum" index="1"]
+margin_top = 10.0
+margin_bottom = 26.0
+min_value = 16.0
+value = 16.0
+
+[node name="Value" parent="SideNum" index="2"]
+margin_top = 0.0
+margin_bottom = 36.0
+
+[connection signal="pressed" from="Reset" to="." method="_on_Reset_pressed"]
+[connection signal="button_down" from="ReturnTitle" to="." method="_on_ReturnTitle_button_down"]
+[connection signal="change_value" from="SideNum" to="." method="_on_SideNum_change_value"]
+
+[editable path="SideNum"]

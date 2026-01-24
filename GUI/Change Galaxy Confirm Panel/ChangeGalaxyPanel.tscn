@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Images/back_icon.png" type="Texture" id=2]
+[ext_resource path="res://Images/icon_confirm.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Item Amount Label/ItemAmountLabel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/Change Galaxy Confirm Panel/FuelContainer.gd" type="Script" id=5]
+[ext_resource path="res://GUI/Change Galaxy Confirm Panel/ChangeGalaxyPanel.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Font/arial.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 37
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 1 )
+
+[node name="ChangeGalaxyPanel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 6 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -212.0
+margin_top = -128.0
+margin_right = 212.0
+margin_bottom = 128.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 417.0
+margin_bottom = 249.0
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_right = 410.0
+margin_bottom = 99.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "Başka bir galaksiye gitmek istiyor musun?"
+autowrap = true
+
+[node name="FuelContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 103.0
+margin_right = 410.0
+margin_bottom = 139.0
+mouse_filter = 2
+alignment = 1
+script = ExtResource( 5 )
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer/FuelContainer"]
+modulate = Color( 0.513726, 0.85098, 1, 1 )
+margin_left = 118.0
+margin_right = 216.0
+margin_bottom = 36.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+text = "Yakıt : "
+
+[node name="ItemAmountLabel" parent="PanelContainer/VBoxContainer/FuelContainer" instance=ExtResource( 4 )]
+modulate = Color( 0.513726, 0.85098, 1, 1 )
+margin_left = 220.0
+margin_right = 220.0
+margin_bottom = 36.0
+item = 2
+
+[node name="Slash" type="Label" parent="PanelContainer/VBoxContainer/FuelContainer"]
+margin_left = 224.0
+margin_right = 233.0
+margin_bottom = 36.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+text = "/"
+
+[node name="RemainFuel" type="Label" parent="PanelContainer/VBoxContainer/FuelContainer"]
+margin_left = 237.0
+margin_right = 291.0
+margin_bottom = 36.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+text = "100"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 143.0
+margin_right = 410.0
+margin_bottom = 242.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Confirm" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_right = 203.0
+margin_bottom = 99.0
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="Back" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 99.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 3
+
+[connection signal="amount_update" from="PanelContainer/VBoxContainer/FuelContainer/ItemAmountLabel" to="." method="_on_ItemAmountLabel_amount_update"]
+[connection signal="amount_update" from="PanelContainer/VBoxContainer/FuelContainer/ItemAmountLabel" to="PanelContainer/VBoxContainer/FuelContainer" method="_on_ItemAmountLabel_amount_update"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Back" to="." method="_on_Back_pressed"]

@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GUI/Store/SliderAmount.gd" type="Script" id=1]
+[ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=2]
+[ext_resource path="res://GUI/Multiple Buy Slider/MultipleBuySlider.gd" type="Script" id=3]
+
+[node name="MultipleBuySlider" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+margin_right = 298.0
+margin_bottom = 1024.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="100x" type="TextureButton" parent="Buttons"]
+margin_right = 298.0
+margin_bottom = 253.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Buttons/100x"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "100x"
+align = 1
+valign = 1
+
+[node name="50x" type="TextureButton" parent="Buttons"]
+margin_top = 257.0
+margin_right = 298.0
+margin_bottom = 510.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Buttons/50x"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "50x"
+align = 1
+valign = 1
+
+[node name="10x" type="TextureButton" parent="Buttons"]
+margin_top = 514.0
+margin_right = 298.0
+margin_bottom = 767.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Buttons/10x"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "10x"
+align = 1
+valign = 1
+
+[node name="1x" type="TextureButton" parent="Buttons"]
+margin_top = 771.0
+margin_right = 298.0
+margin_bottom = 1024.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Buttons/1x"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "1x"
+align = 1
+valign = 1
+
+[node name="SliderAmount" type="VSlider" parent="."]
+margin_left = 302.0
+margin_right = 600.0
+margin_bottom = 1024.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+
+[node name="Amount" type="Label" parent="SliderAmount"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_top = -48.0
+margin_right = 64.0
+custom_fonts/font = ExtResource( 2 )
+text = "000"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="Buttons/100x" to="." method="_on_x_pressed" binds= [ 100 ]]
+[connection signal="pressed" from="Buttons/50x" to="." method="_on_x_pressed" binds= [ 50 ]]
+[connection signal="pressed" from="Buttons/10x" to="." method="_on_x_pressed" binds= [ 10 ]]
+[connection signal="pressed" from="Buttons/1x" to="." method="_on_x_pressed" binds= [ 1 ]]
+[connection signal="changed" from="SliderAmount" to="." method="_on_SliderAmount_changed"]
+[connection signal="changed" from="SliderAmount" to="SliderAmount" method="_on_SliderAmount_changed"]
+[connection signal="value_changed" from="SliderAmount" to="." method="_on_SliderAmount_value_changed"]
+[connection signal="value_changed" from="SliderAmount" to="SliderAmount" method="_on_SliderAmount_value_changed"]

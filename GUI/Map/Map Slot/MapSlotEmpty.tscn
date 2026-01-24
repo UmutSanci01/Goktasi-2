@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="MapSlotEmpty" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/Item Amount Label/ItemAmountLabel.gd" type="Script" id=1]
+[ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=2]
+
+[node name="ItemAmountLabel" type="Label"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 2 )
+script = ExtResource( 1 )

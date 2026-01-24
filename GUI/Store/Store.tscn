@@ -1,0 +1,202 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Images/back_icon.png" type="Texture" id=1]
+[ext_resource path="res://Images/shopping.png" type="Texture" id=2]
+[ext_resource path="res://Images/change_inv.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Inventory Panel/InventoryPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=5]
+[ext_resource path="res://GUI/Store/Store.gd" type="Script" id=6]
+[ext_resource path="res://GUI/Multiple Buy Slider/MultipleBuySlider.tscn" type="PackedScene" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 64, 64 )
+
+[node name="Store" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -76.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HSplitContainer"]
+margin_right = 294.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ContainerValue" type="HBoxContainer" parent="HSplitContainer/VBoxContainer2"]
+margin_right = 294.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+
+[node name="title" type="Label" parent="HSplitContainer/VBoxContainer2/ContainerValue"]
+margin_right = 106.0
+margin_bottom = 36.0
+grow_horizontal = 0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.678431, 1, 0.592157, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Değer :"
+valign = 1
+
+[node name="ItemValue" type="Label" parent="HSplitContainer/VBoxContainer2/ContainerValue"]
+margin_left = 110.0
+margin_right = 294.0
+margin_bottom = 36.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/VBoxContainer2"]
+margin_top = 40.0
+margin_right = 294.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+
+[node name="title" type="Label" parent="HSplitContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 183.0
+margin_bottom = 36.0
+grow_horizontal = 0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 0.584314, 0.584314, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Envanterde :"
+valign = 1
+
+[node name="ItemAmount" type="Label" parent="HSplitContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 187.0
+margin_right = 294.0
+margin_bottom = 36.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer"]
+margin_left = 306.0
+margin_right = 600.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="InvOwnerName" type="Label" parent="HSplitContainer/VBoxContainer"]
+margin_top = 40.0
+margin_right = 294.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+text = "Envanter sahibi"
+valign = 1
+
+[node name="InventoryPanel" parent="." instance=ExtResource( 4 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_bottom = 384.0
+size_flags_horizontal = 3
+
+[node name="Infos" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+margin_left = 24.0
+margin_top = 64.0
+margin_right = -24.0
+margin_bottom = 448.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Infos"]
+margin_right = 552.0
+margin_bottom = 36.0
+
+[node name="Title" type="Label" parent="Infos/HBoxContainer"]
+margin_right = 95.0
+margin_bottom = 36.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 1, 0 )
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.988235, 1, 0.603922, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Para : "
+align = 2
+
+[node name="Coin" type="Label" parent="Infos/HBoxContainer"]
+margin_left = 99.0
+margin_right = 99.0
+margin_bottom = 36.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 1, 0 )
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+align = 2
+
+[node name="ItemInfo" type="RichTextLabel" parent="Infos"]
+margin_top = 40.0
+margin_right = 552.0
+margin_bottom = 384.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/default_color = Color( 1, 0.552941, 0.960784, 1 )
+custom_fonts/normal_font = ExtResource( 5 )
+text = "Bu eşya hakkında bir bilgidir."
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -128.0
+custom_constants/separation = 0
+alignment = 2
+
+[node name="Return" type="TextureButton" parent="Buttons"]
+margin_left = 216.0
+margin_right = 344.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture_normal = ExtResource( 1 )
+expand = true
+stretch_mode = 3
+
+[node name="ChangeInventory" type="TextureButton" parent="Buttons"]
+margin_left = 344.0
+margin_right = 472.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="Action" type="TextureButton" parent="Buttons"]
+margin_left = 472.0
+margin_right = 600.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture_normal = SubResource( 1 )
+expand = true
+stretch_mode = 3
+
+[node name="MultipleBuySlider" parent="Buttons/Action" instance=ExtResource( 8 )]
+margin_left = -32.0
+margin_top = -264.0
+margin_right = -32.0
+margin_bottom = -124.0
+
+[connection signal="press_slot" from="InventoryPanel" to="." method="_on_InventoryPanel_press_slot"]
+[connection signal="pressed" from="Buttons/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Buttons/ChangeInventory" to="." method="_on_ChangeInventory_pressed"]
+[connection signal="pressed" from="Buttons/Action" to="." method="_on_Action_pressed"]
+[connection signal="update_item_amount" from="Buttons/Action/MultipleBuySlider" to="." method="_on_MultipleBuySlider_update_item_amount"]

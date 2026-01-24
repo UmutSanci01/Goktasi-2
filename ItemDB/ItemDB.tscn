@@ -1,0 +1,19 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://ItemDB/ItemDB.gd" type="Script" id=1]
+[ext_resource path="res://ItemDB/Items/Bullet.tres" type="Resource" id=2]
+[ext_resource path="res://ItemDB/Items/Ore.tres" type="Resource" id=3]
+[ext_resource path="res://ItemDB/Items/Fuel.tres" type="Resource" id=4]
+[ext_resource path="res://ItemDB/Items/Coin.tres" type="Resource" id=5]
+[ext_resource path="res://ItemDB/Items/DetectorOre.tres" type="Resource" id=6]
+[ext_resource path="res://ItemDB/Items/SupplierBullet.tres" type="Resource" id=7]
+[ext_resource path="res://ItemDB/Items/SupplierFuel.tres" type="Resource" id=8]
+[ext_resource path="res://ItemDB/Items/OreIron.tres" type="Resource" id=9]
+[ext_resource path="res://ItemDB/Items/OreSilver.tres" type="Resource" id=10]
+[ext_resource path="res://ItemDB/Items/OreCopper.tres" type="Resource" id=11]
+[ext_resource path="res://ItemDB/Items/OreGold.tres" type="Resource" id=12]
+[ext_resource path="res://ItemDB/Items/Fuel_t2.tres" type="Resource" id=13]
+
+[node name="ItemDB" type="Node2D"]
+script = ExtResource( 1 )
+items_res = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 13 ) ]

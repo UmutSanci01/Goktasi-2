@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Images/ReturnMenu.png" type="Texture" id=2]
+[ext_resource path="res://GUI/InGame/InGame.gd" type="Script" id=3]
+[ext_resource path="res://GUI/Item Amount Label/ItemAmountLabel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Images/bullet_red.png" type="Texture" id=5]
+[ext_resource path="res://Images/ore_blue.png" type="Texture" id=6]
+[ext_resource path="res://OreDetector/OreDetector.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Images/fuel_ore.png" type="Texture" id=8]
+
+[node name="InGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Return" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -128.0
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Return"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Menu"
+align = 1
+valign = 1
+
+[node name="OpenInv" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -368.0
+margin_top = -128.0
+margin_right = -240.0
+expand = true
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="OpenInv"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Menu"
+align = 1
+valign = 1
+
+[node name="MeteorInfo" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -76.0
+margin_bottom = 120.0
+expand = true
+
+[node name="Label" type="Label" parent="MeteorInfo"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Menu"
+align = 1
+valign = 1
+
+[node name="AmountLabels" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 64.0
+mouse_filter = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AmountLabels"]
+margin_right = 600.0
+margin_bottom = 64.0
+mouse_filter = 2
+
+[node name="BulletTexture" type="TextureRect" parent="AmountLabels/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="ItemAmountLabel" parent="AmountLabels/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 68.0
+margin_top = 14.0
+margin_right = 68.0
+margin_bottom = 50.0
+
+[node name="FuelContainer" type="HBoxContainer" parent="AmountLabels"]
+margin_top = 68.0
+margin_right = 600.0
+margin_bottom = 132.0
+mouse_filter = 2
+
+[node name="FuelTexture" type="TextureRect" parent="AmountLabels/FuelContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 8 )
+stretch_mode = 4
+
+[node name="ItemAmountLabel" parent="AmountLabels/FuelContainer" instance=ExtResource( 4 )]
+margin_left = 68.0
+margin_top = 14.0
+margin_right = 68.0
+margin_bottom = 50.0
+item = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="AmountLabels"]
+visible = false
+margin_top = 136.0
+margin_right = 600.0
+margin_bottom = 200.0
+mouse_filter = 2
+
+[node name="OreTexture" type="TextureRect" parent="AmountLabels/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="ItemAmountLabel2" parent="AmountLabels/HBoxContainer2" instance=ExtResource( 4 )]
+margin_left = 68.0
+margin_top = 14.0
+margin_right = 68.0
+margin_bottom = 50.0
+item = 2
+
+[node name="OreDetector" parent="." instance=ExtResource( 7 )]
+
+[connection signal="button_down" from="Return" to="." method="_on_Return_button_down"]
+[connection signal="pressed" from="OpenInv" to="." method="_on_OpenInv_pressed"]
+[connection signal="pressed" from="MeteorInfo" to="." method="_on_MeteorInfo_pressed"]

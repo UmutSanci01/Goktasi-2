@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=1]
+[ext_resource path="res://GUI/Setting Slider/SettingSlider.gd" type="Script" id=2]
+
+[node name="SettingSlider" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+script = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="."]
+margin_left = 98.0
+margin_top = 494.0
+margin_right = 98.0
+margin_bottom = 530.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 1 )
+valign = 1
+
+[node name="HSlider" type="HSlider" parent="."]
+margin_left = 201.0
+margin_top = 504.0
+margin_right = 398.0
+margin_bottom = 520.0
+size_flags_horizontal = 7
+size_flags_vertical = 6
+
+[node name="Value" type="Label" parent="."]
+margin_left = 474.0
+margin_top = 494.0
+margin_right = 528.0
+margin_bottom = 530.0
+rect_min_size = Vector2( 54, 0 )
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 1 )
+text = "000"
+align = 1
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]

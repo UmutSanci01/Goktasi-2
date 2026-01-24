@@ -1,0 +1,227 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://GUI/Map/Map.gd" type="Script" id=1]
+[ext_resource path="res://Images/back_icon.png" type="Texture" id=2]
+[ext_resource path="res://Images/Travel_icon.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Setting Slider/SettingSlider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Font/Arial_Title.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Images/galaxy_icon.png" type="Texture" id=7]
+[ext_resource path="res://GUI/Map/MapGrid.gd" type="Script" id=8]
+[ext_resource path="res://GUI/Map/InfoPanel/InfoPanel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://GUI/Item Amount Label/ItemAmountLabel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Images/shop_icon.png" type="Texture" id=11]
+[ext_resource path="res://GUI/Change Galaxy Confirm Panel/ChangeGalaxyPanel.tscn" type="PackedScene" id=12]
+[ext_resource path="res://GUI/Map/Slots.gd" type="Script" id=13]
+[ext_resource path="res://Images/icon_current_location.png" type="Texture" id=14]
+
+[node name="Map" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource( 1 )
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0627451, 0, 0.266667, 0.592157 )
+
+[node name="MapGrid" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 8 )
+
+[node name="MapBG" type="ColorRect" parent="MapGrid"]
+visible = false
+margin_right = 600.0
+margin_bottom = 1024.0
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="Slots" type="Control" parent="MapGrid"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 13 )
+
+[node name="StoreIndicator" type="TextureRect" parent="MapGrid"]
+margin_right = 64.0
+margin_bottom = 64.0
+mouse_filter = 2
+texture = ExtResource( 11 )
+
+[node name="CurrSlotIndicator" type="ColorRect" parent="MapGrid"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
+color = Color( 0, 1, 0.133333, 0.392157 )
+
+[node name="TargetSlotIndicator" type="ColorRect" parent="MapGrid"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
+color = Color( 1, 0, 0, 0.392157 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -142.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 593.0
+margin_bottom = 135.0
+mouse_filter = 2
+size_flags_vertical = 10
+alignment = 2
+
+[node name="ChangeGalaxy" type="TextureButton" parent="PanelContainer/HBoxContainer"]
+margin_left = 62.0
+margin_right = 190.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 3
+
+[node name="Return" type="TextureButton" parent="PanelContainer/HBoxContainer"]
+margin_left = 194.0
+margin_right = 322.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 3
+
+[node name="GoShip" type="TextureButton" parent="PanelContainer/HBoxContainer"]
+margin_left = 326.0
+margin_right = 454.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture_normal = ExtResource( 14 )
+expand = true
+stretch_mode = 3
+
+[node name="Travel" type="TextureButton" parent="PanelContainer/HBoxContainer"]
+margin_left = 458.0
+margin_right = 586.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="Panel" type="PanelContainer" parent="."]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+anchor_right = 1.0
+mouse_filter = 2
+
+[node name="TitleAndButtons" type="VBoxContainer" parent="Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 593.0
+margin_bottom = 155.0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Panel/TitleAndButtons"]
+margin_right = 586.0
+margin_bottom = 108.0
+custom_fonts/font = ExtResource( 6 )
+text = "Harita"
+align = 1
+
+[node name="FuelContainer" type="HBoxContainer" parent="Panel/TitleAndButtons"]
+modulate = Color( 0.411765, 1, 0.921569, 1 )
+margin_top = 112.0
+margin_right = 586.0
+margin_bottom = 148.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Panel/TitleAndButtons/FuelContainer"]
+margin_left = 242.0
+margin_right = 340.0
+margin_bottom = 36.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+text = "Yakıt : "
+
+[node name="ItemAmountLabel" parent="Panel/TitleAndButtons/FuelContainer" instance=ExtResource( 10 )]
+margin_left = 344.0
+margin_right = 344.0
+margin_bottom = 36.0
+item = 2
+
+[node name="Distance" parent="." instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 532.0
+margin_right = 600.0
+margin_bottom = 568.0
+mouse_filter = 2
+data_name = "distance"
+
+[node name="Title" parent="Distance" index="0"]
+margin_left = 45.0
+margin_top = 0.0
+margin_right = 151.0
+margin_bottom = 36.0
+text = "Mesafe"
+
+[node name="HSlider" parent="Distance" index="1"]
+margin_top = 10.0
+margin_bottom = 26.0
+value = 1.0
+
+[node name="Value" parent="Distance" index="2"]
+margin_top = 0.0
+margin_bottom = 36.0
+
+[node name="FuelRemain" type="Label" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_bottom = 14.0
+grow_horizontal = 0
+custom_colors/font_color = Color( 0, 1, 0.717647, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "99999"
+align = 2
+
+[node name="InfoPanel" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="ChangeGalaxyPanel" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[connection signal="curr_slot_changed" from="MapGrid" to="." method="_on_MapGrid_curr_slot_changed"]
+[connection signal="drag" from="MapGrid" to="." method="_on_MapGrid_drag"]
+[connection signal="slot_selected" from="MapGrid" to="." method="_on_MapGrid_slot_selected"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/ChangeGalaxy" to="." method="_on_ChangeGalaxy_pressed"]
+[connection signal="button_down" from="PanelContainer/HBoxContainer/Return" to="." method="_on_Return_button_down"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/GoShip" to="." method="_on_GoShip_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/Travel" to="." method="_on_Travel_pressed"]
+
+[editable path="Distance"]
