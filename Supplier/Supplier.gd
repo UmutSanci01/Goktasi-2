@@ -3,9 +3,11 @@ extends Node2D
 
 
 export (Item.ID) var product_item
+export (Item.ID) var product_source
 export (int) var product_num = 5
 export (int) var product_cost = 1
 export (int) var product_time = 5
+export (int) var product_fuel = 1 # Fuel cost will added
 
 
 onready var timer = $Timer
@@ -19,12 +21,16 @@ func _ready():
 
 
 func enable():
-	if PlayerInventory.get_item_amount(Item.ID.ORE) < product_cost:
-		InfoPanel.add_label("Yeteri kadar maden yok.")
+#	if PlayerInventory.get_item_amount(product_source) < product_cost:
+	if not timer.time_left and not PlayerInventory.use_item(product_source):
+		InfoPanel.add_label("Yeteri kadar malzeme yok.")
 		return false
 	
 	InfoPanel.add_label("Üretici aktif", ItemDB.get_item(product_item).name, Color.green)
-	timer.start()
+	if timer.time_left:
+		timer.paused = false
+	else:
+		timer.start()
 	
 	is_active = true
 	return true
@@ -34,12 +40,16 @@ func disable():
 	InfoPanel.add_label("Üretici Pasif", ItemDB.get_item(product_item).name, Color.red)
 	
 	is_active = false
-	timer.stop()
+	if timer.time_left:
+		timer.paused = true
+	else:
+		timer.stop()
 
 
 func _on_Timer_timeout():
-	if PlayerInventory.use_item(Item.ID.ORE, product_cost):
-		PlayerInventory.add_item(product_item, product_num)
-	else:
-		InfoPanel.add_label("Maden Tükendi", "", Color.tomato)
+	PlayerInventory.add_item(product_item, product_num)
+	
+	if not PlayerInventory.use_item(product_source, product_cost):
+		InfoPanel.add_label("Hammadde Tükendi", "", Color.tomato)
+		timer.stop()
 		disable()

@@ -65,8 +65,15 @@ func get_item_amount_by_type(item_type : int) -> int:
 	var wrap : WrapSameType = get_item_by_type(item_type)
 	return wrap.total
 
-func has_item(item):
-	if items.has(item):
+func has_item(item, by_type : bool = false):
+	if by_type: # Eger turune gore kontrol istenirse
+		for id in items:
+			var _item = ItemDB.get_item(id)
+			if _item and _item.type == item:
+				# Envanterdeki esyalardan herhangi birisinin
+				# turu istenen ile uyusursa true doner
+				return true
+	elif items.has(item):
 		return true
 	
 	return false
@@ -85,10 +92,12 @@ func get_item_by_type(item_type : int) -> WrapSameType:
 	return same_items
 
 func use_item(item, amount : int = 1) -> int:
+	if item == Item.ID.FUEL:
+		pass
 	var item_ref = ItemDB.get_item(item)
 	
-	if item_ref.type == Item.Type.FUEL and GameState.is_free_travel:
-		return 1
+#	if item_ref.type == Item.Type.FUEL and GameState.is_free_travel:
+#		return 1
 
 	var item_num : int = 0
 	var used_num : int = 0
@@ -118,6 +127,8 @@ func use_item(item, amount : int = 1) -> int:
 	return used_num
 
 func use_item_by_type(item_type : int, amount : int = 1) -> int:
+	if item_type == Item.Type.FUEL and GameState.is_free_travel: return 1
+	
 	var wrap : WrapSameType = get_item_by_type(item_type)
 	if wrap.total == 0: return 0
 	if wrap.total < amount: return 0

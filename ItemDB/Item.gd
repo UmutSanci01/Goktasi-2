@@ -15,6 +15,7 @@ enum ID {
 	ORE_COPPER,
 	ORE_SILVER,
 	FUEL_T2,
+	ORE_BLUE,
 }
 
 enum Type {

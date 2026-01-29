@@ -1,6 +1,7 @@
 class_name InfoLabel
 extends HBoxContainer
 
+# sanirim eski surumu
 
 onready var label_title : Label = $Title
 onready var label_value : Label = $Value

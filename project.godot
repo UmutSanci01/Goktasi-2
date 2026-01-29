@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Ores/Base/Ore.gd"
 }, {
+"base": "Area2D",
+"class": "OreDetector",
+"language": "GDScript",
+"path": "res://Game/OreDetector.gd"
+}, {
 "base": "Node2D",
 "class": "Ores",
 "language": "GDScript",
@@ -124,6 +129,7 @@ _global_script_class_icons={
 "Meteor": "",
 "MyVector": "",
 "Ore": "",
+"OreDetector": "",
 "Ores": "",
 "PolygonMath": "",
 "SettingSlider": "",

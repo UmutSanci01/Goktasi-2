@@ -24,4 +24,3 @@ points = PoolVector2Array( 0, 0, 256, 0 )
 default_color = Color( 0.0313726, 1, 0, 1 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="TimerFuel" to="." method="_on_TimerFuel_timeout"]

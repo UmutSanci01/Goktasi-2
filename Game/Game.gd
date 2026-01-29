@@ -30,8 +30,8 @@ func _ready():
 	if Map.connect("curr_slot_changed", self, "_on_Map_curr_slot_changed"): pass
 	
 	
-	ore_detector.position = ship.position
-	ore_detector.init_shape(ore_detector.position - meteor.position - (Vector2.DOWN * 32))
+#	ore_detector.position = ship.position
+#	ore_detector.init_shape(ore_detector.position - meteor.position - (Vector2.DOWN * 32))
 	
 	init()
 
@@ -49,7 +49,7 @@ func set_meteor_new_data(data):
 	
 	meteor.set_data(data)
 	
-#	GameState.meteor = meteor
+	GameState.meteor = meteor
 #	meteor.init_meteor()
 
 

@@ -9,6 +9,7 @@
 [sub_resource type="RectangleShape2D" id=4]
 
 [sub_resource type="SegmentShape2D" id=5]
+b = Vector2( 0, -10 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -31,28 +32,31 @@ collision_mask = 8
 shape = SubResource( 4 )
 
 [node name="OreDetector" type="Area2D" parent="."]
-position = Vector2( 0, -328 )
 collision_layer = 128
 collision_mask = 32
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OreDetector"]
-rotation = 3.14159
 shape = SubResource( 5 )
 
 [node name="Line2D" type="Line2D" parent="OreDetector"]
 width = 16.0
 default_color = Color( 0.686275, 1, 0.713726, 0.392157 )
 
+[node name="TimerFuel" type="Timer" parent="OreDetector"]
+
 [node name="SupplierFuel" parent="." instance=ExtResource( 5 )]
 rotation = -0.164502
 product_item = 2
-product_num = 15
+product_source = 12
+product_num = 2
 
 [node name="SupplierBullet" parent="." instance=ExtResource( 5 )]
+product_source = 9
 product_num = 7
 
 [connection signal="shot_multi" from="SpaceShip" to="." method="_on_SpaceShip_shot_multi"]
 [connection signal="body_exited" from="GameArea" to="." method="_on_GameArea_body_exited"]
 [connection signal="body_entered" from="OreDetector" to="." method="_on_OreDetector_body_entered"]
 [connection signal="body_exited" from="OreDetector" to="." method="_on_OreDetector_body_exited"]
+[connection signal="timeout" from="OreDetector/TimerFuel" to="OreDetector" method="_on_TimerFuel_timeout"]

@@ -4,25 +4,49 @@ extends Node
 var ship : SpaceShip setget set_ship
 var meteor : Meteor setget set_meteor
 
-var detected_ore : int = 0
-var is_activate_detector : bool = false setget set_is_activate_detector
-var has_player_detector : bool = false
-var detector_fuel_cost : int = 5
-
 var is_infopanel_out : bool = false
 var is_infopanel_completely_out : bool = false
 
+# Ore Detector
+var ore_detector : OreDetector
+var detector_str : float = 0.9 setget set_detector_str # As the value increases, the laser get stronger.
+var detector_fuel_cost : int = 5 # How much second for one fuel
+var has_player_detector : bool = false
+var is_activate_detector : bool = false setget set_is_activate_detector
+var detected_ore : int = 0
 
 # command flags
 var is_free_travel : bool = false
 
 
 func _ready():
+#	Console.add_command(self, "decrease")
 	Notification.register_observer(self, Notification.NotificationTypes.Reset)
 	
 	
 	Console.add_command(self, "free_travel")
 
+#func decrease():
+#	self.detector_str -= 0.1
+#	Notification.notify(Notification.NotificationTypes.SetMeteor)
+
+func set_detector_str(value : float):
+	if value < 0.1:
+		detector_str = 0.1
+	elif value > 0.9:
+		detector_str = 0.9
+	else:
+		detector_str = value
+
+func can_activate_detector() -> bool:
+	if not ore_detector:
+		InfoPanel.add_label("Dedektör bulunamadı", "", Color.yellow)
+		return false
+	
+	if not ore_detector.enable():
+		return false
+	
+	return true
 
 #var state : bool = false
 #func _input(event):

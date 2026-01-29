@@ -1,8 +1,10 @@
 extends Control
 
+# TimerFuel baglantisi kestim.
+# GUI'den Game/OreDetector'e tasidim.
 
 onready var timer = $Timer
-onready var timer_fuel = $TimerFuel
+#onready var timer_fuel = $TimerFuel
 onready var line = $Lines/Line2D
 
 
@@ -28,7 +30,7 @@ func _ready():
 	$Lines/MidLine.add_point(line.points[0])
 	$Lines/MidLine.add_point(line.points[-1])
 	
-	timer_fuel.wait_time = GameState.detector_fuel_cost
+#	timer_fuel.wait_time = GameState.detector_fuel_cost
 
 
 #func _input(event):
@@ -53,22 +55,26 @@ func _ready():
 
 
 func show():
+	# Calling in InGame.gd
+	
 	.show()
 	
 	if GameState.has_player_detector:
 		InfoPanel.add_label("Maden Dedektörü Aktif", "", Color.green)
 	
 	timer.start()
-	timer_fuel.start()
+#	timer_fuel.start()
 
 func hide():
+	# Calling in InGame.gd
+	
 	.hide()
 	
 	if GameState.has_player_detector:
 		InfoPanel.add_label("Maden Dedektörü Pasif", "", Color.orangered)
 	
 	timer.stop()
-	timer_fuel.stop()
+#	timer_fuel.stop()
 
 
 func _on_Notify(notification_type : int):
@@ -80,7 +86,6 @@ func _on_Notify(notification_type : int):
 		var mid = get_viewport_rect().get_center() - (line_size / 2)
 		$Lines.global_position.x = (GameState.ship.global_position + mid).x
 
-
 func _on_Timer_timeout():
 	for i in range(num_point - 1):
 		line.points[i].y = line.points[i + 1].y
@@ -88,8 +93,8 @@ func _on_Timer_timeout():
 	line.points[-1].y = center - min(center + 64, pow(percent, 2) * sensivity)
 
 
-func _on_TimerFuel_timeout():
-	if not PlayerInventory.use_item(Item.ID.FUEL):
-		GameState.is_activate_detector = false
-		
-		InfoPanel.add_label("Yakıt Tükendi", "", Color.red)
+#func _on_TimerFuel_timeout():
+#	if not PlayerInventory.use_item(Item.ID.FUEL):
+#		GameState.is_activate_detector = false
+#
+#		InfoPanel.add_label("Yakıt Tükendi", "", Color.red)

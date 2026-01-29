@@ -46,6 +46,7 @@ mouse_filter = 1
 script = ExtResource( 13 )
 
 [node name="StoreIndicator" type="TextureRect" parent="MapGrid"]
+modulate = Color( 1, 1, 1, 0.392157 )
 margin_right = 64.0
 margin_bottom = 64.0
 mouse_filter = 2

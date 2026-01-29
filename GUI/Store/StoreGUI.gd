@@ -193,12 +193,11 @@ func _on_Activate_pressed():
 		Notification.notify(Notification.NotificationTypes.SupplierFuelActive)
 	
 	elif item_id == Item.ID.DETECTOR_ORE:
-		if not PlayerInventory.check_item(Item.ID.DETECTOR_ORE):
-			return
 		
-		if not PlayerInventory.check_item(Item.ID.FUEL):
-			InfoPanel.add_label("Yetersiz Yakıt", "", Color.red)
-			return
-		
-		var state : bool = GameState.is_activate_detector
-		GameState.is_activate_detector = not state
+#		if not PlayerInventory.has_item(Item.Type.FUEL, true):
+#			InfoPanel.add_label("Yakıt Yok", "", Color.red)
+#			return
+#
+		if GameState.can_activate_detector():
+			var state : bool = GameState.is_activate_detector
+			GameState.is_activate_detector = not state

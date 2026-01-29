@@ -105,7 +105,7 @@ func _input(event):
 #				line.add_point(mid)
 #				line.add_point(slot_pos + (Vector2.ONE * 32))
 
-
+# Harita olusturuluyor.
 func init_gui():
 	var indexes_x : Array = range(slot_num)
 	var indexes_y : Array = range(slot_num)
@@ -239,7 +239,7 @@ func _on_Map_init():
 	
 	go_current_location(0.5)
 
-
+# MapGrid move animasyonu yapiliyor.
 func _on_Map_current_slot_changed(slot_index : int, slot_data : Map.Data):
 	if not Map.is_init_curr_slot:
 		slot_num = Map.SLOT_NUM

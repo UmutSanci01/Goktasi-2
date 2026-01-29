@@ -44,9 +44,10 @@ func _on_Notify(notification_type : int):
 		var mid = get_viewport_rect().get_center() - button_meteorinfo.rect_size / 2
 		button_meteorinfo.rect_global_position = GameState.meteor.global_position + mid
 	
+	# Yakit gostergesi de isin icine girdiginden buraya yazmisin.
 	elif notification_type == Notification.NotificationTypes.OreDetectorActive:
-		ore_detector.show()
 		fuel_container.show()
+		ore_detector.show()
 	elif notification_type == Notification.NotificationTypes.OreDetectorDeactive:
 		ore_detector.hide()
 		fuel_container.hide()

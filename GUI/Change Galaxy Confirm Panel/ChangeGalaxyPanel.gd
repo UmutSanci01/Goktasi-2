@@ -16,7 +16,8 @@ func _on_Confirm_pressed():
 #	if player_fuel < remain_fuel:
 #		pass
 #	else:
-	if PlayerInventory.use_item(Item.ID.FUEL, remain_fuel):
+#	if PlayerInventory.use_item(Item.ID.FUEL, remain_fuel):
+	if PlayerInventory.use_item_by_type(Item.Type.FUEL, remain_fuel):
 		Random.randomize_rnd()
 		Map.initialize(true)
 		
