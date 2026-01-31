@@ -144,6 +144,7 @@ func _on_SpaceShip_shot_multi(chunk_list : Array, collision_position : Vector2):
 		meteor.explode(chunk, collision_position)
 		
 	GlobalParticles.set_particle(collision_position)
+	GlobalParticles.set_particle_dust(collision_position)
 
 
 func _on_OreDetector_body_entered(body):
