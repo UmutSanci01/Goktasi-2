@@ -56,8 +56,8 @@ func _on_Notify(notification_type : int):
 
 func _on_Return_button_down():
 	var parent : GraphicUI = get_parent()
-	parent.set_menu(parent.title)
-#	emit_signal("press_return")
+#	parent.set_menu(parent.title)
+	emit_signal("press_return")
 
 
 func _on_OpenInv_pressed():

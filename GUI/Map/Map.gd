@@ -158,7 +158,8 @@ func init_gui():
 		if is_store:
 			slot_store = slot
 			indicator_store.rect_global_position = slot_store.rect_global_position
-		
+	
+	current_slot_index = Map.current_slot_index
 	mapgrid.move(Map.current_slot_index)
 
 

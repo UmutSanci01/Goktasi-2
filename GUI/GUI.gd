@@ -17,14 +17,13 @@ onready var settings = $Settings
 
 
 var menu setget set_menu
-var menu_pre
+var stack_menu : Array = []
 
 
 func _ready():
 	for menu in get_children():
-		if menu == title:
+		if menu == title: # title don't have return signal
 			continue
-		
 		menu.hide()
 		
 		if menu.connect("press_return", self, "_on_press_return"):
@@ -32,39 +31,31 @@ func _ready():
 	
 	set_menu(title)
 
-
-func set_menu(value):
-	menu_pre = menu
-	menu = value
+func set_menu(next_menu, is_return : bool = false):
+	if menu:
+		menu.hide()
+		if not is_return: stack_menu.append(menu)
 	
-	if menu_pre:
-		menu_pre.hide()
+	menu = next_menu
 	menu.show()
 
-
 func _on_press_return():
-	set_menu(menu_pre)
-
+	set_menu(stack_menu.pop_back(), true)
 
 func _on_Title_press_start():
 	set_menu(ingame)
 
-
 func _on_Title_press_settings():
 	set_menu(settings)
-
 
 func _on_Title_press_map():
 	set_menu(map)
 
-
 func _on_Title_press_store():
 	set_menu(store)
 
-
 func _on_GUI_Store_buy(item_id, buy_data : Dictionary):
 	emit_signal("store_buy", item_id, buy_data)
-
 
 func _on_Title_press_quit():
 	emit_signal("quit")
