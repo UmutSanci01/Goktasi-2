@@ -17,6 +17,7 @@ func _ready():
 	
 	Map.initialize()
 	
+	GameState.gui = GUI
 	GameState.ship = GAME.get_ship()
 	GameState.meteor = GAME.get_meteor()
 	

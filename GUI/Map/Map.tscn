@@ -219,6 +219,7 @@ visible = false
 
 [connection signal="curr_slot_changed" from="MapGrid" to="." method="_on_MapGrid_curr_slot_changed"]
 [connection signal="drag" from="MapGrid" to="." method="_on_MapGrid_drag"]
+[connection signal="slot_double_clicked" from="MapGrid" to="." method="_on_MapGrid_slot_double_clicked"]
 [connection signal="slot_selected" from="MapGrid" to="." method="_on_MapGrid_slot_selected"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/ChangeGalaxy" to="." method="_on_ChangeGalaxy_pressed"]
 [connection signal="button_down" from="PanelContainer/HBoxContainer/Return" to="." method="_on_Return_button_down"]

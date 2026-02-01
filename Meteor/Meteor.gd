@@ -51,7 +51,8 @@ func _ready():
 	tween_out.connect("tween_all_completed", self, "_on_TweenOut_completed")
 	tween_in.connect("tween_all_completed", self, "_on_TweenIn_completed")
 	
-	polygon_explosive.polygon = PolygonMath.calc_circle_points(8, 32)
+	# init polygon_explosive points
+	polygon_explosive.polygon = PolygonMath.calc_circle_points(8, 16)
 	explosive_local_points = polygon_explosive.polygon
 
 	polygon_explosive.hide()

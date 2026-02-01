@@ -1,6 +1,7 @@
 extends Node
 
 
+var gui : GraphicUI setget set_gui
 var ship : SpaceShip setget set_ship
 var meteor : Meteor setget set_meteor
 
@@ -38,6 +39,9 @@ func set_detector_str(value : float):
 	else:
 		detector_str = value
 
+func set_gui(value):
+	gui = value
+
 func can_activate_detector() -> bool:
 	if not ore_detector:
 		InfoPanel.add_label("Dedektör bulunamadı", "", Color.yellow)
@@ -47,6 +51,7 @@ func can_activate_detector() -> bool:
 		return false
 	
 	return true
+
 
 #var state : bool = false
 #func _input(event):

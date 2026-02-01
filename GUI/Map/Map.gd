@@ -188,6 +188,7 @@ func go_current_location(duration : float = 0.5):
 func _on_Notify(notification_type : int):
 	if notification_type == Notification.NotificationTypes.Reset:
 		# Go Market
+		# Market is last object in the list
 		if not Map.current_slot_index == Map.SLOT_NUM - 1:
 			Map.set_current_slot_index(Map.SLOT_NUM - 1)
 
@@ -248,6 +249,7 @@ func _on_Map_current_slot_changed(slot_index : int, slot_data : Map.Data):
 		
 		return
 	
+	current_slot_index = slot_index
 	target_slot_index = slot_index
 	target_slot_dist = 0
 	
@@ -292,3 +294,8 @@ func _on_MapGrid_curr_slot_changed(new_slot, _new_index):
 
 func _on_TweenGo_completed():
 	pass
+
+
+func _on_MapGrid_slot_double_clicked(slot, slot_index):
+	if slot_index == current_slot_index and slot == slot_store:
+		GameState.gui.menu = GameState.gui.store

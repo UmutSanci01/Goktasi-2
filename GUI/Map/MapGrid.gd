@@ -5,6 +5,7 @@ class_name MapGrid
 signal drag()
 signal curr_slot_changed(new_slot, new_index)
 signal slot_selected(slot, slot_index, dist)
+signal slot_double_clicked(slot, slot_index)
 
 #export var slot_num : int = 3
 
@@ -18,6 +19,7 @@ onready var map_slot = preload("res://GUI/Map/Map Slot/MapSlot.tscn")
 # click variables
 var touch_point : Vector2
 var is_click : bool = false
+var pressed_slot_index : int setget set_pressed_slot_index # double slot press
 
 # drag variables
 var is_drag : bool = false
@@ -159,6 +161,12 @@ func _input(event):
 
 
 func _on_MapSlot_pressed(slot : TextureButton, slot_index : int):
+	if pressed_slot_index == slot_index:
+		emit_signal("slot_double_clicked", slot, slot_index)
+		self.pressed_slot_index = -1
+	else:
+		self.pressed_slot_index = slot_index
+	
 	if is_click and current_slot:
 		is_click = false
 		
@@ -175,8 +183,11 @@ func _on_MapSlot_pressed(slot : TextureButton, slot_index : int):
 		
 		emit_signal("slot_selected", slot, slot_index, dist_tile)
 
+func set_pressed_slot_index(value : int):
+	pressed_slot_index = value
 
 func move(slot_index : int):
+	self.pressed_slot_index = -1
 	set_current_slot(slot_index)
 	
 #	center_current_position()
