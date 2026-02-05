@@ -144,6 +144,7 @@ func choose_ore():
 	return null # Hiçbir şey seçilmediyse
 
 
+# save_data ve load_data cagirilmiyor
 func save_data():
 	var data : Dictionary = {}
 	data[key_ore_num] = get_child_count()

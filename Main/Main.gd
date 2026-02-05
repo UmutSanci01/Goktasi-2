@@ -12,8 +12,8 @@ func _ready():
 	
 #	if Player.connect("update_coin", self, "_on_player_update_coin"): pass
 
-	if GUI.connect("quit", Player, "_on_GUI_quit"):
-		pass
+#	if GUI.connect("quit", Player, "_on_GUI_quit"):
+#		pass
 	
 	Map.initialize()
 	

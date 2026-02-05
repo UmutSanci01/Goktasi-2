@@ -242,7 +242,7 @@ func set_meteor_polygon(points : PoolVector2Array, is_update_back : bool = false
 #
 #	anim_exit_screen()
 
-
+# save_ores, save_polygons ve save_data kullanilmiyor.
 func save_ores():
 	var positions = ores.collect_ores_positions()
 	var ids = ores.collect_ore_ids()
@@ -250,6 +250,7 @@ func save_ores():
 	data.ore_num = positions.size()
 	data.ore_ids = ids
 	
+	# Bilgileri guncelleyip kaydediyor. Uyari da veriyor.
 	if data.ore_num == 0:
 		data.is_ores_collected = true
 		InfoPanel.add_label("Maden Kalmadı", "", Color.red)

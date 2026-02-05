@@ -7,6 +7,7 @@ extends Node
 
 func _ready():
 #	GameState.add_reset_group(self)
+	add_to_group("save_data") # calling in Main _on_quit
 	
 	if not load_data():
 		PlayerInventory.add_item(Item.ID.COIN, 3000)
@@ -39,6 +40,6 @@ func load_data():
 		return 1
 
 
-func _on_GUI_quit():
-	save_data()
+#func _on_GUI_quit():
+#	save_data()
 
