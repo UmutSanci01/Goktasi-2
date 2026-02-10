@@ -14,8 +14,8 @@ export (bool) var is_rotate = true
 onready var chunks = $Chunks
 onready var ores : Ores = $Ores
 
-onready var polygon_explosive = $Explosive
-onready var polygon_meteor_background = $Bacground
+onready var polygon_explosive : Polygon2D = $Explosive
+onready var polygon_meteor_background : Polygon2D = $Bacground
 
 var chunk_num : int = 0
 
@@ -40,7 +40,8 @@ var tween_in : Tween = Tween.new()
 
 
 func _ready():
-#	add_to_group("save_data")
+	if not OS.is_debug_build():
+		chunks.show()
 	
 	set_physics_process(is_rotate)
 	

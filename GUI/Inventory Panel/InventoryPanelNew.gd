@@ -45,7 +45,7 @@ func get_invisible_items():
 func hide_slot_indicator():
 	slot_indicator.hide()
 
-
+# Player and Store inventory is updating
 func update_slots():
 	assert(inv, "inv is null")
 	

@@ -4,10 +4,21 @@ onready var label_ore_num = $PanelContainer/VBoxContainer/OreNum/Value
 onready var label_radius = $PanelContainer/VBoxContainer/Radius/Value
 onready var label_dist = $PanelContainer/VBoxContainer/Dist/Value
 
-var screen_size : Vector2 = OS.get_screen_size()
-var screen_size_half : Vector2 = screen_size / 2
+#var screen_size : Vector2 = OS.get_screen_size()
+#var screen_size : Vector2 = OS.get_real_window_size()
+#var screen_size : Vector2 = OS.window_size
+var screen_size : Vector2
+var screen_size_half : Vector2
 
-#func _ready():
+#func _draw():
+#	draw_circle(screen_size_half, 10, Color.purple)
+#	draw_circle(screen_size, 10, Color.red)
+
+func _ready():
+	screen_size = get_viewport_rect().size
+	screen_size_half = screen_size / 2
+	
+#	show()
 #	var scale : Vector2
 #	scale.x = screen_size.x / 683
 #	scale.y = screen_size.y / 768
@@ -21,6 +32,8 @@ var screen_size_half : Vector2 = screen_size / 2
 
 func pop(position : Vector2):
 	show()
+	
+	
 	
 	var direction : Vector2 = Vector2.UP
 	var offset : Vector2 = Vector2.ZERO

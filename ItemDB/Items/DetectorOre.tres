@@ -12,3 +12,4 @@ info = "Gök Taşı içindeki madenleri ışın kullanarak algılayan bir cihaz.
 texture = ExtResource( 2 )
 value = 4000
 visible = true
+can_sale = true

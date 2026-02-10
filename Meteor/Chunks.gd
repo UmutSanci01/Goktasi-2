@@ -25,7 +25,6 @@ func add_chunk(points : PoolVector2Array):
 	
 	chunk.set_polygon(points)
 
-
 func add_chunks_from_array(polygons : Array):
 	for polygon in polygons:
 		add_chunk(polygon)

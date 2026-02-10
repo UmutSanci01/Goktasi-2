@@ -42,7 +42,6 @@ func _ready():
 	
 	invpanel_store.set_inv(Store.inv)
 	invpanel_store.set_title("Market")
-	invpanel_store.set_invisible_item(Item.ID.ORE)
 
 
 func show_store():

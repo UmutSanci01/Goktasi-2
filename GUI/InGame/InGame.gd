@@ -2,7 +2,6 @@ extends Control
 
 signal press_return
 
-
 onready var button_openinv = $OpenInv
 onready var button_meteorinfo = $MeteorInfo
 onready var ore_detector = $OreDetector
@@ -10,6 +9,7 @@ onready var fuel_container = $AmountLabels/FuelContainer
 
 
 func _ready():
+	GameState.screen_safe_area = OS.get_window_safe_area()
 	Notification.register_observer(self, Notification.NotificationTypes.SetShip)
 	Notification.register_observer(self, Notification.NotificationTypes.SetMeteor)
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorActive)
@@ -64,6 +64,9 @@ func _on_OpenInv_pressed():
 	var parent : GraphicUI = get_parent()
 	parent.set_menu(parent.store)
 
+func _draw():
+	if GameState.show_safe_area:
+		draw_rect(GameState.screen_safe_area, Color.red, false, 10)
 
 func _on_MeteorInfo_pressed():
 	var ore_num = GameState.get_ore_num()

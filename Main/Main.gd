@@ -9,12 +9,6 @@ func _ready():
 	GUI = $GUI
 	GAME = $Game
 	
-	
-#	if Player.connect("update_coin", self, "_on_player_update_coin"): pass
-
-#	if GUI.connect("quit", Player, "_on_GUI_quit"):
-#		pass
-	
 	Map.initialize()
 	
 	GameState.gui = GUI
@@ -22,8 +16,17 @@ func _ready():
 	GameState.meteor = GAME.get_meteor()
 	
 	InfoPanel.add_label("Oyun Başladı", "", Color.green)
+	
 	GameState.is_activate_detector = false
 
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed:
+			match event.scancode:
+				KEY_F11:
+					OS.window_fullscreen = not OS.window_fullscreen
+				_:
+					pass
 
 func _on_Map_curr_slot_changed(_slot_index : int, slot_data : Map.Data):
 	pass

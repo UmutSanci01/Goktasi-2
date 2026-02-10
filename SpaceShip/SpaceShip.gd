@@ -28,12 +28,14 @@ func _ready():
 		node_bullets.add_child(bullet)
 #		bullets.append(bullet)
 
-
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed and event.index == 0:
 			fire()
-
+			# DEMO
+#			if GameState.screen_safe_area.has_point(event.position):
+#				fire()
+			# DEMO
 
 func fire():
 	if PlayerInventory.use_item(selected_bullet_id):

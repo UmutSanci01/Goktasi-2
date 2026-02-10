@@ -195,6 +195,9 @@ func _on_Notify(notification_type : int):
 
 
 func _on_Return_button_down():
+	if panel_change_galaxy.visible:
+		panel_change_galaxy.hide()
+	
 	emit_signal("press_return")
 
 

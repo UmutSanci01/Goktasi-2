@@ -12,3 +12,4 @@ info = "Sıradan yakıt."
 texture = ExtResource( 2 )
 value = 5
 visible = true
+can_sale = true

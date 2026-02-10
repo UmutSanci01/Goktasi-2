@@ -10,3 +10,4 @@ name = ""
 info = ""
 value = 1
 visible = false
+can_sale = false

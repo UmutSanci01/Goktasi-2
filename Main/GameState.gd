@@ -15,9 +15,13 @@ var detector_fuel_cost : int = 5 # How much second for one fuel
 var has_player_detector : bool = false
 var is_activate_detector : bool = false setget set_is_activate_detector
 var detected_ore : int = 0
+var show_safe_area : bool = false setget set_show_safe_area
 
 # command flags
 var is_free_travel : bool = false
+
+# GUI
+var screen_safe_area : Rect2 setget set_screen_safe_area
 
 
 func _ready():
@@ -30,6 +34,14 @@ func _ready():
 #func decrease():
 #	self.detector_str -= 0.1
 #	Notification.notify(Notification.NotificationTypes.SetMeteor)
+
+func set_screen_safe_area(area : Rect2):
+	screen_safe_area = area
+
+func set_show_safe_area(value : bool):
+	show_safe_area = value
+	if show_safe_area:
+		InfoPanel.add_label("Guvenli alan etkinlestirildi.")
 
 func set_detector_str(value : float):
 	if value < 0.1:

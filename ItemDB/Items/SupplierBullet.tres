@@ -12,3 +12,4 @@ info = "Bakırdan sıtandart mermi üretir."
 texture = ExtResource( 2 )
 value = 5000
 visible = true
+can_sale = true

@@ -12,3 +12,4 @@ info = "Gemi yakıtı."
 texture = ExtResource( 2 )
 value = 4
 visible = true
+can_sale = false

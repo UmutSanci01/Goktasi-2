@@ -36,5 +36,6 @@ export (Texture) var texture
 export (PackedScene) var scene
 export (int) var value
 export (bool) var visible = true
+export (bool) var can_sale = false
 #export (bool) var visible_market = true
 #export (bool) var visible_player = true

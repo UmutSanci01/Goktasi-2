@@ -24,7 +24,8 @@ var limited_items : Dictionary = {
 
 func _ready():
 	for item_id in range(Item.ID.size()):
-		inv.add_item(item_id)
+		if ItemDB.get_item(item_id).can_sale:
+			inv.add_item(item_id)
 
 
 func buy(item_id : int, amount : int, to_inv : Inventory) -> int:

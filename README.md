@@ -3,7 +3,10 @@ https://play.google.com/store/apps/details?id=org.godotengine.Goktasi2&pcampaign
 
 SAVE & LOAD
 add_to_group("save_data")
-_on_GUI_quit in Main call "save_data" function for every "save_data" group member
+_on_GUI_quit in Main scene call "save_data" function for every "save_data" group member
 
 
-
+SUPPLIERS
+Supplier/Supplier.gd
+ItemDB/Items/Supplier.tscn
+Supplier nodes in Main/Game/Supplier to adjust settings on inspector.
