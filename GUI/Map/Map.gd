@@ -54,6 +54,9 @@ var mid : Vector2
 var screen_size : Vector2
 
 
+var is_map_init : bool = false setget set_is_map_init #   Has Map GUI been initialized? 
+
+
 func _ready():
 	Notification.register_observer(self, Notification.NotificationTypes.Reset)
 #	GameState.add_reset_group(self)
@@ -92,18 +95,6 @@ func _input(event):
 		match event.scancode:
 			KEY_S:
 				pass
-#				line.points = PoolVector2Array()
-				
-#				slot_rnd = mapgrid.get_slot(randi() % Map.SLOT_NUM)
-#				var mid = mapgrid.rect_global_position
-#				var mid = get_viewport_rect().get_center()
-#				var slot_pos = slot_rnd.rect_global_position
-#				var direction = slot_pos.normalized() * 100
-#				var direction = (mid + mapgrid.rect_position)
-#				$MapGrid/CurrSlotIndicator.rect_global_position = slot_pos
-#				$MapGrid/TextureRect.rect_global_position = slot_pos
-#				line.add_point(mid)
-#				line.add_point(slot_pos + (Vector2.ONE * 32))
 
 # Harita olusturuluyor.
 func init_gui():
@@ -111,7 +102,6 @@ func init_gui():
 	var indexes_y : Array = range(slot_num)
 	indexes_x.shuffle()
 	indexes_y.shuffle()
-	
 	
 	if not Map.is_init_datas:
 		print("MapGUI init_gui false")
@@ -166,6 +156,9 @@ func init_gui():
 func show():
 	.show()
 	
+	if not self.is_map_init:
+		Map.initialize()
+
 	mapgrid.set_process_input(true)
 	
 	if slot_store:
@@ -177,6 +170,8 @@ func hide():
 	mapgrid.set_process_input(false)
 	set_process(false)
 
+func set_is_map_init(value : bool):
+	is_map_init = value
 
 func go_current_location(duration : float = 0.5):
 	var mid = get_viewport_rect().size / 2
@@ -244,6 +239,8 @@ func _on_Map_init():
 	
 	go_current_location(0.5)
 
+	self.is_map_init = true
+
 # MapGrid move animasyonu yapiliyor.
 func _on_Map_current_slot_changed(slot_index : int, slot_data : Map.Data):
 	if not Map.is_init_curr_slot:
@@ -293,8 +290,7 @@ func _on_MapGrid_curr_slot_changed(new_slot, _new_index):
 	current_slot = new_slot
 	
 	if current_slot == slot_store:
-		InfoPanel.add_label("Markete Erişilebilir", "", Color.gold)
-
+		Store.is_reachable = true
 
 func _on_TweenGo_completed():
 	pass

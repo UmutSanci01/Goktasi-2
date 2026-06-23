@@ -40,7 +40,7 @@ var current_slot_index : int = -1 setget set_current_slot_index, get_current_slo
 var old_slot_index : int = -1
 
 # checks
-var is_init_datas : bool = false
+var is_init_datas : bool = false setget set_is_init_datas, get_is_init_datas
 var is_init_curr_slot : bool = false
 var is_init_grid_size : bool = false
 
@@ -69,6 +69,8 @@ func _ready():
 
 
 func initialize(is_new : bool = false):
+	Store.is_reachable = false
+	
 	if is_new:
 #		is_init_datas = false
 		is_init_curr_slot = false
@@ -145,6 +147,11 @@ func set_current_slot_index(slot_index : int):
 func get_current_slot_index():
 	return current_slot_index
 
+func set_is_init_datas(value : bool):
+	is_init_datas = value
+
+func get_is_init_datas() -> bool:
+	return is_init_datas
 
 func get_data(data_index : int = -1) -> Data:
 	return datas.get(data_index)

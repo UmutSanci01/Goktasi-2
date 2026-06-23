@@ -9,7 +9,7 @@ func _ready():
 	GUI = $GUI
 	GAME = $Game
 	
-	Map.initialize()
+	# Map.initialize()
 	
 	GameState.gui = GUI
 	GameState.ship = GAME.get_ship()
