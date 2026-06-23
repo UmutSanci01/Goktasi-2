@@ -28,7 +28,7 @@ func _input(event):
 				_:
 					pass
 
-func _on_Map_curr_slot_changed(_slot_index : int, slot_data : Map.Data):
+func _on_Map_curr_slot_changed(_slot_index : int, _slot_data : Map.Data):
 	pass
 #	GAME.set_meteor_settings(slot_data)
 

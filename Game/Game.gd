@@ -147,7 +147,7 @@ func _on_SpaceShip_shot_multi(chunk_list : Array, collision_position : Vector2):
 #	GlobalParticles.set_particle_dust(collision_position)
 
 
-func _on_OreDetector_body_entered(body):
+func _on_OreDetector_body_entered(_body):
 	GameState.detected_ore += 1
 	Notification.notify(Notification.NotificationTypes.OreDetected)
 
@@ -157,7 +157,7 @@ func _on_OreDetector_body_entered(body):
 		ore_detector.collision.modulate = Color.white
 
 
-func _on_OreDetector_body_exited(body):
+func _on_OreDetector_body_exited(_body):
 	GameState.detected_ore -= 1
 	Notification.notify(Notification.NotificationTypes.OreDetected)
 	
