@@ -156,6 +156,7 @@ func init_gui():
 func show():
 	.show()
 	
+	# The map GUI will not be loaded until the map button is pressed at least once.
 	if not self.is_map_init:
 		Map.initialize()
 
