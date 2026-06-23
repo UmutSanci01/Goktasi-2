@@ -78,6 +78,9 @@ func get_inv():
 
 
 func set_reachable(val):
+	if is_reachable == val:
+		return
+	
 	is_reachable = val
 	
 	if is_reachable:

@@ -156,6 +156,7 @@ func _on_Action_pressed():
 
 
 func _on_Store_entered():
+	InfoPanel.add_label("Markete Erişilebilir.")
 	show_store()
 
 func _on_Store_exited():
