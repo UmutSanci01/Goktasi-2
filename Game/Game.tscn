@@ -47,7 +47,7 @@ default_color = Color( 0.686275, 1, 0.713726, 0.392157 )
 
 [node name="SupplierFuel" parent="." instance=ExtResource( 5 )]
 rotation = -0.164502
-product_item = 2
+product_item = 11
 product_source = 12
 product_num = 10
 
