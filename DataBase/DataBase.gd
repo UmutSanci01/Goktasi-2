@@ -21,7 +21,7 @@ func save_data(p_data, data_owner : String = "data"):
 	
 	emit_signal("save_data")
 
-func load_data(data_owner : String = "data"):
+func load_data(data_owner : String = "data") -> Dictionary:
 	var data : Dictionary = {}
 	var file : File = File.new()
 	
