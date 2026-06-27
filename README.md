@@ -13,3 +13,6 @@ SUPPLIERS
 Supplier/Supplier.gd
 ItemDB/Items/Supplier.tscn
 Supplier nodes in Main/Game/Supplier to adjust settings on inspector.
+
+GETTING ITEM DATA
+ItemDB.check_item(item_id) function returns true if item is valid. After, ItemDB.get_item() fuction returns the checked item data.

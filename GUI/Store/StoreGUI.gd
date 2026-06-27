@@ -107,7 +107,7 @@ func _on_PlayerInv_slot_selected(slot, item_id):
 	# Activate button check
 	btn_activate.visible = (item_data.type == Item.Type.TOOL)
 	
-	invpanel_store.hide_slot_indicator()
+	invpanel_store.hide_slot_outline()
 	show_info(self.item_data.info, self.item_data.value)
 	update_multbuy()
 	
@@ -124,7 +124,7 @@ func _on_StoreInv_slot_selected(slot : Slot, item_id):
 #	btn_activate.visible = (item_data[ItemDB.TYPE] == "tool")
 	btn_activate.hide()
 	
-	invpanel_player.hide_slot_indicator()
+	invpanel_player.hide_slot_outline()
 	show_info(self.item_data.info, self.item_data.value)
 	update_multbuy()
 	
@@ -169,15 +169,15 @@ func _on_MultipleBuySlider_update_item_amount(item_amount):
 
 func _on_PlayerInv_press_empty():
 	multiple_slider.hide()
-	invpanel_player.slot_indicator.hide()
-	invpanel_store.slot_indicator.hide()
+	invpanel_player.slot_outline.hide()
+	invpanel_store.slot_outline.hide()
 	
 	item_amount_store = 0
 
 func _on_StoreInv_press_empty():
 	multiple_slider.hide()
-	invpanel_player.slot_indicator.hide()
-	invpanel_store.slot_indicator.hide()
+	invpanel_player.slot_outline.hide()
+	invpanel_store.slot_outline.hide()
 	
 	item_amount_store = 0
 

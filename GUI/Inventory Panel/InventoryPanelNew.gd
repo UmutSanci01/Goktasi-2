@@ -7,8 +7,9 @@ signal press_empty()
 
 onready var slot_scene = preload("res://GUI/Slot/Slot.tscn")
 onready var slots = $PanelContainer/VBoxContainer/slots
-onready var slot_indicator = $SelectedSlotIndicator
+onready var slot_outline = $SelectedSlotIndicator
 onready var lbl_title = $PanelContainer/VBoxContainer/Title
+onready var slot_fueled_indicator = preload("res://Images/fuel_indicator.png")
 
 
 var inv : Inventory
@@ -17,7 +18,7 @@ var invisible_items : PoolIntArray = [] setget , get_invisible_items
 
 
 func _ready():
-	hide_slot_indicator()
+	hide_slot_outline()
 
 
 func set_inv(inventory : Inventory):
@@ -42,8 +43,8 @@ func get_invisible_items():
 	return
 
 
-func hide_slot_indicator():
-	slot_indicator.hide()
+func hide_slot_outline():
+	slot_outline.hide()
 
 # Player and Store inventory is updating
 func update_slots():
@@ -69,11 +70,13 @@ func update_slots():
 			continue
 		if ItemDB.check_item(item_id) == false:
 			continue
-		if ItemDB.get_item().visible == false:
+		
+		var item_data : Item = ItemDB.get_item()
+		if item_data.visible == false:
 			continue
 		
 		item_amount = inv.get_item_amount(item_id)
-		item_texture = ItemDB.get_item().texture
+		item_texture = item_data.texture
 		
 		slot = slots_childs.pop_back()
 		if not slot:
@@ -83,10 +86,16 @@ func update_slots():
 		add_slot(slot)
 		
 		slot.set_item(item_id, item_amount, item_texture)
-	
-	# SLOT INDICATOR SIZE
+
+		if item_data.type == Item.Type.TOOL:
+			slot.set_indicator(slot_fueled_indicator)
+			slot.indicator_state(true)
+
+
+
+	# SLOT OUTLINE SIZE
 	if slot:
-		slot_indicator.rect_size = slot.rect_min_size
+		slot_outline.rect_size = slot.rect_min_size
 	
 	for child in slots_childs:
 		child.queue_free()
@@ -94,6 +103,8 @@ func update_slots():
 
 func add_slot(slot : Slot):
 	slots.add_child(slot)
+
+	slot.rect_size = Vector2(128, 128)
 
 	if not slot.is_connected("button_down", self, "_on_Slot_down"):
 		if slot.connect("button_down", self, "_on_Slot_down", [slot]):
@@ -105,10 +116,10 @@ func set_title(text : String):
 
 
 func _on_Slot_down(slot : Slot):
-	if slot_indicator.visible == false:
-		slot_indicator.show()
+	if slot_outline.visible == false:
+		slot_outline.show()
 	
-	slot_indicator.rect_global_position = slot.rect_global_position
+	slot_outline.rect_global_position = slot.rect_global_position
 	
 	emit_signal("slot_selected", slot, slot.item_id)
 
