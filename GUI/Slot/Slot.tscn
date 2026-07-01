@@ -14,16 +14,19 @@ use_filter = true
 font_data = SubResource( 1 )
 
 [node name="Slot" type="TextureButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -576.0
-margin_bottom = -960.0
+anchor_right = 0.213333
+anchor_bottom = 0.125
+margin_right = -104.0
+margin_bottom = -64.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture_normal = ExtResource( 1 )
 expand = true
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="ItemImage" type="TextureRect" parent="."]
 anchor_right = 1.0

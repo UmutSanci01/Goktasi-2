@@ -12,11 +12,14 @@ onready var scene_bullet := preload("res://Bullet/Bullet.tscn")
 var bullet_count : int = 0
 const size_bullet_pool : int = 50
 
-var selected_bullet_id : int = -1
+var selected_bullet_id : int = -1 
 
 
 func _ready():
 	selected_bullet_id = Item.ID.BULLET
+	var bullet_data = ItemDB.get_item(selected_bullet_id)
+	if bullet_data:
+		scene_bullet = bullet_data.scene
 	
 	var bullet : Bullet
 	for _i in range(size_bullet_pool):

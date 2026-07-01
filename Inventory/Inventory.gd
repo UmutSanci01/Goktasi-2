@@ -94,7 +94,7 @@ func get_item_by_type(item_type : int) -> WrapSameType:
 func use_item(item, amount : int = 1) -> int:
 	if item == Item.ID.FUEL:
 		pass
-	var item_ref = ItemDB.get_item(item)
+	# var item_ref = ItemDB.get_item(item)
 	
 #	if item_ref.type == Item.Type.FUEL and GameState.is_free_travel:
 #		return 1

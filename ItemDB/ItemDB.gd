@@ -108,6 +108,7 @@ func _ready():
 #}
 
 var checked_item_id : int = -1
+# if item is not found then return NULL
 func get_item(item : int = -1) -> Item:
 	if item == -1:
 		return items.get(checked_item_id)
