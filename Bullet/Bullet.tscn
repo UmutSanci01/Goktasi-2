@@ -30,3 +30,4 @@ monitorable = false
 shape = SubResource( 2 )
 
 [node name="ExplosivePolygon" type="Polygon2D" parent="."]
+visible = false

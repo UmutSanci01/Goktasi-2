@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name SpaceShip
 
 #signal shot(kinematic_collision)
-signal shot_multi(chunk_list, collision_position)
+signal shot_multi(chunk_list, collision_position, bullet)
 
 onready var node_bullets : Node2D = $Bullets
 onready var scene_bullet := preload("res://Bullet/Bullet.tscn")
@@ -16,7 +16,7 @@ var selected_bullet_id : int = -1
 
 
 func _ready():
-	selected_bullet_id = Item.ID.BULLET
+	selected_bullet_id = Item.ID.BULLET_HE
 	var bullet_data = ItemDB.get_item(selected_bullet_id)
 	if bullet_data:
 		scene_bullet = bullet_data.scene
