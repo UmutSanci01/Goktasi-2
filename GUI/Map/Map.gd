@@ -73,7 +73,7 @@ func _ready():
 
 
 var indicator_pos : Vector2
-func _process(delta):
+func _process(_delta):
 	indicator_pos = slot_store.rect_global_position
 	
 	if indicator_pos.x > screen_size.x:
@@ -175,8 +175,8 @@ func set_is_map_init(value : bool):
 	is_map_init = value
 
 func go_current_location(duration : float = 0.5):
-	var mid = get_viewport_rect().size / 2
-	var center = (mid - current_slot.rect_position) - (Vector2.ONE * 32)
+	var m_mid = get_viewport_rect().size / 2
+	var center = (m_mid - current_slot.rect_position) - (Vector2.ONE * 32)
 
 	tween_go.interpolate_property(mapgrid, "rect_position", mapgrid.rect_position, center, duration)
 	tween_go.start()
@@ -243,7 +243,7 @@ func _on_Map_init():
 	self.is_map_init = true
 
 # MapGrid move animasyonu yapiliyor.
-func _on_Map_current_slot_changed(slot_index : int, slot_data : Map.Data):
+func _on_Map_current_slot_changed(slot_index : int, _slot_data : Map.Data):
 	if not Map.is_init_curr_slot:
 		slot_num = Map.SLOT_NUM
 		mapgrid.slot_num = Map.SLOT_NUM

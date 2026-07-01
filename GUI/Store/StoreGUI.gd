@@ -77,7 +77,8 @@ func update_multbuy():
 		return
 	
 	if mode == ActionMode.Buy:
-		max_value = player_coin / item_value
+		# int(floor / floor) is used to ignore division warning.
+		max_value = int(floor(player_coin) / floor(item_value))
 	elif mode == ActionMode.Sell:
 		max_value = self.item_amount_inv
 	
