@@ -9,7 +9,7 @@ onready var slot_scene = preload("res://GUI/Slot/Slot.tscn")
 onready var slots = $PanelContainer/VBoxContainer/slots
 onready var slot_outline = $SelectedSlotIndicator
 onready var lbl_title = $PanelContainer/VBoxContainer/Title
-onready var slot_fueled_indicator = preload("res://Images/fuel_indicator.png")
+#onready var slot_fueled_indicator = preload("res://Images/fuel_indicator.png")
 
 
 var inv : Inventory
@@ -86,10 +86,12 @@ func update_slots():
 		add_slot(slot)
 		
 		slot.set_item(item_id, item_amount, item_texture)
-
-		if item_data.type == Item.Type.TOOL:
-			slot.set_indicator(slot_fueled_indicator)
-			slot.indicator_state(true)
+		
+		# Adding indicator to tools for current fuel.
+#		if item_data.type == Item.Type.TOOL:
+#			slot.rect_size = slot.rect_min_size # To fix Last indicator error
+#			slot.set_indicator(slot_fueled_indicator)
+#			slot.indicator_state(true)
 
 
 
@@ -100,11 +102,8 @@ func update_slots():
 	for child in slots_childs:
 		child.queue_free()
 
-
 func add_slot(slot : Slot):
 	slots.add_child(slot)
-
-	slot.rect_size = Vector2(128, 128)
 
 	if not slot.is_connected("button_down", self, "_on_Slot_down"):
 		if slot.connect("button_down", self, "_on_Slot_down", [slot]):

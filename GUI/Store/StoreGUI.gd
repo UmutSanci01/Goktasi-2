@@ -26,7 +26,6 @@ var item_data : Item
 var item_amount_store : int = 1
 var item_amount_inv : int = 0
 
-
 func _ready():
 	hide_store()
 	multiple_slider.hide()
@@ -43,7 +42,6 @@ func _ready():
 	invpanel_store.set_inv(Store.inv)
 	invpanel_store.set_title("Market")
 
-
 func show_store():
 	invpanel_store.show()
 	btn_action.show()
@@ -52,14 +50,12 @@ func hide_store():
 	invpanel_store.hide()
 	btn_action.hide()
 
-
 func set_act_mode(new_mode):
 	mode = new_mode
 	
 	var btn_act_atlas : AtlasTexture = btn_action.texture_normal
 	btn_act_atlas.region.position.x = mode * 64
 	btn_action.texture_normal = btn_act_atlas
-
 
 func show_info(info : String, item_value : int):
 #	var info = ItemDB.get_item(item_id, ItemDB.INFO)
@@ -71,7 +67,6 @@ func show_info(info : String, item_value : int):
 		ConsoleGUI.out(self.name + " show_info item_info not found")
 	
 	label_value.text = str(item_value)
-
 
 func update_multbuy():
 	var player_coin : int = PlayerInventory.get_item_amount(Item.ID.COIN)
@@ -88,7 +83,6 @@ func update_multbuy():
 	
 	multiple_slider.update_data(self.item_amount_store, max_value)
 
-
 func _on_Return_pressed():
 	multiple_slider.hide()
 	
@@ -96,13 +90,13 @@ func _on_Return_pressed():
 	
 	emit_signal("press_return")
 
-
-func _on_PlayerInv_slot_selected(slot, item_id):
+# inventory parametresi verilerek iki fonksiyon birlestirilebilir.
+func _on_PlayerInv_slot_selected(slot, p_item_id):
 	self.mode = ActionMode.Sell
-	self.item_id = item_id
-	self.item_data = ItemDB.get_item(item_id)
+	self.item_id = p_item_id
+	self.item_data = ItemDB.get_item(p_item_id)
 	self.current_slot = slot
-	self.item_amount_inv = PlayerInventory.get_item_amount(item_id)
+	self.item_amount_inv = PlayerInventory.get_item_amount(p_item_id)
 	
 	# Activate button check
 	btn_activate.visible = (item_data.type == Item.Type.TOOL)
@@ -113,12 +107,12 @@ func _on_PlayerInv_slot_selected(slot, item_id):
 	
 #	multiple_slider.show()
 
-func _on_StoreInv_slot_selected(slot : Slot, item_id):
+func _on_StoreInv_slot_selected(slot : Slot, p_item_id):
 	self.mode = ActionMode.Buy
-	self.item_id = item_id
-	self.item_data = ItemDB.get_item(item_id)
+	self.item_id = p_item_id
+	self.item_data = ItemDB.get_item(p_item_id)
 	self.current_slot = slot
-	self.item_amount_inv = Store.inv.get_item_amount(item_id)
+	self.item_amount_inv = Store.inv.get_item_amount(p_item_id)
 	
 	# Activate button check marketteki esya icin biraz sacma oldu
 #	btn_activate.visible = (item_data[ItemDB.TYPE] == "tool")
@@ -129,7 +123,7 @@ func _on_StoreInv_slot_selected(slot : Slot, item_id):
 	update_multbuy()
 	
 #	multiple_slider.show()
-
+# iki fonksiyon birlestirilebilir. Yukaridaki.
 
 func _on_Action_pressed():
 	if not item_data:
@@ -154,7 +148,6 @@ func _on_Action_pressed():
 	
 	update_multbuy()
 
-
 func _on_Store_entered():
 	InfoPanel.add_label("Markete Erişilebilir.")
 	show_store()
@@ -162,10 +155,8 @@ func _on_Store_entered():
 func _on_Store_exited():
 	hide_store()
 
-
 func _on_MultipleBuySlider_update_item_amount(item_amount):
 	self.item_amount_store = item_amount
-
 
 func _on_PlayerInv_press_empty():
 	multiple_slider.hide()
@@ -181,11 +172,9 @@ func _on_StoreInv_press_empty():
 	
 	item_amount_store = 0
 
-
 func _on_Activate_pressed():
 	if ItemDB.check_item(item_id) == false:
 		return
-	
 	
 	if item_id == Item.ID.SUPPLIER_BULLET:
 		Notification.notify(Notification.NotificationTypes.SupplierBulletActive)
@@ -194,10 +183,7 @@ func _on_Activate_pressed():
 	
 	elif item_id == Item.ID.DETECTOR_ORE:
 		
-#		if not PlayerInventory.has_item(Item.Type.FUEL, true):
-#			InfoPanel.add_label("Yakıt Yok", "", Color.red)
-#			return
-#
+
 		if GameState.can_activate_detector():
 			var state : bool = GameState.is_activate_detector
 			GameState.is_activate_detector = not state

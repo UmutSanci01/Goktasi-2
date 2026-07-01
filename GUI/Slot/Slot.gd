@@ -15,7 +15,7 @@ func set_item(p_item_id : int, p_item_num : int, image : Texture):
 	
 	set_amount(p_item_num)
 	
-	indicator_state(false)
+#	indicator_state(false)
 
 	$ItemImage.texture = image
 
@@ -39,7 +39,7 @@ func set_indicator(image : Texture):
 
 func indicator_state(state : bool):
 	if not indicator: return
-	
+
 	if state:
 		indicator.show()
 	else: indicator.hide()
