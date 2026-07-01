@@ -4,11 +4,12 @@ extends KinematicBody2D
 class_name Bullet
 
 
-signal collision_meteor(collision_position, chunk_list)
+signal collision_meteor(collision_position, chunk_list, bullet)
 
+export (int) var explosive_radius = 16
 
 onready var area_explosive = $AreaExplosive
-
+onready var explosive_polygon = $ExplosivePolygon
 
 var speed : int = 500
 var velocity : Vector2 = Vector2.ZERO
@@ -22,11 +23,13 @@ var collide_list : Array
 func _ready():
 	disable()
 
+	explosive_polygon.polygon = PolygonMath.calc_circle_points(8, explosive_radius)
+
 
 func _physics_process(delta : float):
 	velocity = direction * speed
 	collide = move_and_collide(delta * velocity)
-	
+
 	if collide:
 		if collide.collider is Ore:
 			GlobalParticles.set_particle(collide.position, Color.yellow)
@@ -35,7 +38,7 @@ func _physics_process(delta : float):
 		
 		elif collide.collider is Chunk:
 			collide_list = area_explosive.get_overlapping_bodies()
-			emit_signal("collision_meteor", collide.position, collide_list)
+			emit_signal("collision_meteor", collide.position, collide_list, self)
 		
 		disable()
 

@@ -14,7 +14,7 @@ export (bool) var is_rotate = true
 onready var chunks = $Chunks
 onready var ores : Ores = $Ores
 
-onready var polygon_explosive : Polygon2D = $Explosive
+# onready var polygon_explosive : Polygon2D = $Explosive
 onready var polygon_meteor_background : Polygon2D = $Bacground
 
 var chunk_num : int = 0
@@ -53,10 +53,10 @@ func _ready():
 	tween_in.connect("tween_all_completed", self, "_on_TweenIn_completed")
 	
 	# init polygon_explosive points
-	polygon_explosive.polygon = PolygonMath.calc_circle_points(8, 16)
-	explosive_local_points = polygon_explosive.polygon
+	# polygon_explosive.polygon = PolygonMath.calc_circle_points(8, 16)
+	# explosive_local_points = polygon_explosive.polygon
 
-	polygon_explosive.hide()
+	# polygon_explosive.hide()
 
 
 func _physics_process(delta):
@@ -176,14 +176,17 @@ func drop_chunk(_chunk_points : PoolVector2Array):
 	pass
 
 
-func explode(chunk : Chunk, collision_position : Vector2):
+func explode(chunk : Chunk, collision_position : Vector2, polygon_explosive : Polygon2D):
 	if not chunk:
 		return
 	
-	# Move explosive polygon to new position. Then, add the new position to every polygon dots.
-	polygon_explosive.global_position = collision_position
+	explosive_local_points = polygon_explosive.polygon
+
+	# Carry the collision position coordinate to chunk coordinate space
+	var explosive_global_pos = chunk.polygon2d.to_local(collision_position)
+	
 	for i in range(explosive_local_points.size()):
-		explosive_local_points[i] = polygon_explosive.polygon[i] + polygon_explosive.position
+		explosive_local_points[i] = polygon_explosive.polygon[i] + explosive_global_pos
 	
 	clip_polygon = Geometry.clip_polygons_2d(
 		chunk.polygon2d.polygon, explosive_local_points

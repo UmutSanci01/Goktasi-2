@@ -48,8 +48,8 @@ func fire():
 		InfoPanel.add_label("Mermi Kalmadı")
 
 
-func _on_Bullet_MeteorCollide(collision_position : Vector2, collide_list : Array):
-	emit_signal("shot_multi", collide_list, collision_position)
+func _on_Bullet_MeteorCollide(collision_position : Vector2, collide_list : Array, bullet : Bullet):
+	emit_signal("shot_multi", collide_list, collision_position, bullet)
 
 
 func _on_GUI_selected_bullet(bullet_id):

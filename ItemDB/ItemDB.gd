@@ -41,6 +41,27 @@ func _ready():
 		items[item.id] = item
 
 
+var checked_item_id : int = -1
+# if item is not found then return NULL
+func get_item(item : int = -1) -> Item:
+	if item == -1:
+		return items.get(checked_item_id)
+	return items.get(item)
+#	if items.has(item):
+#		if data >= 0:
+#			return items[item].get(data, false)
+#		if data >= 0 and items[item].has(data):
+#			return items[item][data]
+#		return items[item]
+
+
+func check_item(item_id : int):
+	if items.has(item_id):
+		checked_item_id = item_id
+		return true
+	
+	return false
+
 #var items : Dictionary = {
 #	EnumItem.COIN : {
 #		TYPE : "coin",
@@ -107,23 +128,4 @@ func _ready():
 #	}
 #}
 
-var checked_item_id : int = -1
-# if item is not found then return NULL
-func get_item(item : int = -1) -> Item:
-	if item == -1:
-		return items.get(checked_item_id)
-	return items.get(item)
-#	if items.has(item):
-#		if data >= 0:
-#			return items[item].get(data, false)
-#		if data >= 0 and items[item].has(data):
-#			return items[item][data]
-#		return items[item]
 
-
-func check_item(item_id : int):
-	if items.has(item_id):
-		checked_item_id = item_id
-		return true
-	
-	return false
