@@ -5,7 +5,7 @@ class_name Game
 
 
 signal game_over
-signal ore_mined
+# signal ore_mined
 
 
 onready var camera = $Camera2D
@@ -29,10 +29,9 @@ func _ready():
 	
 	if Map.connect("curr_slot_changed", self, "_on_Map_curr_slot_changed"): pass
 	
-	
-#	ore_detector.position = ship.position
-#	ore_detector.init_shape(ore_detector.position - meteor.position - (Vector2.DOWN * 32))
-	
+	# Check supplier fuel
+	# var indexes = Store.get_supplier_slot_indexes()
+
 	init()
 
 
@@ -53,7 +52,7 @@ func set_meteor_new_data(data):
 #	meteor.init_meteor()
 
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_up"):
 		pass
 
@@ -124,7 +123,7 @@ func _on_BulletTravelLimit_body_entered(body):
 #		meteor.save_ores()
 
 
-func _on_GUI_settings_change(new_settings):
+func _on_GUI_settings_change(_new_settings):
 	pass
 #	meteor.new_settings(new_settings)
 

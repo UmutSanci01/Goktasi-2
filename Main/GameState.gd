@@ -17,6 +17,9 @@ var is_activate_detector : bool = false setget set_is_activate_detector
 var detected_ore : int = 0
 var show_safe_area : bool = false setget set_show_safe_area
 
+# Suppliers
+var fueled_suppliers : Array = []
+
 # command flags
 var is_free_travel : bool = false
 

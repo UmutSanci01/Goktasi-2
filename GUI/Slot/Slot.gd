@@ -4,6 +4,7 @@ class_name Slot
 
 var item_id : int = -1
 #var item_num : int = 0
+var indicator : TextureRect
 
 func set_image(image : Texture):
 	$ItemImage.texture = image
@@ -14,6 +15,8 @@ func set_item(p_item_id : int, p_item_num : int, image : Texture):
 	
 	set_amount(p_item_num)
 	
+#	indicator_state(false)
+
 	$ItemImage.texture = image
 
 func set_amount(new_amount : int):
@@ -25,6 +28,22 @@ func set_amount(new_amount : int):
 
 func get_item() -> int:
 	return item_id
+
+func set_indicator(image : Texture):
+	indicator = TextureRect.new()
+
+	indicator.texture = image
+	indicator.rect_position = self.rect_size * Vector2(0.8, 0.1)
+
+	add_child(indicator)
+
+func indicator_state(state : bool):
+	if not indicator: return
+
+	if state:
+		indicator.show()
+	else: indicator.hide()
+
 
 func clear_item():
 	item_id = -1
