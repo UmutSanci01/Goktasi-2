@@ -87,13 +87,6 @@ func update_slots():
 		
 		slot.set_item(item_id, item_amount, item_texture)
 		
-		# Adding indicator to tools for current fuel.
-#		if item_data.type == Item.Type.TOOL:
-#			slot.rect_size = slot.rect_min_size # To fix Last indicator error
-#			slot.set_indicator(slot_fueled_indicator)
-#			slot.indicator_state(true)
-
-
 
 	# SLOT OUTLINE SIZE
 	if slot:

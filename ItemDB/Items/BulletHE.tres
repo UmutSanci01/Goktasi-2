@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://ItemDB/Item.gd" type="Script" id=1]
+[ext_resource path="res://Images/bullet_red_HE.png" type="Texture" id=2]
+[ext_resource path="res://Bullet/BulletHE.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+id = 13
+type = 2
+name = ""
+info = "Yüksek infilak gücüne sahip mermi."
+texture = ExtResource( 2 )
+scene = ExtResource( 3 )
+value = 15
+visible = true
+can_sale = true

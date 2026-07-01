@@ -17,6 +17,9 @@ static func get_area(points : PoolVector2Array) -> float:
 	return area / 2
 
 
+# Example
+#	var meteor_points : PoolVector2Array = PolygonMath.calc_circle_points(num_segments, data.radius)
+# 	polygon_meteor_background.polygon = meteor_points
 static func calc_circle_points(num_segments : int, radius : int) -> PoolVector2Array:
 	var points : PoolVector2Array = []
 	var angle_increment = 360.0 / num_segments

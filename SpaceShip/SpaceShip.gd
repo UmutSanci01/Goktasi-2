@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name SpaceShip
 
 #signal shot(kinematic_collision)
-signal shot_multi(chunk_list, collision_position)
+signal shot_multi(chunk_list, collision_position, bullet)
 
 onready var node_bullets : Node2D = $Bullets
 onready var scene_bullet := preload("res://Bullet/Bullet.tscn")
@@ -12,11 +12,14 @@ onready var scene_bullet := preload("res://Bullet/Bullet.tscn")
 var bullet_count : int = 0
 const size_bullet_pool : int = 50
 
-var selected_bullet_id : int = -1
+var selected_bullet_id : int = -1 
 
 
 func _ready():
 	selected_bullet_id = Item.ID.BULLET
+	var bullet_data = ItemDB.get_item(selected_bullet_id)
+	if bullet_data:
+		scene_bullet = bullet_data.scene
 	
 	var bullet : Bullet
 	for _i in range(size_bullet_pool):
@@ -45,8 +48,8 @@ func fire():
 		InfoPanel.add_label("Mermi Kalmadı")
 
 
-func _on_Bullet_MeteorCollide(collision_position : Vector2, collide_list : Array):
-	emit_signal("shot_multi", collide_list, collision_position)
+func _on_Bullet_MeteorCollide(collision_position : Vector2, collide_list : Array, bullet : Bullet):
+	emit_signal("shot_multi", collide_list, collision_position, bullet)
 
 
 func _on_GUI_selected_bullet(bullet_id):

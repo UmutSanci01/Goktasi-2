@@ -13,3 +13,7 @@ script = ExtResource( 2 )
 
 [connection signal="quit" from="GUI" to="." method="_on_GUI_quit"]
 [connection signal="store_buy" from="GUI" to="." method="_on_GUI_store_buy"]
+
+[editable path="Game"]
+[editable path="GUI"]
+[editable path="GUI/InGame"]

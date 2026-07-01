@@ -46,12 +46,12 @@ func show_items():
 			if slot.get_item() == item:
 				slot.set_amount(inventory.items[item])
 			else:
-				slot.set_item(item, inventory.items[item], ItemDB.get_item(item, ItemDB.IMAGE))
+				slot.set_item(item, inventory.items[item], ItemDB.get_item(item).texture)
 			
 			slot_iter += 1
 		else:
 			slot = add_slot()
-			slot.set_item(item, inventory.items[item], ItemDB.get_item(item, ItemDB.IMAGE))
+			slot.set_item(item, inventory.items[item], ItemDB.get_item(item).texture)
 			
 			slot_iter += 1
 	
