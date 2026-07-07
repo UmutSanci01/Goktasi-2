@@ -7,6 +7,8 @@ onready var button_meteorinfo = $MeteorInfo
 onready var ore_detector = $OreDetector
 onready var fuel_container = $AmountLabels/FuelContainer
 
+var touch_start : Vector2
+
 
 func _ready():
 	GameState.screen_safe_area = OS.get_window_safe_area()
@@ -15,6 +17,7 @@ func _ready():
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorActive)
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorDeactive)
 	
+
 	# Check Detector
 #	if GameState.is_activate_detector:
 #		ore_detector.show()
@@ -27,6 +30,19 @@ func _ready():
 #func _on_GameState_notify():
 #	var mid = get_viewport_rect().get_center() - $OpenInv.rect_size / 2
 #	$OpenInv.rect_global_position = GameState.ship_global_pos + mid
+
+func _unhandled_input(event):
+	# Open the bullet choice menu if touchscreendrag direction is up.
+	if event is InputEventScreenTouch:
+		if event.pressed and event.index == 0:
+			touch_start = event.position
+		else:
+			if touch_start.distance_squared_to(event.position) >= 200 * 200:
+				var delta = event.position - touch_start
+				if abs(delta.x) <= abs(delta.y):
+					if delta.y <= 0:
+						InfoPanel.add_label("Menu acildi")
+						GameState.is_bullet_menu_opened = true
 
 
 func _on_Notify(notification_type : int):

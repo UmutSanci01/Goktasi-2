@@ -34,7 +34,10 @@ func _ready():
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed and event.index == 0:
-			fire()
+			pass
+		else:
+			if not GameState.is_bullet_menu_opened:
+				fire()
 			# DEMO
 #			if GameState.screen_safe_area.has_point(event.position):
 #				fire()

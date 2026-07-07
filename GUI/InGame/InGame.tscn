@@ -136,5 +136,6 @@ item = 2
 [node name="OreDetector" parent="." instance=ExtResource( 7 )]
 
 [connection signal="button_down" from="Return" to="." method="_on_Return_button_down"]
+[connection signal="button_down" from="OpenInv" to="." method="_on_OpenInv_button_down"]
 [connection signal="pressed" from="OpenInv" to="." method="_on_OpenInv_pressed"]
 [connection signal="pressed" from="MeteorInfo" to="." method="_on_MeteorInfo_pressed"]
