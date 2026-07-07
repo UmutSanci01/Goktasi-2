@@ -23,6 +23,9 @@ var collide_list : Array
 func _ready():
 	disable()
 
+	var shape_2d : CircleShape2D = area_explosive.get_node("CollisionShape2D").shape
+	shape_2d.radius = explosive_radius
+
 	explosive_polygon.polygon = PolygonMath.calc_circle_points(8, explosive_radius)
 
 
