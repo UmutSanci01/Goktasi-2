@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Font/InventoryPanelTitle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/Inventory Panel/InventoryPanelNew.gd" type="Script" id=2]
 [ext_resource path="res://Images/inventory_selected_slot_window.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Slot/Slot.tscn" type="PackedScene" id=4]
 
 [node name="InventoryPanelNew" type="Control"]
 anchor_right = 1.0
@@ -39,6 +40,49 @@ margin_right = 586.0
 margin_bottom = 1010.0
 mouse_filter = 2
 size_flags_vertical = 3
+
+[node name="Slot" parent="PanelContainer/VBoxContainer/slots" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 128.0
+margin_bottom = 128.0
+
+[node name="Slot2" parent="PanelContainer/VBoxContainer/slots" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 132.0
+margin_right = 260.0
+margin_bottom = 128.0
+
+[node name="Slot3" parent="PanelContainer/VBoxContainer/slots" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 264.0
+margin_right = 392.0
+margin_bottom = 128.0
+
+[node name="Slot4" parent="PanelContainer/VBoxContainer/slots" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 396.0
+margin_right = 524.0
+margin_bottom = 128.0
+
+[node name="Slot5" parent="PanelContainer/VBoxContainer/slots" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 132.0
+margin_right = 128.0
+margin_bottom = 260.0
+grow_horizontal = 0
+
+[node name="Slot6" parent="PanelContainer/VBoxContainer/slots" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 132.0
+margin_top = 132.0
+margin_right = 260.0
+margin_bottom = 260.0
 
 [node name="SelectedSlotIndicator" type="TextureRect" parent="."]
 margin_right = 64.0

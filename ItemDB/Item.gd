@@ -17,6 +17,7 @@ enum ID {
 	FUEL_T2,
 	ORE_BLUE,
 	BULLET_HE,
+	BULLET_CH
 }
 
 enum Type {

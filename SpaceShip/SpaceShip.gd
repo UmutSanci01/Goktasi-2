@@ -16,7 +16,7 @@ var selected_bullet_id : int = -1
 
 
 func _ready():
-	selected_bullet_id = Item.ID.BULLET
+	selected_bullet_id = Item.ID.BULLET_CH
 	var bullet_data = ItemDB.get_item(selected_bullet_id)
 	if bullet_data:
 		scene_bullet = bullet_data.scene

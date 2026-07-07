@@ -6,6 +6,8 @@ onready var button_openinv = $OpenInv
 onready var button_meteorinfo = $MeteorInfo
 onready var ore_detector = $OreDetector
 onready var fuel_container = $AmountLabels/FuelContainer
+onready var ammo_choice_menu = $AmmoChoiceMenu
+
 
 var touch_start : Vector2
 
@@ -17,6 +19,7 @@ func _ready():
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorActive)
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorDeactive)
 	
+	ammo_choice_menu.hide()
 
 	# Check Detector
 #	if GameState.is_activate_detector:
@@ -41,8 +44,11 @@ func _unhandled_input(event):
 				var delta = event.position - touch_start
 				if abs(delta.x) <= abs(delta.y):
 					if delta.y <= 0:
-						InfoPanel.add_label("Menu acildi")
+						GameState.touch_position = event.position
 						GameState.is_bullet_menu_opened = true
+
+						ammo_choice_menu.show()
+						ammo_choice_menu.rect_position = event.position
 
 
 func _on_Notify(notification_type : int):
