@@ -9,11 +9,11 @@ signal game_over
 
 
 onready var camera = $Camera2D
-onready var ship : SpaceShip = $SpaceShip setget , get_ship
-onready var meteor : Meteor = $Meteor setget , get_meteor
-onready var ore_detector : Area2D = $OreDetector
-onready var supplier_bullet : Supplier = $SupplierBullet
-onready var supplier_fuel : Supplier = $SupplierFuel
+onready var ship: SpaceShip = $SpaceShip setget , get_ship
+onready var meteor: Meteor = $Meteor setget , get_meteor
+onready var ore_detector: Area2D = $OreDetector
+onready var supplier_bullet: Supplier = $SupplierBullet
+onready var supplier_fuel: Supplier = $SupplierFuel
 
 
 func _ready():
@@ -45,7 +45,6 @@ func set_meteor_new_data(data):
 #	if meteor.data:
 #		meteor.save_ores()
 #		meteor.save_polygons()
-	
 	meteor.set_data(data)
 	
 	GameState.meteor = meteor
@@ -68,7 +67,7 @@ func get_meteor():
 	return meteor
 
 
-func _on_Notify(notification_type : int):
+func _on_Notify(notification_type: int):
 	if notification_type == Notification.NotificationTypes.OreMined:
 		meteor.save_ores()
 	
@@ -134,15 +133,15 @@ func _on_GameArea_body_exited(body):
 		body.disable()
 
 
-func _on_Map_curr_slot_changed(_current_slot : int, slot_data : Map.Data):
+func _on_Map_curr_slot_changed(_current_slot: int, slot_data: Map.Data):
 	set_meteor_new_data(slot_data)
 
 
-func _on_SpaceShip_shot_multi(chunk_list : Array, collision_position : Vector2, bullet : Bullet):
+func _on_SpaceShip_shot_multi(chunk_list: Array, collision_position: Vector2, bullet: Bullet):
 	for chunk in chunk_list:
 		meteor.explode(chunk, collision_position, bullet.explosive_polygon)
 	
-	GlobalParticles.set_particle(collision_position, Color.white, bullet.explosive_radius * 2)
+	GlobalParticles.set_particle(collision_position, Color.white, bullet.explosive_radius * 1.25)
 	# GlobalParticles.set_particle_dust(collision_position)
 
 
