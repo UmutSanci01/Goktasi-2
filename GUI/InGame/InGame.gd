@@ -49,6 +49,10 @@ func _unhandled_input(event):
 
 						ammo_choice_menu.show()
 						ammo_choice_menu.rect_position = event.position
+			else:
+				if GameState.is_bullet_menu_opened:
+					GameState.is_bullet_menu_opened = false
+					ammo_choice_menu.hide()
 
 
 func _on_Notify(notification_type : int):
@@ -77,7 +81,6 @@ func _on_Notify(notification_type : int):
 
 
 func _on_Return_button_down():
-	var parent : GraphicUI = get_parent()
 #	parent.set_menu(parent.title)
 	emit_signal("press_return")
 

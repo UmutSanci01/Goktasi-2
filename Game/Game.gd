@@ -141,9 +141,9 @@ func _on_Map_curr_slot_changed(_current_slot : int, slot_data : Map.Data):
 func _on_SpaceShip_shot_multi(chunk_list : Array, collision_position : Vector2, bullet : Bullet):
 	for chunk in chunk_list:
 		meteor.explode(chunk, collision_position, bullet.explosive_polygon)
-		
-	GlobalParticles.set_particle(collision_position)
-#	GlobalParticles.set_particle_dust(collision_position)
+	
+	GlobalParticles.set_particle(collision_position, Color.white, bullet.explosive_radius * 2)
+	# GlobalParticles.set_particle_dust(collision_position)
 
 
 func _on_OreDetector_body_entered(_body):
