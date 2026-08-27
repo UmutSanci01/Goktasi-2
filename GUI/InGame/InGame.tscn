@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Images/ReturnMenu.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Images/ore_blue.png" type="Texture" id=6]
 [ext_resource path="res://OreDetector/OreDetector.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Images/fuel_ore.png" type="Texture" id=8]
+[ext_resource path="res://GUI/InGame/AmmoChoiceMenu.tscn" type="PackedScene" id=9]
 
 [node name="InGame" type="Control"]
 anchor_right = 1.0
@@ -134,6 +135,13 @@ margin_bottom = 50.0
 item = 2
 
 [node name="OreDetector" parent="." instance=ExtResource( 7 )]
+
+[node name="AmmoChoiceMenu" parent="." instance=ExtResource( 9 )]
+margin_left = -192.0
+margin_top = 424.0
+margin_right = -192.0
+margin_bottom = 424.0
+mouse_filter = 2
 
 [connection signal="button_down" from="Return" to="." method="_on_Return_button_down"]
 [connection signal="pressed" from="OpenInv" to="." method="_on_OpenInv_pressed"]

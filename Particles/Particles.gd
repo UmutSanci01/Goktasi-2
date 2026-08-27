@@ -3,18 +3,18 @@ extends Node2D
 
 const particle_pool_size : int = 20
 var particle : CPUParticles2D
-#var particle_dust : Particles2D
+# var particle_dust : Particles2D
 #var particle_dust_arr = []
 var particle_iter : int = 0
-#export (PackedScene) var particle_dust_scene : PackedScene
+# export (PackedScene) var particle_dust_scene : PackedScene
 
 
 func _ready():
 	Notification.register_observer(self, Notification.NotificationTypes.OreMined)
 	init_explode_particle()
 	
-#	assert(particle_dust_scene)
-#	particle_dust = particle_dust_scene.instance()
+	# assert(particle_dust_scene)
+	# particle_dust = particle_dust_scene.instance()
 	
 	for _i in range(particle_pool_size):
 		var d_particle = particle.duplicate()
@@ -47,20 +47,20 @@ func init_explode_particle():
 #	particle.color = Color(0.921569, 0.970588, 0.972549)
 
 
-#func set_particle_dust(pos : Vector2):
-#	var d_particle : Particles2D = particle_dust.duplicate()
-#	add_child(d_particle)
-#	d_particle.emitting = false
-#	d_particle.one_shot = true
-#	d_particle.connect("finished", self, "_when_d_particle_clear", [d_particle])
-#	d_particle.restart()
-#
-#	d_particle.position = pos
+# func set_particle_dust(pos : Vector2):
+# 	var d_particle : Particles2D = particle_dust.duplicate()
+# 	add_child(d_particle)
+# 	d_particle.emitting = false
+# 	d_particle.one_shot = true
+# 	d_particle.connect("finished", self, "_when_d_particle_clear", [d_particle])
+# 	d_particle.restart()
 
-func set_particle(pos : Vector2, color : Color = Color.white):	
+# 	d_particle.position = pos
+
+func set_particle(pos : Vector2, color : Color = Color.white, amount : int = 16):	
 	particle = get_child(particle_iter)
 	particle_iter = (particle_iter + 1) % particle_pool_size
-	
+	particle.amount = amount
 	particle.position = pos
 	
 	particle.color = color

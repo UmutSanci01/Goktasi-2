@@ -6,6 +6,10 @@ onready var button_openinv = $OpenInv
 onready var button_meteorinfo = $MeteorInfo
 onready var ore_detector = $OreDetector
 onready var fuel_container = $AmountLabels/FuelContainer
+onready var ammo_choice_menu = $AmmoChoiceMenu
+
+
+var touch_start : Vector2
 
 
 func _ready():
@@ -15,6 +19,8 @@ func _ready():
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorActive)
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorDeactive)
 	
+	ammo_choice_menu.hide()
+
 	# Check Detector
 #	if GameState.is_activate_detector:
 #		ore_detector.show()
@@ -27,6 +33,26 @@ func _ready():
 #func _on_GameState_notify():
 #	var mid = get_viewport_rect().get_center() - $OpenInv.rect_size / 2
 #	$OpenInv.rect_global_position = GameState.ship_global_pos + mid
+
+func _unhandled_input(event):
+	# Open the bullet choice menu if touchscreendrag direction is up.
+	if event is InputEventScreenTouch:
+		if event.pressed and event.index == 0:
+			touch_start = event.position
+		else:
+			if touch_start.distance_squared_to(event.position) >= 200 * 200:
+				var delta = event.position - touch_start
+				if abs(delta.x) <= abs(delta.y):
+					if delta.y <= 0:
+						GameState.touch_position = event.position
+						GameState.is_bullet_menu_opened = true
+
+						ammo_choice_menu.show()
+						ammo_choice_menu.rect_position = event.position
+			else:
+				if GameState.is_bullet_menu_opened:
+					GameState.is_bullet_menu_opened = false
+					ammo_choice_menu.hide()
 
 
 func _on_Notify(notification_type : int):
@@ -55,7 +81,6 @@ func _on_Notify(notification_type : int):
 
 
 func _on_Return_button_down():
-	var parent : GraphicUI = get_parent()
 #	parent.set_menu(parent.title)
 	emit_signal("press_return")
 

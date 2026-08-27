@@ -26,6 +26,10 @@ var is_free_travel : bool = false
 # GUI
 var screen_safe_area : Rect2 setget set_screen_safe_area
 
+# Bullet Menu
+var touch_position : Vector2 = Vector2.ZERO
+var is_bullet_menu_opened : bool = false
+
 
 func _ready():
 #	Console.add_command(self, "decrease")
