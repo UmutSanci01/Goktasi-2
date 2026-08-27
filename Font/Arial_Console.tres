@@ -5,4 +5,6 @@ font_path = "res://Font/arial.ttf"
 
 [resource]
 size = 22
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 1 )

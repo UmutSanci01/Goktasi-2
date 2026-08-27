@@ -22,12 +22,12 @@ var menu_history : Array = []
 
 
 func _ready():
-	for menu in get_children():
-		if menu == title: # title don't have return signal
+	for cmenu in get_children():
+		if cmenu == title: # title don't have return signal
 			continue
-		menu.hide()
+		cmenu.hide()
 		
-		if menu.connect("press_return", self, "_on_press_return"):
+		if cmenu.connect("press_return", self, "_on_press_return"):
 			pass
 	
 	set_menu(title)
@@ -47,6 +47,8 @@ func set_menu(next_menu, is_return : bool = false):
 	
 	menu = next_menu
 	menu.show()
+
+	ingame.ammo_choice_menu.hide()
 
 func _on_press_return():
 	set_menu(stack_menu.pop_back(), true)

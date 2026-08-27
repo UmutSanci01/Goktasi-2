@@ -54,6 +54,8 @@ func _unhandled_input(event):
 					GameState.is_bullet_menu_opened = false
 					ammo_choice_menu.hide()
 
+					get_tree().set_input_as_handled()
+
 
 func _on_Notify(notification_type : int):
 	if notification_type == Notification.NotificationTypes.SetShip:

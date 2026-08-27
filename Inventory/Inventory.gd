@@ -9,11 +9,6 @@ var items : Dictionary = {}
 var owner_name : String = ""
 
 
-class WrapSameType:
-	var items : Dictionary = {} # item_id : item_amount
-	var total : int = 0
-
-
 func _init(p_owner_name : String = "Envanter"):
 	owner_name = p_owner_name
 
