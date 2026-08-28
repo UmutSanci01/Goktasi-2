@@ -11,6 +11,12 @@ script = ExtResource( 2 )
 
 [node name="GUI" parent="." instance=ExtResource( 1 )]
 
+[node name="AmmoChoiceMenu" parent="GUI/InGame" index="5"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 600.0
+margin_bottom = 1024.0
+
 [connection signal="quit" from="GUI" to="." method="_on_GUI_quit"]
 [connection signal="store_buy" from="GUI" to="." method="_on_GUI_store_buy"]
 

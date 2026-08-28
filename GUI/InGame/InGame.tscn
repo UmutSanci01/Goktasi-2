@@ -139,8 +139,8 @@ item = 2
 [node name="AmmoChoiceMenu" parent="." instance=ExtResource( 9 )]
 margin_left = -192.0
 margin_top = 424.0
-margin_right = -192.0
-margin_bottom = 424.0
+margin_right = 408.0
+margin_bottom = 1448.0
 mouse_filter = 2
 
 [connection signal="button_down" from="Return" to="." method="_on_Return_button_down"]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Font/Arial.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Images/back_icon.png" type="Texture" id=2]
-[ext_resource path="res://Images/icon_confirm.png" type="Texture" id=3]
+[ext_resource path="res://Images/galaxy_icon.png" type="Texture" id=3]
 [ext_resource path="res://GUI/Item Amount Label/ItemAmountLabel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GUI/Change Galaxy Confirm Panel/FuelContainer.gd" type="Script" id=5]
 [ext_resource path="res://GUI/Change Galaxy Confirm Panel/ChangeGalaxyPanel.gd" type="Script" id=6]

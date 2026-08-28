@@ -16,6 +16,8 @@ var selected_bullet_id : int = -1
 
 
 func _ready():
+	if Notification.register_observer(self, Notification.NotificationTypes.BulletTypeChanged): pass
+
 	selected_bullet_id = Item.ID.BULLET
 	var bullet_data = ItemDB.get_item(selected_bullet_id)
 	if bullet_data:
@@ -50,6 +52,10 @@ func fire():
 	else:
 		InfoPanel.add_label("Mermi Kalmadı")
 
+func _on_Notify(notify_type : int):
+	if notify_type == Notification.NotificationTypes.BulletTypeChanged:
+		selected_bullet_id = GameState.selected_bullet_id
+		InfoPanel.add_label("Mermi degisti", ItemDB.get_item(selected_bullet_id).name)
 
 func _on_Bullet_MeteorCollide(collision_position : Vector2, collide_list : Array, bullet : Bullet):
 	emit_signal("shot_multi", collide_list, collision_position, bullet)

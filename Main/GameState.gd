@@ -29,6 +29,7 @@ var screen_safe_area : Rect2 setget set_screen_safe_area
 # Bullet Menu
 var touch_position : Vector2 = Vector2.ZERO
 var is_bullet_menu_opened : bool = false
+var selected_bullet_id : int = -1
 
 
 func _ready():
