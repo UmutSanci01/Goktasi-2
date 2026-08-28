@@ -24,8 +24,8 @@ func add_slot(slot_texture : Texture = null, _index : int = -1):
 		if slot.connect("pressed", get_parent(), "_on_MapSlot_pressed", [slot, slot.get_index()]): pass
 
 
-func add_slot_index2d(_slot_texture : Texture = null, index : Vector2 = Vector2.ZERO):
-	pass
+# func add_slot_index2d(_slot_texture : Texture = null, _index : Vector2 = Vector2.ZERO):
+# 	pass
 
 
 func get_slot(slot_index : int):
