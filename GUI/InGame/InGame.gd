@@ -19,7 +19,7 @@ func _ready():
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorActive)
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorDeactive)
 	
-	ammo_choice_menu.hide()
+	ammo_choice_menu.close_menu()
 
 	# Check Detector
 #	if GameState.is_activate_detector:
@@ -40,19 +40,23 @@ func _unhandled_input(event):
 		if event.pressed and event.index == 0:
 			touch_start = event.position
 		else:
-			if touch_start.distance_squared_to(event.position) >= 200 * 200:
+			if not GameState.is_bullet_menu_opened \
+					and touch_start.distance_squared_to(event.position) >= 200 * 200:
+				
 				var delta = event.position - touch_start
 				if abs(delta.x) <= abs(delta.y):
 					if delta.y <= 0:
-						GameState.touch_position = event.position
+						GameState.touch_position.x = event.position.x
+						GameState.touch_position.y = (event.position.y + touch_start.y) / 2.5
 						GameState.is_bullet_menu_opened = true
 
-						ammo_choice_menu.show()
-						ammo_choice_menu.rect_position = event.position
+						ammo_choice_menu.open_menu()
+						# ammo_choice_menu.rect_position = event.position
+						ammo_choice_menu.rect_position = GameState.touch_position
 			else:
 				if GameState.is_bullet_menu_opened:
 					GameState.is_bullet_menu_opened = false
-					ammo_choice_menu.hide()
+					ammo_choice_menu.close_menu()
 
 					get_tree().set_input_as_handled()
 

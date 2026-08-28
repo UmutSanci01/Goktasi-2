@@ -13,7 +13,8 @@ enum NotificationTypes {
 	SupplierFuelDeactive,
 	SupplierBulletActive,
 	SupplierBulletDeactive,
-	Reset
+	Reset,
+	BulletTypeChanged
 }
 
 
@@ -33,7 +34,7 @@ func register_observer(observer : Node, notification_type : int):
 func notify(notification_type : int):
 	var group : Array = observers.get(notification_type, [])
 	if not group:
-		prints("Bu bildirimi dinleyen kimse yok", notification_type)
+		prints("There is no one that listen this notification.", notification_type)
 		return
 	
 	for observer in group:

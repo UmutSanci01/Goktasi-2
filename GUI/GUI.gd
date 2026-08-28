@@ -48,7 +48,8 @@ func set_menu(next_menu, is_return : bool = false):
 	menu = next_menu
 	menu.show()
 
-	ingame.ammo_choice_menu.hide()
+	ingame.ammo_choice_menu.rect_position = Vector2.ONE * -1000
+	ingame.ammo_choice_menu.close_menu()
 
 func _on_press_return():
 	set_menu(stack_menu.pop_back(), true)

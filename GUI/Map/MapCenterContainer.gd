@@ -4,7 +4,7 @@ onready var map_empty_slot : PackedScene = preload("Map Slot/MapSlotEmpty.tscn")
 onready var map_slot : PackedScene = preload("Map Slot/MapSlot.tscn")
 onready var slots : GridContainer = $Slots
 
-func add_slot(slot_texture : Texture = null, index : int = -1):
+func add_slot(slot_texture : Texture = null, _index : int = -1):
 	var slot
 	var to_connect : bool = false
 	if slot_texture:
@@ -24,7 +24,7 @@ func add_slot(slot_texture : Texture = null, index : int = -1):
 		if slot.connect("pressed", get_parent(), "_on_MapSlot_pressed", [slot, slot.get_index()]): pass
 
 
-func add_slot_index2d(slot_texture : Texture = null, index : Vector2 = Vector2.ZERO):
+func add_slot_index2d(_slot_texture : Texture = null, index : Vector2 = Vector2.ZERO):
 	pass
 
 
