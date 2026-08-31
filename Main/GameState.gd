@@ -29,7 +29,7 @@ var screen_safe_area : Rect2 setget set_screen_safe_area
 # Bullet Menu
 var touch_position : Vector2 = Vector2.ZERO
 var is_bullet_menu_opened : bool = false
-var selected_bullet_id : int = -1
+var selected_bullet_id : int = -1 setget set_selected_bullet_id
 
 
 func _ready():
@@ -50,6 +50,10 @@ func set_show_safe_area(value : bool):
 	show_safe_area = value
 	if show_safe_area:
 		InfoPanel.add_label("Guvenli alan etkinlestirildi.")
+
+func set_selected_bullet_id(value : int):
+	selected_bullet_id = value
+	Notification.notify(Notification.NotificationTypes.BulletTypeChanged)
 
 func set_detector_str(value : float):
 	if value < 0.1:

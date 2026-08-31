@@ -5,6 +5,8 @@ signal press_return
 onready var button_openinv = $OpenInv
 onready var button_meteorinfo = $MeteorInfo
 onready var ore_detector = $OreDetector
+onready var bullet_container_texture = $AmountLabels/BulletContainer/BulletTexture
+onready var bullet_container_amount = $AmountLabels/BulletContainer/BulletAmount
 onready var fuel_container = $AmountLabels/FuelContainer
 onready var ammo_choice_menu = $AmmoChoiceMenu
 
@@ -18,8 +20,10 @@ func _ready():
 	Notification.register_observer(self, Notification.NotificationTypes.SetMeteor)
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorActive)
 	Notification.register_observer(self, Notification.NotificationTypes.OreDetectorDeactive)
+	Notification.register_observer(self, Notification.NotificationTypes.BulletTypeChanged)
 	
 	ammo_choice_menu.close_menu()
+	update_container()
 
 	# Check Detector
 #	if GameState.is_activate_detector:
@@ -33,6 +37,13 @@ func _ready():
 #func _on_GameState_notify():
 #	var mid = get_viewport_rect().get_center() - $OpenInv.rect_size / 2
 #	$OpenInv.rect_global_position = GameState.ship_global_pos + mid
+
+func update_container():
+	# Bullet Container
+	var bullet_id = GameState.selected_bullet_id
+	bullet_container_texture.texture = ItemDB.get_item(bullet_id).texture
+	bullet_container_amount.item = bullet_id
+	bullet_container_amount.update()
 
 func _unhandled_input(event):
 	# Open the bullet choice menu if touchscreendrag direction is up.
@@ -83,6 +94,11 @@ func _on_Notify(notification_type : int):
 	elif notification_type == Notification.NotificationTypes.OreDetectorDeactive:
 		ore_detector.hide()
 		fuel_container.hide()
+	elif notification_type == Notification.NotificationTypes.BulletTypeChanged:
+		var bullet_id = GameState.selected_bullet_id
+		bullet_container_texture.texture = ItemDB.get_item(bullet_id).texture
+		bullet_container_amount.item = bullet_id
+		bullet_container_amount.update()
 
 
 

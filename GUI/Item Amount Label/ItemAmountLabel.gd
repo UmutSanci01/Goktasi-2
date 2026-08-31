@@ -11,7 +11,7 @@ func _ready():
 	if PlayerInventory.connect("update_inv", self, "_on_PlayerInv_update"): pass
 
 
-func _on_PlayerInv_update():
+func update():
 	var item_ : Item = ItemDB.get_item(item)
 	var item_amount : int
 	
@@ -22,3 +22,6 @@ func _on_PlayerInv_update():
 	
 	self.text = str(item_amount)
 	emit_signal("amount_update", item_amount)
+
+func _on_PlayerInv_update():
+	update()

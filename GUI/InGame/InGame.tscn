@@ -77,18 +77,18 @@ margin_bottom = 64.0
 mouse_filter = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AmountLabels"]
+[node name="BulletContainer" type="HBoxContainer" parent="AmountLabels"]
 margin_right = 600.0
 margin_bottom = 64.0
 mouse_filter = 2
 
-[node name="BulletTexture" type="TextureRect" parent="AmountLabels/HBoxContainer"]
+[node name="BulletTexture" type="TextureRect" parent="AmountLabels/BulletContainer"]
 margin_right = 64.0
 margin_bottom = 64.0
 texture = ExtResource( 5 )
 stretch_mode = 4
 
-[node name="ItemAmountLabel" parent="AmountLabels/HBoxContainer" instance=ExtResource( 4 )]
+[node name="BulletAmount" parent="AmountLabels/BulletContainer" instance=ExtResource( 4 )]
 margin_left = 68.0
 margin_top = 14.0
 margin_right = 68.0
@@ -146,3 +146,4 @@ mouse_filter = 2
 [connection signal="button_down" from="Return" to="." method="_on_Return_button_down"]
 [connection signal="pressed" from="OpenInv" to="." method="_on_OpenInv_pressed"]
 [connection signal="pressed" from="MeteorInfo" to="." method="_on_MeteorInfo_pressed"]
+[connection signal="bullet_type_changed" from="AmmoChoiceMenu" to="." method="_on_AmmoChoiceMenu_bullet_type_changed"]

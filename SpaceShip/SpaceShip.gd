@@ -16,9 +16,12 @@ var selected_bullet_id : int = -1
 
 
 func _ready():
-	if Notification.register_observer(self, Notification.NotificationTypes.BulletTypeChanged): pass
+	add_to_group("save_data")
 
-	selected_bullet_id = Item.ID.BULLET
+	load_data()
+
+	Notification.register_observer(self, Notification.NotificationTypes.BulletTypeChanged)
+	
 	var bullet_data = ItemDB.get_item(selected_bullet_id)
 	if bullet_data:
 		scene_bullet = bullet_data.scene
@@ -52,10 +55,25 @@ func fire():
 	else:
 		InfoPanel.add_label("Mermi Kalmadı")
 
+
+func save_data():
+	var data : Dictionary = {
+		"bullet_id" : selected_bullet_id
+	}
+	DataBase.save_data(data, "space_ship")
+
+func load_data():
+	var data : Dictionary = DataBase.load_data("space_ship")
+	if not data.empty():
+		selected_bullet_id = data["bullet_id"]
+	else:
+		selected_bullet_id = Item.ID.BULLET
+	GameState.selected_bullet_id = selected_bullet_id
+
+
 func _on_Notify(notify_type : int):
 	if notify_type == Notification.NotificationTypes.BulletTypeChanged:
 		selected_bullet_id = GameState.selected_bullet_id
-		InfoPanel.add_label("Mermi degisti", ItemDB.get_item(selected_bullet_id).name)
 
 func _on_Bullet_MeteorCollide(collision_position : Vector2, collide_list : Array, bullet : Bullet):
 	emit_signal("shot_multi", collide_list, collision_position, bullet)

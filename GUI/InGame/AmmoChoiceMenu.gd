@@ -1,5 +1,7 @@
 extends Control
 
+signal bullet_type_changed(bullet_id)
+
 onready var anim : AnimationPlayer = $AnimationPlayer
 onready var slots = $VBoxContainer.get_children()
 
@@ -35,6 +37,5 @@ func _on_Slot_button_up(slot_index : int):
     var item_id = slots[slot_index].get_item()
     if item_id > -1:
         GameState.selected_bullet_id = item_id
-        Notification.notify(Notification.NotificationTypes.BulletTypeChanged)
         
         close_menu() 
