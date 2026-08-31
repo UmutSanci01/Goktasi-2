@@ -41,13 +41,13 @@ func collect_chunks_polygons() -> Array:
 func save_data():
 	var data : Dictionary = {}
 	# storage the polygon of chunks
-	var chunk : Chunk
-#	var polygons : Array = []
-#	for child in get_children():
-#		# for type declaration of chunk
-#		chunk = child
-#		polygons.append(chunk.polygon2d.polygon)
-#
+	# var chunk : Chunk
+	# var polygons : Array = []
+	# for child in get_children():
+	# 	# for type declaration of chunk
+	# 	chunk = child
+	# 	polygons.append(chunk.polygon2d.polygon)
+
 	data[key_polygons] = collect_chunks_polygons()
 	
 	DataBase.save_data(data, key)
