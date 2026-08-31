@@ -86,7 +86,7 @@ func init_meteor(is_new : bool = true):
 	var meteor_points : PoolVector2Array = PolygonMath.calc_circle_points(num_segments, data.radius)
 	polygon_meteor_background.polygon = meteor_points
 	
-	# Meteor daha önce ziyaret edilmişse
+	# if Meteor visited
 	if data.polygons.size() > 0:
 		chunks.add_chunks_from_array(data.polygons)
 	
