@@ -17,6 +17,7 @@ mono_crash.*.json
 # Play Store'a yüklediğin o devasa APK ve AAB dosyalarını engeller
 export/
 build/
+android/
 android/build/         # Custom Build kullanıyorsan burası şişer
 *.apk
 *.aab

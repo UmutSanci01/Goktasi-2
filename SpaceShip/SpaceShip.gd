@@ -5,13 +5,13 @@ class_name SpaceShip
 #signal shot(kinematic_collision)
 signal shot_multi(chunk_list, collision_position, bullet)
 
-onready var node_bullets : Node2D = $Bullets
-onready var scene_bullet := preload("res://Bullet/Bullet.tscn")
+# onready var node_bullets : Node2D = $Bullets
+# onready var scene_bullet := preload("res://Bullet/Bullet.tscn")
 onready var bullet_manager : Node2D = $BulletPoolManager
 
 #var bullets : Array = []
-var bullet_count : int = 0
-const size_bullet_pool : int = 50
+# var bullet_count : int = 0
+# const size_bullet_pool : int = 50
 
 var selected_bullet_id : int = -1
 var bullet : Bullet

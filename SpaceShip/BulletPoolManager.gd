@@ -36,7 +36,7 @@ func get_bullet(bullet_id) -> Bullet:
 			bullet_pool.add_child(bullet)
 			bullet.disable()
 
-			if bullet.connect("collision", get_parent(), "_on_bullet_collide"): pass
+			# if bullet.connect("collision", get_parent(), "_on_bullet_collide"): pass
 			if bullet.connect("collision_meteor", get_parent(), "_on_Bullet_MeteorCollide"): pass
 		
 		bullet = bullet_pool.get_child(pool_count)

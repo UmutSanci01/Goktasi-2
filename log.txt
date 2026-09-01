@@ -1,0 +1,269 @@
+commit 157693c1dfc976111a8977c80d3080411ffc059b
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Tue Sep 1 18:03:37 2026 +0300
+
+    Add new bullet to gameplay
+
+commit 3c06211e14abf0020b0b60febf11b31414273599
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Tue Sep 1 01:56:18 2026 +0300
+
+    Update inGame amount containers
+
+commit 4e9ed4dd94b143cd7fe4e74cc1dee7878ed7cd2c
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Tue Sep 1 00:51:47 2026 +0300
+
+    Add unused line commit
+
+commit a66e8c2cb0f3fff2c02a6ae971cacbb44587ed8b
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Mon Aug 31 23:21:03 2026 +0300
+
+    Optimize polygonmath
+
+commit d373e2608e12fd121468a55bfe7cbdc5e2fec55a
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Fri Aug 28 04:30:15 2026 +0300
+
+    Function never used
+
+commit 52348b13dcf3fe9f074e2c781e3f26a71854bfc8
+Merge: d11e660 9c414b5
+Author: UmutSanci01 <158823114+UmutSanci01@users.noreply.github.com>
+Date:   Fri Aug 28 04:26:23 2026 +0300
+
+    Merge pull request #14 from UmutSanci01/Weapons
+    
+    Add animation to ammo choice menu
+
+commit 9c414b56b482411c7638b7a6921e0ec70ed8e5ca
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Fri Aug 28 04:25:58 2026 +0300
+
+    Add animation to ammo choice menu
+
+commit d11e660dc6be9678f47c8b3043f5898e8c15ab3e
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Fri Aug 28 02:31:13 2026 +0300
+
+    Add choice bullet menu inputs
+
+commit 2e41a113a23978c5bffe400fa3978a3733edd50d
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Thu Aug 27 23:01:33 2026 +0300
+
+    Refractore
+
+commit 080bdc976ed02178dbce66ff14f53153ed47db1f
+Merge: 110da2b 81dec2f
+Author: UmutSanci01 <158823114+UmutSanci01@users.noreply.github.com>
+Date:   Thu Aug 27 22:54:58 2026 +0300
+
+    Merge pull request #13 from UmutSanci01/Weapons
+    
+    Weapons
+
+commit 81dec2f7d0a7ba3d2d28d58205193859043be71b
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Thu Aug 27 22:50:12 2026 +0300
+
+    Fix particle amount byte ammo type
+
+commit ffb8a3278b01e75d992be5bbee96de7fe5f62b6d
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Wed Jul 8 00:49:49 2026 +0300
+
+    New bullet has been added
+
+commit 82f9f54a15f416da4f6e83c501206ed309a907b6
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Tue Jul 7 23:44:05 2026 +0300
+
+    Drag direction has been detected and bullet choice menu has been opened.
+
+commit 0e420be7d33a193423e711628b26fc57ea8374a1
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Tue Jul 7 23:01:53 2026 +0300
+
+    Explosive area optimization.
+
+commit 1df0791119580c8f2c91976ee944a4c0142aa904
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Tue Jul 7 21:52:46 2026 +0300
+
+    New bullet has been added.
+
+commit 110da2bdb063153aed449888fb10eb482a7e7077
+Merge: 41a1ddc c69a465
+Author: UmutSanci01 <158823114+UmutSanci01@users.noreply.github.com>
+Date:   Wed Jul 1 21:11:10 2026 +0300
+
+    Merge pull request #11 from UmutSanci01/Weapons
+    
+    Farklı türde ve özellikte mermilerin eklenebilmesi için alt yapı düzenlemesi yapıldı. Test için mermi eklendi.
+
+commit c69a4652fe861e540cae04d794b662a11384dda1
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Wed Jul 1 21:10:11 2026 +0300
+
+    Default bullet has been selected.
+
+commit c72172cadb354a55eb9ff6272220c9c2a54529e3
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Wed Jul 1 20:49:14 2026 +0300
+
+    Explosive polygon has been hidden
+
+commit f7a362420ca79b7d6d439ed84e2ed8ccaab76e26
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Wed Jul 1 20:28:05 2026 +0300
+
+    Special explosive areas have been added. Every bullet have self special explosion radius.
+
+commit 96cc2fbcee77edfa4b7e0c5e6dfaa83d4bb63aa4
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Wed Jul 1 19:23:15 2026 +0300
+
+    Bullet selection has been added(in code).
+
+commit 41a1ddcaaedd5de1dd0bef2dea7fc2f189ac0fcc
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Wed Jul 1 17:37:30 2026 +0300
+
+    warnings is fixed
+
+commit 198b3bed12a3de10f4d4ce49366b81ed8c788066
+Merge: d6ec72c a474671
+Author: UmutSanci01 <158823114+UmutSanci01@users.noreply.github.com>
+Date:   Wed Jul 1 17:25:52 2026 +0300
+
+    Merge pull request #9 from UmutSanci01/Fueled_Indicator
+    
+    Fueled indicator
+
+commit a4746717484424d2ca81d1a25bca352bc4d662bf
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Wed Jul 1 17:24:14 2026 +0300
+
+    The task failed because there is no connection between Game/Suppliers and the InventoryPanel slots.
+
+commit 4c84441e88d1296c3b7388a1329b0aa484c7129d
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Sat Jun 27 14:10:28 2026 +0300
+
+    Indicator has been added to slots of inventory panel for tools.
+
+commit d6ec72c141f62c583b5831d25bc5d6446b020f1e
+Merge: 9e8c904 894f1ea
+Author: UmutSanci01 <158823114+UmutSanci01@users.noreply.github.com>
+Date:   Thu Jun 25 16:47:22 2026 +0300
+
+    Merge pull request #8 from UmutSanci01/Save_System
+    
+    The supplier retains its last fuel level.
+
+commit 894f1ead4ae976d8d9c1e0aa2cff277fc909265a
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Thu Jun 25 16:45:38 2026 +0300
+
+    The supplier retains its last fuel level.
+
+commit 9e8c9044a1d17e2d9eaf7025238530cec26ba96f
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Wed Jun 24 14:53:56 2026 +0300
+
+    Type2 fuel has been opened.
+
+commit 3defefef0bb242bf35650c480ba4cf020b91a47b
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Wed Jun 24 14:26:53 2026 +0300
+
+    The misspelling has been fixed.
+
+commit e1a64c579350aac875b59f6a51a1606e35f0a1ad
+Merge: 4baaef3 db4f554
+Author: UmutSanci01 <158823114+UmutSanci01@users.noreply.github.com>
+Date:   Tue Jun 23 23:26:15 2026 +0300
+
+    The map GUI will not be loaded until the map button is pressed at least once.
+    
+    The map is loaded when the map button is pressed for the first time.
+
+commit db4f55493c60f25c8c377ba34b4b08853f000251
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Tue Jun 23 23:22:57 2026 +0300
+
+    The commit about the map GUI has been added to information.
+
+commit 41fec79710039f2ab3f57894543783e91f4d53aa
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Tue Jun 23 23:06:26 2026 +0300
+
+    The map is loaded when the map button is pressed for the first time.
+
+commit 4baaef357f11336e66c45883d180bd9072d9a2f0
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Tue Jun 23 17:04:56 2026 +0300
+
+    Unused parameters have been prefixed with an underscore.
+
+commit 6fca62632f523d93d7147724b62b17f5e3befdbd
+Author: UmutSanci01 <umutsanci01@gmail.com>
+Date:   Tue Jun 23 16:09:58 2026 +0300
+
+    Meteor, color adjusment
+
+commit 19dd2026b308f24ec7f2d66f8367d6db82a72e2e
+Author: Umut-Umut <umutsanci25@gmail.com>
+Date:   Tue Feb 10 22:55:08 2026 +0300
+
+    safe area test added, store sales is adjusted
+
+commit 47f21625863a01045fbe67253b8753f648975eeb
+Author: Umut-Umut <umutsanci25@gmail.com>
+Date:   Thu Feb 5 12:53:53 2026 +0300
+
+    Save system changes and details are added to Readme
+
+commit cd294b10bcee3bebc42c09635ed8555210ed3aee
+Author: Umut-Umut <umutsanci25@gmail.com>
+Date:   Sun Feb 1 05:11:14 2026 +0300
+
+    Map, cift tiklama bug'u duzeltildi. Menu stack eklendi. Menuler arasi gecis menu stack yapisi ile yeniden' duzenlendi.
+
+commit abd1de7bb3998894fc00114f0df598751515552b
+Author: Umut-Umut <umutsanci25@gmail.com>
+Date:   Sun Feb 1 04:14:01 2026 +0300
+
+    Patlama efekti gelistirildi. Haritada markete cift tiklayarak erisim saglandi.
+
+commit d1698e7fb6eb55f0c7f3f13283c171112725bcbb
+Author: Umut-Umut <umutsanci25@gmail.com>
+Date:   Sat Jan 31 04:24:21 2026 +0300
+
+    chunk visible true. Dust particle added.
+
+commit 7988cd36bf1bd46b8f83a6d47376c34327587ca1
+Author: Umut-Umut <umutsanci25@gmail.com>
+Date:   Fri Jan 30 02:17:13 2026 +0300
+
+    Yakit tuketiminde tum yakitlar kullanilacak sekilde duzenlendi. Ureticiler yeniden ayarlandi. Yakit uretimi icin maden eklendi. Market gostergesi soluklastirildi. Dedektor gucu eklendi ama aktif degil. Yakit kullanan esyalar aldiklari yakiti muhafaza ediyor.
+
+commit a01422f8bc9f2a1d31b9673e59846c78c4b8355a
+Author: Umut-Umut <umutsanci25@gmail.com>
+Date:   Mon Jan 26 17:40:05 2026 +0300
+
+    export_presets modified
+
+commit 4f59e34005f5b8c0c5e2963af62363ba49312c14
+Author: UmutSanci01 <158823114+UmutSanci01@users.noreply.github.com>
+Date:   Sat Jan 24 23:06:34 2026 +0300
+
+    Add Play Store link to README
+
+commit c07c93d8b79644768de96b7a3f02dd93d51c5539
+Author: Umut-Umut <umutsanci25@gmail.com>
+Date:   Sat Jan 24 23:01:25 2026 +0300
+
+    yeni yakıt eklendi ve gerekli yakıtların otomatik kullanımı sağlandı.
