@@ -7,13 +7,14 @@ signal shot_multi(chunk_list, collision_position, bullet)
 
 onready var node_bullets : Node2D = $Bullets
 onready var scene_bullet := preload("res://Bullet/Bullet.tscn")
+onready var bullet_manager : Node2D = $BulletPoolManager
 
 #var bullets : Array = []
 var bullet_count : int = 0
 const size_bullet_pool : int = 50
 
-var selected_bullet_id : int = -1 
-
+var selected_bullet_id : int = -1
+var bullet : Bullet
 
 func _ready():
 	add_to_group("save_data")
@@ -22,18 +23,18 @@ func _ready():
 
 	Notification.register_observer(self, Notification.NotificationTypes.BulletTypeChanged)
 	
-	var bullet_data = ItemDB.get_item(selected_bullet_id)
-	if bullet_data:
-		scene_bullet = bullet_data.scene
+	# var bullet_data = ItemDB.get_item(selected_bullet_id)
+	# if bullet_data:
+	# 	scene_bullet = bullet_data.scene
 	
-	var bullet : Bullet
-	for _i in range(size_bullet_pool):
-		bullet = scene_bullet.instance()
+# 	var bullet : Bullet
+# 	for _i in range(size_bullet_pool):
+# 		bullet = scene_bullet.instance()
 		
-#		if bullet.connect("collision", self, "_on_bullet_collide"): pass
-		if bullet.connect("collision_meteor", self, "_on_Bullet_MeteorCollide"): pass
+# #		if bullet.connect("collision", self, "_on_bullet_collide"): pass
+# 		if bullet.connect("collision_meteor", self, "_on_Bullet_MeteorCollide"): pass
 		
-		node_bullets.add_child(bullet)
+# 		node_bullets.add_child(bullet)
 #		bullets.append(bullet)
 
 func _unhandled_input(event):
@@ -50,8 +51,13 @@ func _unhandled_input(event):
 
 func fire():
 	if PlayerInventory.use_item(selected_bullet_id):
-		node_bullets.get_child(bullet_count).enable(Vector2.UP, global_position)
-		bullet_count = (bullet_count + 1) % size_bullet_pool
+		# pool_manager.get_bullet(bullet_id)
+		# bullet.enable(Vector2.UP, global_position)
+
+		bullet = bullet_manager.get_bullet(selected_bullet_id)
+		bullet.enable(Vector2.UP, global_position)
+		# node_bullets.get_child(bullet_count).enable(Vector2.UP, global_position)
+		# bullet_count = (bullet_count + 1) % size_bullet_pool
 	else:
 		InfoPanel.add_label("Mermi Kalmadı")
 
