@@ -8,8 +8,8 @@
 script = ExtResource( 1 )
 id = 12
 type = 1
-name = "Mavi Maden"
-info = "Standart yakıt üretiminde kullanılan maden."
+name = "KEY_ORE_BLUE"
+info = "KEY_ORE_BLUE_DESC"
 texture = ExtResource( 2 )
 scene = ExtResource( 3 )
 value = 3

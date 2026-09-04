@@ -171,8 +171,7 @@ func _on_MapGUI_moved(slot_index : int, slot_dist : int):
 	if PlayerInventory.use_item_by_type(Item.Type.FUEL, slot_dist):
 		set_current_slot_index(slot_index)
 	else:
-		InfoPanel.add_label("Yetersiz Yakıt", "", Color(0.411765, 1, 0.921569))
-
+			InfoPanel.add_label("KEY_INSUFFICIENT_FUEL_MAP", "", Color(0.411765, 1, 0.921569))
 
 func save_data():
 	var data : Dictionary = {"curr_slot" : current_slot_index, "grid_size" : SLOT_NUM}

@@ -62,7 +62,7 @@ stretch_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 1 )
-text = "Veriyi Sıfırla"
+text = "KEY_RESET_DATA"
 align = 1
 valign = 1
 
@@ -81,7 +81,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 1 )
-text = "Menüye Dön"
+text = "KEY_RETURN_MENU"
 align = 1
 valign = 1
 __meta__ = {
@@ -102,7 +102,7 @@ margin_left = 21.0
 margin_top = 0.0
 margin_right = 175.0
 margin_bottom = 36.0
-text = "Kenar Mik."
+text = "KEY_EDGE_MIC"
 
 [node name="HSlider" parent="SideNum" index="1"]
 margin_top = 10.0

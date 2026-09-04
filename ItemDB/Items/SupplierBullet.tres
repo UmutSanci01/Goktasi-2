@@ -7,8 +7,8 @@
 script = ExtResource( 1 )
 id = 5
 type = 3
-name = "Mermi Üretici"
-info = "Bakırdan standart mermi üretir."
+name = "KEY_SUPPLIER_BULLET"
+info = "KEY_SUPPLIER_BULLET_DESC"
 texture = ExtResource( 2 )
 value = 5000
 visible = true

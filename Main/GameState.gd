@@ -49,8 +49,7 @@ func set_screen_safe_area(area : Rect2):
 func set_show_safe_area(value : bool):
 	show_safe_area = value
 	if show_safe_area:
-		InfoPanel.add_label("Guvenli alan etkinlestirildi.")
-
+			InfoPanel.add_label("KEY_SAFE_AREA_ENABLED")
 func set_selected_bullet_id(value : int):
 	selected_bullet_id = value
 	Notification.notify(Notification.NotificationTypes.BulletTypeChanged)
@@ -68,9 +67,7 @@ func set_gui(value):
 
 func can_activate_detector() -> bool:
 	if not ore_detector:
-		InfoPanel.add_label("Dedektör bulunamadı", "", Color.yellow)
-		return false
-	
+			InfoPanel.add_label("KEY_DETECTOR_NOT_FOUND", "", Color.yellow)
 	if not ore_detector.enable():
 		return false
 	
@@ -134,5 +131,5 @@ func _on_Notify(notification_type : int):
 		else:
 			print("An error occurred when trying to access the path.")
 		
-		InfoPanel.add_label("Oyun Sıfırlandı", "", Color.red)
+		InfoPanel.add_label("KEY_GAME_RESET", "", Color.red)
 		

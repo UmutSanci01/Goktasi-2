@@ -118,6 +118,6 @@ func _draw():
 func _on_MeteorInfo_pressed():
 	var ore_num = GameState.get_ore_num()
 	if ore_num:
-		InfoPanel.add_label(GameState.get_ore_num(), "Maden Kaldı", Color.aqua)
+		InfoPanel.add_label(GameState.get_ore_num(), "KEY_ORE_REMAINING", Color.aqua)
 	else:
-		InfoPanel.add_label("Maden Kalmadı", ore_num, Color.crimson)
+		InfoPanel.add_label("KEY_NO_ORE_LEFT", ore_num, Color.crimson)

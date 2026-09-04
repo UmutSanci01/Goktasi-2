@@ -33,9 +33,8 @@ func buy(item_id : int, amount : int, to_inv : Inventory) -> int:
 		return 0
 	
 	if limited_items.has(item_id):
-		if limited_items[item_id] < to_inv.get_item_amount(item_id) + amount:
-			InfoPanel.add_label("Sahip Olabilirsin", str(limited_items[item_id]))
-			return 0
+			if limited_items[item_id] < to_inv.get_item_amount(item_id) + amount:
+				InfoPanel.add_label("KEY_CAN_HAVE", str(limited_items[item_id]))
 	
 	
 	var item_value : int = 0
@@ -49,8 +48,7 @@ func buy(item_id : int, amount : int, to_inv : Inventory) -> int:
 		to_inv.del_item(id_coin, item_value * amount)
 		to_inv.add_item(item_id, amount)
 	else:
-		InfoPanel.add_label("Para Bitti", "", Color.gold)
-	
+			InfoPanel.add_label("KEY_NO_MONEY", "", Color.gold)
 	return to_inv.get_item_amount(item_id)
 
 
@@ -69,7 +67,7 @@ func sell(item_id : int, amount : int, from_inv : Inventory) -> int:
 		
 		return from_inv.get_item_amount(item_id)
 	
-	InfoPanel.add_label("Yeteri Kadar Eşya Yok", "", Color.sandybrown)
+	InfoPanel.add_label("KEY_INSUFFICIENT_ITEMS", "", Color.sandybrown)
 	return 0
 
 

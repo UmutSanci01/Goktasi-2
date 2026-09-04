@@ -8,8 +8,8 @@
 script = ExtResource( 1 )
 id = 1
 type = 1
-name = "Maden"
-info = "Maden."
+name = "KEY_ORE"
+info = "KEY_ORE_DESC"
 texture = ExtResource( 2 )
 scene = ExtResource( 3 )
 value = 50

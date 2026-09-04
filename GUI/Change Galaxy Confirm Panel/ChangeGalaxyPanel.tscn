@@ -46,7 +46,7 @@ margin_bottom = 99.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
-text = "Başka bir galaksiye gitmek istiyor musun?"
+text = "KEY_CHANGE_GALAXY_CONFIRM"
 autowrap = true
 
 [node name="FuelContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]

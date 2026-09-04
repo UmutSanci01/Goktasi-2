@@ -7,8 +7,8 @@
 script = ExtResource( 1 )
 id = 2
 type = 0
-name = "Yakıt"
-info = "Sıradan yakıt."
+name = "KEY_FUEL"
+info = "KEY_FUEL_STANDARD_DESC"
 texture = ExtResource( 2 )
 value = 5
 visible = true

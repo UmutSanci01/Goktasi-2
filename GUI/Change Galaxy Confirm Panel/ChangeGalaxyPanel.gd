@@ -23,8 +23,7 @@ func _on_Confirm_pressed():
 		
 		self.hide()
 	else:
-		InfoPanel.add_label("Yeterli Yakıt Yok", "", Color(0.411765, 1, 0.921569))
-
+			InfoPanel.add_label("KEY_INSUFFICIENT_FUEL", "", Color(0.411765, 1, 0.921569))
 
 func _on_Back_pressed():
 	self.hide()

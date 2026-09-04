@@ -27,8 +27,7 @@ func _input(event):
 				KEY_UP:
 					var lst_cmd = Console.get_last_cmd()
 					if not lst_cmd:
-						push_text_to_hist("En son girilen komut yok veya gecersiz.")
-						return
+						push_text_to_hist("KEY_CONSOLE_INVALID_CMD")
 					
 					cmd_line.clear()
 					cmd_line.text = lst_cmd

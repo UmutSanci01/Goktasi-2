@@ -59,8 +59,7 @@ func fire():
 		# node_bullets.get_child(bullet_count).enable(Vector2.UP, global_position)
 		# bullet_count = (bullet_count + 1) % size_bullet_pool
 	else:
-		InfoPanel.add_label("Mermi Kalmadı")
-
+			InfoPanel.add_label("KEY_NO_AMMO")
 
 func save_data():
 	var data : Dictionary = {

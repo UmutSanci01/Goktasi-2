@@ -257,9 +257,7 @@ func save_ores():
 	# Bilgileri guncelleyip kaydediyor. Uyari da veriyor.
 	if data.ore_num == 0:
 		data.is_ores_collected = true
-		InfoPanel.add_label("Maden Kalmadı", "", Color.red)
-
-
+		InfoPanel.add_label("KEY_NO_ORE_LEFT", "", Color.red)
 func save_polygons():
 	data.polygons = chunks.collect_chunks_polygons()
 

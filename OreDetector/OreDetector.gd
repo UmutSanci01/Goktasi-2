@@ -60,8 +60,7 @@ func show():
 	.show()
 	
 	if GameState.has_player_detector:
-		InfoPanel.add_label("Maden Dedektörü Aktif", "", Color.green)
-	
+			InfoPanel.add_label("KEY_DETECTOR_ACTIVE", "", Color.green)
 	timer.start()
 #	timer_fuel.start()
 
@@ -71,8 +70,7 @@ func hide():
 	.hide()
 	
 	if GameState.has_player_detector:
-		InfoPanel.add_label("Maden Dedektörü Pasif", "", Color.orangered)
-	
+			InfoPanel.add_label("KEY_DETECTOR_INACTIVE", "", Color.orangered)
 	timer.stop()
 #	timer_fuel.stop()
 

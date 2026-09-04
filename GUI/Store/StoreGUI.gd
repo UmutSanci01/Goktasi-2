@@ -150,7 +150,7 @@ func _on_Action_pressed():
 	update_multbuy()
 
 func _on_Store_entered():
-	InfoPanel.add_label("Markete Erişilebilir.")
+	InfoPanel.add_label("KEY_MARKET_IS_REACHABLE")
 	show_store()
 
 func _on_Store_exited():

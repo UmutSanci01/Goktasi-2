@@ -53,8 +53,7 @@ func disable():
 func enable() -> bool:
 	# Resume if there is fuel in the detector or there is fuel in the inventory.
 	if not timer_fuel.time_left and not PlayerInventory.use_item_by_type(Item.Type.FUEL):
-		InfoPanel.add_label("Yakıt Yok", "", Color.red)
-		return false
+			InfoPanel.add_label("KEY_NO_FUEL", "", Color.red)
 	
 	line.show()
 	collision.set_deferred("disabled", false)
@@ -70,5 +69,4 @@ func _on_TimerFuel_timeout():
 	if not PlayerInventory.use_item_by_type(Item.Type.FUEL):
 		timer_fuel.stop()
 		GameState.is_activate_detector = false
-		InfoPanel.add_label("Yakıt Tükendi", "", Color.red)
-
+		InfoPanel.add_label("KEY_FUEL_DEPLETED", "", Color.red)

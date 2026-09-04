@@ -8,8 +8,8 @@
 script = ExtResource( 1 )
 id = 13
 type = 2
-name = ""
-info = "Yüksek infilak gücüne sahip mermi."
+name = "KEY_BULLET_EXPLOSIVE"
+info = "KEY_BULLET_HE_DESC"
 texture = ExtResource( 2 )
 scene = ExtResource( 3 )
 value = 15

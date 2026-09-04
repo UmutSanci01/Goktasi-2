@@ -35,7 +35,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0, 1, 0.0156863, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "Maden :"
+text = "KEY_ORE_LABEL"
 
 [node name="Value" type="Label" parent="PanelContainer/VBoxContainer/OreNum"]
 margin_left = 121.0
@@ -59,7 +59,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0, 1, 0.0156863, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "Çap : "
+text = "KEY_DIAMETER_LABEL"
 
 [node name="Value" type="Label" parent="PanelContainer/VBoxContainer/Radius"]
 margin_left = 121.0
@@ -83,7 +83,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0, 1, 0.0156863, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "Mesafe:"
+text = "KEY_DISTANCE_LABEL"
 
 [node name="Value" type="Label" parent="PanelContainer/VBoxContainer/Dist"]
 margin_left = 121.0

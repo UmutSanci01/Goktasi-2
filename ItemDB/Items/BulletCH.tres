@@ -8,8 +8,8 @@
 script = ExtResource( 1 )
 id = 14
 type = 2
-name = "Basit Mermi"
-info = "Basit mermi. Maden patlatmaktan fazlasını yapamaz."
+name = "KEY_BULLET_SIMPLE"
+info = "KEY_BULLET_SIMPLE_DESC"
 texture = ExtResource( 2 )
 scene = ExtResource( 3 )
 value = 3

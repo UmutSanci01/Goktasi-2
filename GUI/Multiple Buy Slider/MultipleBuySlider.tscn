@@ -27,7 +27,7 @@ size_flags_vertical = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 2 )
-text = "100x"
+text = "KEY_100X"
 align = 1
 valign = 1
 
@@ -43,7 +43,7 @@ size_flags_vertical = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 2 )
-text = "50x"
+text = "KEY_50X"
 align = 1
 valign = 1
 
@@ -59,7 +59,7 @@ size_flags_vertical = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 2 )
-text = "10x"
+text = "KEY_10X"
 align = 1
 valign = 1
 
@@ -75,7 +75,7 @@ size_flags_vertical = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 2 )
-text = "1x"
+text = "KEY_1X"
 align = 1
 valign = 1
 

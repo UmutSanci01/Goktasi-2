@@ -15,7 +15,7 @@ func _ready():
 	GameState.ship = GAME.get_ship()
 	GameState.meteor = GAME.get_meteor()
 	
-	InfoPanel.add_label("Oyun Başladı", "", Color.green)
+	InfoPanel.add_label("KEY_GAME_START", "", Color.green)
 	
 	GameState.is_activate_detector = false
 
