@@ -38,6 +38,11 @@ func _ready():
 #	var mid = get_viewport_rect().get_center() - $OpenInv.rect_size / 2
 #	$OpenInv.rect_global_position = GameState.ship_global_pos + mid
 
+func show():
+	.show()
+
+	# Check tutorial here
+
 func update_container():
 	# Bullet Container
 	var bullet_id = GameState.selected_bullet_id

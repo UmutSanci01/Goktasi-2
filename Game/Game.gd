@@ -24,7 +24,8 @@ func _ready():
 	Notification.register_observer(self, Notification.NotificationTypes.SupplierBulletDeactive)
 	Notification.register_observer(self, Notification.NotificationTypes.SupplierFuelActive)
 	Notification.register_observer(self, Notification.NotificationTypes.SupplierFuelDeactive)
-	
+	Notification.register_observer(self, Notification.NotificationTypes.ResetTutor)
+
 	get_node("GameArea/CollisionShape2D").shape.extents = OS.get_screen_size()
 	
 	if Map.connect("curr_slot_changed", self, "_on_Map_curr_slot_changed"): pass
@@ -85,16 +86,14 @@ func _on_Notify(notification_type: int):
 			supplier_bullet.disable()
 		else:
 			supplier_bullet.enable()
-#	elif notification_type == Notification.NotificationTypes.SupplierBulletDeactive:
-#		supplier_bullet.disable()
 	
 	elif notification_type == Notification.NotificationTypes.SupplierFuelActive:
 		if supplier_fuel.is_active:
 			supplier_fuel.disable()
 		else:
 			supplier_fuel.enable()
-#	elif notification_type == Notification.NotificationTypes.SupplierFuelDeactive:
-#		supplier_fuel.disable()
+	elif notification_type == Notification.NotificationTypes.ResetTutor:
+		TutorialOverlay.reset()
 
 
 func _on_Meteor_destroyed():

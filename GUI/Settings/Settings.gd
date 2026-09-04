@@ -44,3 +44,7 @@ func _on_SideNum_change_value(data, value):
 func _on_Reset_pressed():
 	Notification.notify(Notification.NotificationTypes.Reset)
 #	GameState.reset_game()
+
+
+func _on_ResetTutor_pressed():
+	Notification.notify(Notification.NotificationTypes.ResetTutor)

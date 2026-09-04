@@ -14,6 +14,7 @@ enum NotificationTypes {
 	SupplierBulletActive,
 	SupplierBulletDeactive,
 	Reset,
+	ResetTutor,
 	BulletTypeChanged
 }
 

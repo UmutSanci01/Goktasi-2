@@ -58,14 +58,14 @@ func _ready():
 	
 #	grid_size = SLOT_NUM
 	
-#	if not is_init_grid_size:
-#		initialize()
-#
-#	if not is_init_datas:
-#		init_data()
-#
-#	if not is_init_curr_slot:
-#		init_curr_slot()
+	if not is_init_grid_size:
+		initialize()
+
+	if not is_init_datas:
+		init_data()
+
+	if not is_init_curr_slot:
+		init_curr_slot()
 
 
 func initialize(is_new : bool = false):
