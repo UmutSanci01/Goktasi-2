@@ -16,12 +16,12 @@ func add_label(title = null, value = null, color = null):
 	infos.add_child(label)
 	
 	if title and value:
-		label.set_text(str(title), value)
+		label.set_text(tr(str(title)), tr(value))
 	
 	elif title:
-		label.set_title(title)
+		label.set_title(tr(title))
 	elif value:
-		label.set_value(value)
+		label.set_value(tr(value))
 	
 	if color:
 		label.modulate = color

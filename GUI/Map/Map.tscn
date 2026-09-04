@@ -163,16 +163,16 @@ mouse_filter = 2
 alignment = 1
 
 [node name="Title" type="Label" parent="Panel/TitleAndButtons/FuelContainer"]
-margin_left = 242.0
-margin_right = 340.0
+margin_left = 151.0
+margin_right = 431.0
 margin_bottom = 36.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 5 )
-text = "Yakıt : "
+text = "KEY_FUEL_LABEL"
 
 [node name="ItemAmountLabel" parent="Panel/TitleAndButtons/FuelContainer" instance=ExtResource( 10 )]
-margin_left = 344.0
-margin_right = 344.0
+margin_left = 435.0
+margin_right = 435.0
 margin_bottom = 36.0
 item = 2
 

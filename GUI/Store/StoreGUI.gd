@@ -37,7 +37,7 @@ func _ready():
 		show_store()
 	
 	invpanel_player.set_inv(PlayerInventory)
-	invpanel_player.set_title("Envanter")
+	invpanel_player.set_title("KEY_INVENTORY_TITLE")
 	
 	invpanel_store.set_inv(Store.inv)
 	invpanel_store.set_title("Market")
@@ -61,7 +61,7 @@ func show_info(info : String, item_value : int):
 #	var info = ItemDB.get_item(item_id, ItemDB.INFO)
 	
 	if info.length() > 0:
-		txt_info.text = info
+		txt_info.text = tr(info)
 	else:
 		txt_info.text = "..."
 		ConsoleGUI.out(self.name + " show_info item_info not found")
