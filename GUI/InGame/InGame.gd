@@ -10,9 +10,7 @@ onready var bullet_container_amount = $AmountLabels/BulletContainer/BulletAmount
 onready var fuel_container = $AmountLabels/FuelContainer
 onready var ammo_choice_menu = $AmmoChoiceMenu
 
-
 var touch_start : Vector2
-
 
 func _ready():
 	GameState.screen_safe_area = OS.get_window_safe_area()
@@ -24,19 +22,6 @@ func _ready():
 	
 	ammo_choice_menu.close_menu()
 	update_container()
-
-	# Check Detector
-#	if GameState.is_activate_detector:
-#		ore_detector.show()
-#	else:
-#		ore_detector.hide()
-	
-#	GameState.register(self, GameState.NotificationType.SHIP_GLOBAL_POS)
-
-
-#func _on_GameState_notify():
-#	var mid = get_viewport_rect().get_center() - $OpenInv.rect_size / 2
-#	$OpenInv.rect_global_position = GameState.ship_global_pos + mid
 
 func show():
 	.show()
