@@ -41,7 +41,7 @@ func _ready():
 func show():
 	.show()
 
-	# Check tutorial here
+	TutorialOverlay.tutor_show(TutorialOverlay.Tutors.INGAME)
 
 func update_container():
 	# Bullet Container
@@ -116,9 +116,9 @@ func _on_OpenInv_pressed():
 	var parent : GraphicUI = get_parent()
 	parent.set_menu(parent.store)
 
-func _draw():
-	if GameState.show_safe_area:
-		draw_rect(GameState.screen_safe_area, Color.red, false, 10)
+# func _draw():
+	# if GameState.show_safe_area:
+	# 	draw_rect(GameState.screen_safe_area, Color.red, false, 10)
 
 func _on_MeteorInfo_pressed():
 	var ore_num = GameState.get_ore_num()

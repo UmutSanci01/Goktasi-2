@@ -21,6 +21,11 @@ func load_data():
 	settings_data = new_data
 	emit_signal("settings_change", settings_data)
 
+func show():
+	.show()
+
+	TutorialOverlay.tutor_show(TutorialOverlay.Tutors.SETTINGS)
+
 func hide():
 	.hide()
 

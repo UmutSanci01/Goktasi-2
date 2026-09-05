@@ -42,6 +42,14 @@ func _ready():
 	invpanel_store.set_inv(Store.inv)
 	invpanel_store.set_title("Market")
 
+func show():
+	.show()
+
+	if not Store.is_reachable:
+		TutorialOverlay.tutor_show(TutorialOverlay.Tutors.INVENTORY)
+	else:
+		TutorialOverlay.tutor_show(TutorialOverlay.Tutors.MARKET)
+
 func show_store():
 	invpanel_store.show()
 	btn_action.show()

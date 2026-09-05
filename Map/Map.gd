@@ -165,7 +165,7 @@ func _on_MapGUI_moved(slot_index : int, slot_dist : int):
 	if slot_index == current_slot_index:
 		return
 	
-	var slot_data : Data = get_data(slot_index)
+	var _slot_data : Data = get_data(slot_index)
 	
 #	if PlayerInventory.use_item(Item.ID.FUEL, slot_dist):
 	if PlayerInventory.use_item_by_type(Item.Type.FUEL, slot_dist):

@@ -156,7 +156,7 @@ func init_gui():
 func show():
 	.show()
 
-	TutorialOverlay.tutor_map()
+	TutorialOverlay.tutor_show(TutorialOverlay.Tutors.MAP)
 
 	# The map GUI will not be loaded until the map button is pressed at least once.
 	if not self.is_map_init:
