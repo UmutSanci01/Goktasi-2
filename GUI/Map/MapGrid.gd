@@ -25,6 +25,16 @@ var pressed_slot_index : int setget set_pressed_slot_index # double slot press
 var is_drag : bool = false
 var click_safe_limit : int = 400
 
+# zoom variables
+onready var content: Control = self
+
+export var min_zoom: float = 0.5
+export var max_zoom: float = 2.5
+export var zoom_speed: float = 0.005
+
+var touch_points: Dictionary = {}
+var prev_distance: float = 0.0
+
 # slot variables
 var slot_num : int = 0
 var grid_size : int = 0
@@ -48,6 +58,77 @@ func _ready():
 	
 	screen_mid = get_viewport_rect().size / 2
 #	board_mid = (Vector2.ONE * slot_num * tile_size) / 2
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == BUTTON_WHEEL_UP:
+			_apply_zoom(1.1, event.position)
+			return
+		elif event.button_index == BUTTON_WHEEL_DOWN:
+			_apply_zoom(0.9, event.position)
+			return
+
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touch_points[event.index] = event.position
+			
+			if touch_points.size() == 1:
+				touch_point = event.position
+				is_click = true
+			
+			elif touch_points.size() == 2:
+				is_drag = false
+				is_click = false
+
+		else:
+			touch_points.erase(event.index)
+			
+			if touch_points.size() < 2:
+				prev_distance = 0.0
+			
+			if touch_points.size() == 0:
+				is_drag = false
+				# is_click = false
+
+	elif event is InputEventScreenDrag:
+		touch_points[event.index] = event.position
+
+		if touch_points.size() == 1:
+			if is_drag:
+				self.rect_position += event.relative
+			elif touch_point.distance_squared_to(event.position) >= click_safe_limit:
+				is_drag = true
+				is_click = false
+				emit_signal("drag")
+
+		elif touch_points.size() == 2:
+			var points = touch_points.values()
+			var p1: Vector2 = points[0]
+			var p2: Vector2 = points[1]
+			
+			var current_distance: float = p1.distance_to(p2)
+
+			if prev_distance > 0.0:
+				var delta: float = current_distance - prev_distance
+				var zoom_factor: float = 1.0 + (delta * zoom_speed)
+				_apply_zoom(zoom_factor, (p1 + p2) * 0.5)
+
+			prev_distance = current_distance
+
+
+func _apply_zoom(factor: float, center_pos: Vector2) -> void:
+	var old_scale: Vector2 = content.rect_scale
+	var new_scale_val: float = clamp(old_scale.x * factor, min_zoom, max_zoom)
+	var new_scale: Vector2 = Vector2(new_scale_val, new_scale_val)
+
+	if old_scale == new_scale:
+		return
+
+	var local_center: Vector2 = (center_pos - content.rect_global_position) / old_scale
+	content.rect_pivot_offset = local_center
+	content.rect_position += (local_center * old_scale) - (local_center * new_scale)
+
+	content.rect_scale = new_scale
 
 
 func add_slot(slot_position : Vector2, slot_texture : Texture):
@@ -137,27 +218,6 @@ func init_slot_pool():
 
 func center_current_position():
 	self.rect_position = (screen_mid - current_slot.rect_position) - (Vector2.ONE * tile_size / 2)
-
-
-func _input(event):
-	if event is InputEventScreenTouch:
-		if event.is_pressed():
-			touch_point = event.position
-			is_click = true
-		else:
-			is_drag = false
-			
-#			var slot = get_slot(current_slot_index)
-		
-	if event is InputEventScreenDrag:
-		if is_drag:
-			self.rect_position += event.relative
-		
-		elif touch_point.distance_squared_to(event.position) >= click_safe_limit:
-			is_drag = true
-			is_click = false
-			
-			emit_signal("drag")
 
 
 func _on_MapSlot_pressed(slot : TextureButton, slot_index : int):

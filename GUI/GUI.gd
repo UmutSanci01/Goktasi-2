@@ -40,8 +40,8 @@ func set_menu(next_menu, is_return : bool = false):
 	if menu_history.size() == 6:
 		menu_history.pop_front()
 	menu_history.append(menu)
-	if menu_history.count(settings) == 2 and menu_history.count(map) == 1:
-		GameState.show_safe_area = true
+	# if menu_history.count(settings) == 2 and menu_history.count(map) == 1:
+	# 	GameState.show_safe_area = true
 	if next_menu == ingame:
 		menu_history.clear()
 	

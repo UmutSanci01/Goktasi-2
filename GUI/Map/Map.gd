@@ -87,14 +87,14 @@ func _process(_delta):
 	indicator_store.rect_global_position = indicator_pos
 
 
-func _input(event):
-	if event is InputEventKey:
-		if not event.pressed:
-			return
+# func _input(event):
+# 	if event is InputEventKey:
+# 		if not event.pressed:
+# 			return
 		
-		match event.scancode:
-			KEY_S:
-				pass
+# 		match event.scancode:
+# 			KEY_S:
+# 				pass
 
 # Harita olusturuluyor.
 func init_gui():
@@ -177,11 +177,34 @@ func set_is_map_init(value : bool):
 	is_map_init = value
 
 func go_current_location(duration : float = 0.5):
-	var m_mid = get_viewport_rect().size / 2
-	var center = (m_mid - current_slot.rect_position) - (Vector2.ONE * 32)
+	if not current_slot:
+		return
 
-	tween_go.interpolate_property(mapgrid, "rect_position", mapgrid.rect_position, center, duration)
+	var m_mid = get_viewport_rect().size / 2.0
+	var scale = mapgrid.rect_scale
+
+	var slot_center = current_slot.rect_position + (current_slot.rect_size / 2.0)
+
+	var scaled_target = (slot_center - mapgrid.rect_pivot_offset) * scale + mapgrid.rect_pivot_offset
+
+	var target_pos = m_mid - scaled_target
+
+	tween_go.interpolate_property(
+		mapgrid, 
+		"rect_position", 
+		mapgrid.rect_position, 
+		target_pos, 
+		duration, 
+		Tween.TRANS_QUAD, 
+		Tween.EASE_OUT
+	)
 	tween_go.start()
+
+	# var m_mid = get_viewport_rect().size / 2
+	# var center = (m_mid - current_slot.rect_position) - (Vector2.ONE * 32)
+
+	# tween_go.interpolate_property(mapgrid, "rect_position", mapgrid.rect_position, center, duration)
+	# tween_go.start()
 
 
 func _on_Notify(notification_type : int):
@@ -208,8 +231,9 @@ func _on_MapGrid_slot_selected(slot : TextureButton, slot_index : int, dist : in
 	if slot_data:
 		infopanel.set_data(slot_data.ore_num, slot_data.radius, dist)
 		
-#		infopanel.show()
-		infopanel.pop(slot.rect_global_position)
+
+		var scaled_size = slot.rect_size * mapgrid.rect_scale
+		infopanel.pop(slot.rect_global_position, scaled_size)
 	else:
 		infopanel.hide()
 

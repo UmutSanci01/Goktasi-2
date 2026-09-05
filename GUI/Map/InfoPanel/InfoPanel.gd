@@ -30,31 +30,29 @@ func _ready():
 #	$PanelContainer.set_deferred("rect_size", size)
 #	set_deferred("rect_scale", scale)
 
-func pop(position : Vector2):
+func pop(base_pos: Vector2, slot_scaled_size: Vector2) -> void:
 	show()
 	
+	var direction: Vector2 = Vector2.ONE
+	var offset: Vector2 = Vector2.ZERO
 	
-	
-	var direction : Vector2 = Vector2.UP
-	var offset : Vector2 = Vector2.ZERO
-	
-	# position is left
-	if position.x < screen_size_half.x:
+	# X Ekseni Kontrolü
+	if base_pos.x < screen_size_half.x:
 		direction.x = 1
-		offset.x = 64
-	else: # is right
+		offset.x = slot_scaled_size.x # Slot ekranın solundaysa paneli slotun genişliği kadar sağa it
+	else:
 		direction.x = -1
-		offset.x = $PanelContainer.rect_size.x #* rect_scale.x
+		offset.x = $PanelContainer.rect_size.x # Slot sağdaysa paneli kendi genişliği kadar sola çek
 	
-	# position is up
-	if position.y < screen_size_half.y:
+	# Y Ekseni Kontrolü
+	if base_pos.y < screen_size_half.y:
 		direction.y = 1
-		offset.y = 64
-	else: # is down
+		offset.y = slot_scaled_size.y # Slot ekranın üstündeyse paneli slotun yüksekliği kadar aşağı it
+	else:
 		direction.y = -1
-		offset.y = $PanelContainer.rect_size.y #* rect_scale.y
+		offset.y = $PanelContainer.rect_size.y # Slot altındaysa paneli kendi yüksekliği kadar yukarı çek
 	
-	rect_position = position + (offset * direction)
+	rect_position = base_pos + (offset * direction)
 
 func set_data(ore_num : int, radius : float, dist : int):
 	label_ore_num.text = str(ore_num)

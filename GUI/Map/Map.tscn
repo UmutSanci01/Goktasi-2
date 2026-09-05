@@ -25,6 +25,7 @@ script = ExtResource( 1 )
 [node name="BG" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0.0627451, 0, 0.266667, 0.592157 )
 
 [node name="MapGrid" type="Control" parent="."]
@@ -32,12 +33,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
 script = ExtResource( 8 )
-
-[node name="MapBG" type="ColorRect" parent="MapGrid"]
-visible = false
-margin_right = 600.0
-margin_bottom = 1024.0
-color = Color( 0, 0, 0, 0.392157 )
 
 [node name="Slots" type="Control" parent="MapGrid"]
 anchor_right = 1.0
