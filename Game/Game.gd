@@ -14,6 +14,7 @@ onready var meteor: Meteor = $Meteor setget , get_meteor
 onready var ore_detector: Area2D = $OreDetector
 onready var supplier_bullet: Supplier = $SupplierBullet
 onready var supplier_fuel: Supplier = $SupplierFuel
+onready var timer_consumption : Timer = $TimerConsumption
 
 
 func _ready():
@@ -29,12 +30,11 @@ func _ready():
 	get_node("GameArea/CollisionShape2D").shape.extents = OS.get_screen_size()
 	
 	if Map.connect("curr_slot_changed", self, "_on_Map_curr_slot_changed"): pass
-	
+
 	# Check supplier fuel
 	# var indexes = Store.get_supplier_slot_indexes()
 
 	init()
-
 
 func init():
 	if meteor.connect("destroyed", self, "_on_Meteor_destroyed"): pass
@@ -103,23 +103,6 @@ func _on_Meteor_destroyed():
 func _on_BulletTravelLimit_body_entered(body):
 	if body is Bullet:
 		body.disable()
-
-
-#func _on_SpaceShip_shot(kinematic_collision : KinematicCollision2D):
-#	var collider = kinematic_collision.collider
-#	var collision_position : Vector2 = kinematic_collision.position
-#
-#	if collider is Chunk:
-#		meteor.explode(collider, collision_position)
-#		GlobalParticles.set_particle(collision_position)
-#
-#	elif collider is Ore:
-#		PlayerInventory.add_item(ItemDB.EnumItem.ORE)
-#
-#		collider.mine()
-#
-#		meteor.save_ores()
-
 
 func _on_GUI_settings_change(_new_settings):
 	pass

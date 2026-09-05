@@ -19,9 +19,9 @@ func add_label(title = null, value = null, color = null):
 		label.set_text(tr(str(title)), tr(value))
 	
 	elif title:
-		label.set_title(tr(title))
+		label.set_title(tr(str(title)))
 	elif value:
-		label.set_value(tr(value))
+		label.set_value(tr(str(value)))
 	
 	if color:
 		label.modulate = color

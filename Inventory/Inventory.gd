@@ -7,6 +7,7 @@ signal update_inv
 # item_id : item_amount
 var items : Dictionary = {}
 var owner_name : String = ""
+var total_amount : int = 0
 
 
 func _init(p_owner_name : String = "Envanter"):
@@ -21,40 +22,69 @@ func _ready():
 func add_item(item, amount : int = 1):
 	if amount <= 0:
 		return
-	
+
 	if items.has(item):
 		items[item] += amount
 	else:
 		items[item] = amount
+
+	if not (item == Item.ID.COIN):
+		total_amount += amount
+
 	emit_signal("update_inv")
 
-
+var is_coin : bool = false
 func del_item(item, amount : int = 1, clear : bool = false) -> bool:
 	if not items.has(item):
 		return false
 	
+	if item == Item.ID.COIN:
+		# Don't include to total_amount
+		is_coin = true
+
 	var item_num : int = items[item]
 	
 	if clear:
-		if items.erase(item): pass
+		if items.erase(item):
+			total_amount = 0
 	elif item_num <= amount:
-		if items.erase(item): pass
+		if items.erase(item):
+			if not is_coin:
+				total_amount -= item_num
 	else:
+		if not is_coin:
+			total_amount -= amount
 		item_num -= amount
 		items[item] = item_num
-	
+
+	is_coin = false
 	emit_signal("update_inv")
+
 	return true
 
 
 func set_items(new_items : Dictionary):
 	items = new_items
+	update_total_amount()
 	emit_signal("update_inv")
 
 func get_item_amount(item_id : int):
 	if has_item(item_id):
 		return items[item_id]
 	return 0
+
+func get_total_amount() -> int:
+	return total_amount
+
+func update_total_amount():
+	var amount : int = 0
+	for item_id in items:
+		if item_id == Item.ID.COIN:
+			continue
+		amount += items[item_id]
+	
+	if amount != total_amount:
+		total_amount = amount
 
 func get_item_amount_by_type(item_type : int) -> int:
 	var wrap : WrapSameType = get_item_by_type(item_type)

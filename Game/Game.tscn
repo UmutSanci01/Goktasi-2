@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://Meteor/Meteor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SpaceShip/SpaceShip.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game/OreDetector.gd" type="Script" id=4]
 [ext_resource path="res://Supplier/Supplier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game/TimerConsumption.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -44,6 +45,7 @@ width = 16.0
 default_color = Color( 0.686275, 1, 0.713726, 0.392157 )
 
 [node name="TimerFuel" type="Timer" parent="OreDetector"]
+wait_time = 10.0
 
 [node name="SupplierFuel" parent="." instance=ExtResource( 5 )]
 rotation = -0.164502
@@ -54,6 +56,9 @@ product_num = 10
 [node name="SupplierBullet" parent="." instance=ExtResource( 5 )]
 product_source = 9
 product_num = 7
+
+[node name="TimerConsumption" type="Timer" parent="."]
+script = ExtResource( 6 )
 
 [connection signal="shot_multi" from="SpaceShip" to="." method="_on_SpaceShip_shot_multi"]
 [connection signal="body_exited" from="GameArea" to="." method="_on_GameArea_body_exited"]

@@ -191,8 +191,6 @@ func _on_Activate_pressed():
 		Notification.notify(Notification.NotificationTypes.SupplierFuelActive)
 	
 	elif item_id == Item.ID.DETECTOR_ORE:
-		
-
 		if GameState.can_activate_detector():
 			var state : bool = GameState.is_activate_detector
 			GameState.is_activate_detector = not state

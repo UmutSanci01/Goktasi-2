@@ -37,7 +37,7 @@ __meta__ = {
 [node name="slots" type="HFlowContainer" parent="PanelContainer/VBoxContainer"]
 margin_top = 40.0
 margin_right = 586.0
-margin_bottom = 1010.0
+margin_bottom = 878.0
 mouse_filter = 2
 size_flags_vertical = 3
 
@@ -83,6 +83,12 @@ margin_left = 132.0
 margin_top = 132.0
 margin_right = 260.0
 margin_bottom = 260.0
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+margin_top = 882.0
+margin_right = 586.0
+margin_bottom = 1010.0
+custom_constants/separation = 128
 
 [node name="SelectedSlotIndicator" type="TextureRect" parent="."]
 margin_right = 64.0
