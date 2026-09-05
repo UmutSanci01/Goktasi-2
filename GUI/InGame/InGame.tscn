@@ -146,4 +146,3 @@ mouse_filter = 2
 [connection signal="button_down" from="Return" to="." method="_on_Return_button_down"]
 [connection signal="pressed" from="OpenInv" to="." method="_on_OpenInv_pressed"]
 [connection signal="pressed" from="MeteorInfo" to="." method="_on_MeteorInfo_pressed"]
-[connection signal="bullet_type_changed" from="AmmoChoiceMenu" to="." method="_on_AmmoChoiceMenu_bullet_type_changed"]

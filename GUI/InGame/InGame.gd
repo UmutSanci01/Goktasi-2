@@ -62,7 +62,7 @@ func _unhandled_input(event):
 				var delta = event.position - touch_start
 				if abs(delta.x) <= abs(delta.y):
 					if delta.y <= 0:
-						GameState.touch_position.x = event.position.x
+						GameState.touch_position.x = touch_start.x
 						GameState.touch_position.y = (event.position.y + touch_start.y) / 2.5
 						GameState.is_bullet_menu_opened = true
 
