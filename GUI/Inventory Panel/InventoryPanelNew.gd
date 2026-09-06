@@ -9,15 +9,20 @@ onready var slot_scene = preload("res://GUI/Slot/Slot.tscn")
 onready var slots = $PanelContainer/VBoxContainer/slots
 onready var slot_outline = $SelectedSlotIndicator
 onready var lbl_title = $PanelContainer/VBoxContainer/Title
-#onready var slot_fueled_indicator = preload("res://Images/fuel_indicator.png")
+# onready var slot_fueled_indicator = preload("res://Images/fuel_indicator.png")
 
 
 var inv : Inventory
-
+var current_slot : Slot
 var invisible_items : PoolIntArray = [] setget , get_invisible_items
 
 
 func _ready():
+	Notification.register_observer(self, Notification.NotificationTypes.SupplierBulletActive)
+	Notification.register_observer(self, Notification.NotificationTypes.SupplierFuelActive)
+	Notification.register_observer(self, Notification.NotificationTypes.SupplierBulletDeactive)
+	Notification.register_observer(self, Notification.NotificationTypes.SupplierFuelDeactive)
+
 	hide_slot_outline()
 
 
@@ -50,7 +55,7 @@ func hide_slot_outline():
 func update_slots():
 	assert(inv, "inv is null")
 	
-	var size_inv_items = inv.items.size()
+	# var size_inv_items = inv.items.size()
 	var item_amount : int
 	var item_texture : Texture
 	
@@ -107,17 +112,52 @@ func set_title(text : String):
 	lbl_title.text = text
 
 
+func _on_Notify(notification_type : int):
+	if not current_slot: return
+	if notification_type == Notification.NotificationTypes.SupplierBulletActive \
+		or notification_type == Notification.NotificationTypes.SupplierFuelActive:
+		
+		current_slot.draw_indicator()
+
+	if notification_type == Notification.NotificationTypes.SupplierBulletDeactive \
+		or notification_type == Notification.NotificationTypes.SupplierFuelDeactive:
+		
+		current_slot.erase_indicator()
+
 func _on_Slot_down(slot : Slot):
 	if slot_outline.visible == false:
 		slot_outline.show()
 	
 	slot_outline.rect_global_position = slot.rect_global_position
-	
+	current_slot = slot
+
 	emit_signal("slot_selected", slot, slot.item_id)
+
 
 
 func _on_update_inv():
 	update_slots()
+
+	# var amount : int = PlayerInventory.get_item_amount(item_id)
+	# var is_depleted : bool = false
+	# if amount == 0:
+	# 	is_depleted = true
+
+	# if current_slot and current_slot.get_item() == item_id:
+	# 	if is_depleted:
+	# 		is_depleted = false
+	# 		current_slot.queue_free()
+	# 		current_slot = null
+	# 		return
+	# 	current_slot.set_amount(amount)
+	# else:
+	# 	for slot in slots.get_children():
+	# 		if slot.get_item() == item_id:
+	# 			if is_depleted:
+	# 				is_depleted = false
+	# 				slot.queue_free()
+	# 				return
+	# 			slot.set_amount(amount)
 
 
 func _on_VBoxContainer_gui_input(event):

@@ -14,6 +14,7 @@ use_filter = true
 font_data = SubResource( 1 )
 
 [node name="Slot" type="TextureButton"]
+show_behind_parent = true
 anchor_right = 0.213333
 anchor_bottom = 0.125
 margin_right = -104.0
