@@ -18,11 +18,6 @@ var invisible_items : PoolIntArray = [] setget , get_invisible_items
 
 
 func _ready():
-	Notification.register_observer(self, Notification.NotificationTypes.SupplierBulletActive)
-	Notification.register_observer(self, Notification.NotificationTypes.SupplierFuelActive)
-	Notification.register_observer(self, Notification.NotificationTypes.SupplierBulletDeactive)
-	Notification.register_observer(self, Notification.NotificationTypes.SupplierFuelDeactive)
-
 	hide_slot_outline()
 
 
@@ -111,18 +106,6 @@ func add_slot(slot : Slot):
 func set_title(text : String):
 	lbl_title.text = text
 
-
-func _on_Notify(notification_type : int):
-	if not current_slot: return
-	if notification_type == Notification.NotificationTypes.SupplierBulletActive \
-		or notification_type == Notification.NotificationTypes.SupplierFuelActive:
-		
-		current_slot.draw_indicator()
-
-	if notification_type == Notification.NotificationTypes.SupplierBulletDeactive \
-		or notification_type == Notification.NotificationTypes.SupplierFuelDeactive:
-		
-		current_slot.erase_indicator()
 
 func _on_Slot_down(slot : Slot):
 	if slot_outline.visible == false:
