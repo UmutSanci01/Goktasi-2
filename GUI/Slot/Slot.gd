@@ -4,7 +4,7 @@ class_name Slot
 
 var item_id : int = -1
 #var item_num : int = 0
-# var indicator : TextureRect
+#var indicator : TextureRect
 
 func set_image(image : Texture):
 	$ItemImage.texture = image
