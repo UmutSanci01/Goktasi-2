@@ -84,6 +84,7 @@ func _on_Notify(notification_type: int):
 	elif notification_type == Notification.NotificationTypes.SupplierBulletActive:
 		if not supplier_bullet.is_active:
 			supplier_bullet.enable()
+		else: supplier_bullet.disable()
 	elif notification_type == Notification.NotificationTypes.SupplierBulletDeactive:
 		if supplier_bullet.is_active:
 			supplier_bullet.disable()
@@ -91,6 +92,7 @@ func _on_Notify(notification_type: int):
 	elif notification_type == Notification.NotificationTypes.SupplierFuelActive:
 		if not supplier_fuel.is_active:
 			supplier_fuel.enable()
+		else: supplier_fuel.disable()
 	elif notification_type == Notification.NotificationTypes.SupplierFuelDeactive:
 		if supplier_fuel.is_active:
 			supplier_fuel.disable()
