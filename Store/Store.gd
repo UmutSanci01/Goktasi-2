@@ -33,8 +33,9 @@ func buy(item_id : int, amount : int, to_inv : Inventory) -> int:
 		return 0
 	
 	if limited_items.has(item_id):
-			if limited_items[item_id] < to_inv.get_item_amount(item_id) + amount:
-				InfoPanel.add_label("KEY_CAN_HAVE", str(limited_items[item_id]))
+		if limited_items[item_id] < (to_inv.get_item_amount(item_id) + amount):
+			InfoPanel.add_label("KEY_CAN_HAVE", str(limited_items[item_id]))
+			return 0
 	
 	
 	var item_value : int = 0

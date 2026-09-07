@@ -82,16 +82,19 @@ func _on_Notify(notification_type: int):
 		ore_detector.disable()
 	
 	elif notification_type == Notification.NotificationTypes.SupplierBulletActive:
+		if not supplier_bullet.is_active:
+			supplier_bullet.enable()
+	elif notification_type == Notification.NotificationTypes.SupplierBulletDeactive:
 		if supplier_bullet.is_active:
 			supplier_bullet.disable()
-		else:
-			supplier_bullet.enable()
 	
 	elif notification_type == Notification.NotificationTypes.SupplierFuelActive:
+		if not supplier_fuel.is_active:
+			supplier_fuel.enable()
+	elif notification_type == Notification.NotificationTypes.SupplierFuelDeactive:
 		if supplier_fuel.is_active:
 			supplier_fuel.disable()
-		else:
-			supplier_fuel.enable()
+
 	elif notification_type == Notification.NotificationTypes.ResetTutor:
 		TutorialOverlay.reset()
 

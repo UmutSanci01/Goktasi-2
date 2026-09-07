@@ -145,13 +145,19 @@ func _on_Action_pressed():
 				GameState.has_player_detector = true
 			
 		elif mode == ActionMode.Sell:
-			self.item_amount_inv = Store.sell(self.item_id, item_amount_store, PlayerInventory)
+			self.item_amount_inv = Store.sell(self.item_id, item_amount_store, PlayerInventory)			
+			if item_id == Item.ID.DETECTOR_ORE:
+				GameState.is_activate_detector = false
+				GameState.has_player_detector = false
+			elif item_id == Item.ID.SUPPLIER_BULLET:
+				Notification.notify(Notification.NotificationTypes.SupplierBulletDeactive)
+			elif item_id == Item.ID.SUPPLIER_FUEL:
+				Notification.notify(Notification.NotificationTypes.SupplierFuelDeactive)
+
 			if self.item_amount_inv <= 0:
-				if item_id == Item.ID.DETECTOR_ORE:
-					GameState.is_activate_detector = false
-					GameState.has_player_detector = false
-				
 				self.item_id = -1
+
+
 	else:
 		multiple_slider.show()
 	
