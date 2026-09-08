@@ -15,7 +15,7 @@ onready var lbl_title = $PanelContainer/VBoxContainer/Title
 var inv : Inventory
 var current_slot : Slot
 var invisible_items : PoolIntArray = [] setget , get_invisible_items
-
+var hide_cansales : bool = false
 
 func _ready():
 	hide_slot_outline()
@@ -26,6 +26,8 @@ func set_inv(inventory : Inventory):
 		if inventory.connect("update_inv", self, "_on_update_inv"):
 			pass
 	
+	if inventory == Store.inv:
+		hide_cansales = true
 	self.inv = inventory
 	
 	update_slots()
@@ -46,7 +48,7 @@ func get_invisible_items():
 func hide_slot_outline():
 	slot_outline.hide()
 
-# Player and Store inventory is updating
+# Player inventory is updating
 func update_slots():
 	assert(inv, "inv is null")
 	
@@ -73,6 +75,8 @@ func update_slots():
 		
 		var item_data : Item = ItemDB.get_item()
 		if item_data.visible == false:
+			continue
+		if hide_cansales and not item_data.can_sale:
 			continue
 		
 		item_amount = inv.get_item_amount(item_id)

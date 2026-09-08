@@ -3,6 +3,7 @@ extends Node
 
 signal entered
 signal exited
+signal update_store
 
 
 var is_reachable : bool = false setget set_reachable, get_reachable
@@ -10,15 +11,14 @@ var is_reachable : bool = false setget set_reachable, get_reachable
 
 var inv : Inventory = Inventory.new()
 var id_coin : int = Item.ID.COIN
-#var id_info_value : int = ItemDB.VALUE
 
 var limited_items : Dictionary = {
 	Item.ID.SUPPLIER_BULLET : 1,
 	Item.ID.SUPPLIER_FUEL : 1,
-	Item.ID.DETECTOR_ORE : 1
-#	ItemDB.EnumItem.OreDetector : 1,
-#	ItemDB.EnumItem.BulletSupplier : 1,
-#	ItemDB.EnumItem.FuelSupplier : 1
+	Item.ID.DETECTOR_ORE : 1,
+	Item.ID.UPGRADE_ENGINE_T1 : 1,
+	Item.ID.UPGRADE_ENGINE_T2 : 1,
+	Item.ID.UPGRADE_ENGINE_T3 : 1
 }
 
 
@@ -38,16 +38,23 @@ func buy(item_id : int, amount : int, to_inv : Inventory) -> int:
 			return 0
 	
 	
+	var item : Item = ItemDB.get_item(item_id)
 	var item_value : int = 0
-	if ItemDB.check_item(item_id):
-		item_value = ItemDB.get_item().value
-#	var item_value = ItemDB.get_item(item_id, id_info_value)
+
+	if item:
+		item_value = item.value
+
 	if item_value <= 0:
 		return 0
-	
+
 	if to_inv.check_item(id_coin, item_value * amount):
 		to_inv.del_item(id_coin, item_value * amount)
 		to_inv.add_item(item_id, amount)
+
+		if item.type == Item.Type.UPGRADE:
+			Upgrade.buy_engine_upgrade(item_id)
+			emit_signal("update_store")
+
 		return to_inv.get_item_amount(item_id)
 	else: # disabled
 		InfoPanel.add_label("KEY_NO_MONEY", "", Color.gold)
@@ -56,14 +63,19 @@ func buy(item_id : int, amount : int, to_inv : Inventory) -> int:
 
 func sell(item_id : int, amount : int, from_inv : Inventory) -> int:
 	var item_value : int = 0
+	var item : Item = null
 	if from_inv.check_item(item_id, amount):
-		if ItemDB.check_item(item_id):
-			item_value = ItemDB.get_item().value
-			
-#		var item_value = ItemDB.get_item(item_id, id_info_value)
+		item = ItemDB.get_item(item_id)
+		if item:
+			item_value = item.value
+
 		if item_value <= 0:
 			return 0
 		
+		if item.type == Item.Type.UPGRADE:
+			Upgrade.sell_engine_upgrade(item_id)
+			emit_signal("update_store")
+
 		from_inv.del_item(item_id, amount)
 		from_inv.add_item(id_coin, item_value * amount)
 		

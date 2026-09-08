@@ -6,15 +6,15 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 64, 0, 64, 64 )
 
 [resource]
 script = ExtResource( 1 )
-id = 15
+id = 16
 type = 6
 name = "KEY_ENGINE_UPGRADE"
-info = "kEY_ENGINE_UPGRADE_INFO"
+info = "KEY_ENGINE_UPGRADE_INFO_T2"
 texture = SubResource( 1 )
-value = 5000
+value = 7700
 visible = true
 can_sale = true
