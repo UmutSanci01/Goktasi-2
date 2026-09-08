@@ -12,6 +12,6 @@ name = "KEY_ORE_BLUE"
 info = "KEY_ORE_BLUE_DESC"
 texture = ExtResource( 2 )
 scene = ExtResource( 3 )
-value = 3
+value = 20
 visible = true
 can_sale = true
