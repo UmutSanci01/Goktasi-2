@@ -137,12 +137,16 @@ func _on_StoreInv_slot_selected(slot : Slot, p_item_id):
 func _on_Action_pressed():
 	if not item_data:
 		return
+	if item_amount_store <= 0: 
+		return 
 	
 	if multiple_slider.visible:
 		if mode == ActionMode.Buy:
-			Store.buy(self.item_id, item_amount_store, PlayerInventory)
-			if PlayerInventory.check_item(Item.ID.DETECTOR_ORE):
-				GameState.has_player_detector = true
+			if Store.buy(self.item_id, item_amount_store, PlayerInventory):
+				if self.item_id == Item.ID.DETECTOR_ORE:
+					GameState.has_player_detector = true
+			# if PlayerInventory.check_item(Item.ID.DETECTOR_ORE):
+			# 	GameState.has_player_detector = true
 			
 		elif mode == ActionMode.Sell:
 			self.item_amount_inv = Store.sell(self.item_id, item_amount_store, PlayerInventory)			

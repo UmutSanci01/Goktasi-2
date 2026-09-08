@@ -48,9 +48,10 @@ func buy(item_id : int, amount : int, to_inv : Inventory) -> int:
 	if to_inv.check_item(id_coin, item_value * amount):
 		to_inv.del_item(id_coin, item_value * amount)
 		to_inv.add_item(item_id, amount)
-	else:
-			InfoPanel.add_label("KEY_NO_MONEY", "", Color.gold)
-	return to_inv.get_item_amount(item_id)
+		return to_inv.get_item_amount(item_id)
+	else: # disabled
+		InfoPanel.add_label("KEY_NO_MONEY", "", Color.gold)
+		return 0
 
 
 func sell(item_id : int, amount : int, from_inv : Inventory) -> int:

@@ -174,6 +174,8 @@ func use_item_by_type(item_type : int, amount : int = 1) -> int:
 	return used_amount
 
 func check_item(item, amount : int = 1):
+	if amount <= 0: return false
+	
 	if not has_item(item):
 		return false
 	

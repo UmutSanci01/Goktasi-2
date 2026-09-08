@@ -17,7 +17,8 @@ enum ID {
 	FUEL_T2,
 	ORE_BLUE,
 	BULLET_HE,
-	BULLET_CH
+	BULLET_CH,
+	UPGRADE_ENGINE
 }
 
 enum Type {
@@ -26,7 +27,8 @@ enum Type {
 	BULLET,
 	TOOL,
 	COIN,
-	SUPPLIER
+	SUPPLIER,
+	UPGRADE
 }
 
 
