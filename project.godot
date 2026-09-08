@@ -167,6 +167,7 @@ ConsoleGUI="*res://Console/ConsoleGUI.tscn"
 Notification="*res://Notification/Notification.gd"
 InfoPanel="*res://GUI/InfoPanel/InfoPanel.tscn"
 TutorialOverlay="*res://Tutorial/TutorialOverlay.tscn"
+Upgrade="*res://Game/Upgrade.gd"
 
 [display]
 
