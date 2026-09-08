@@ -107,19 +107,9 @@ func init_data():
 	
 	var data_store = datas[SLOT_NUM - 1]
 	data_store.type = MapLocation.STORE
-	
-#	var data_store : Data = datas[SLOT_NUM - 1]
-#	data_store.type = MapLocation.STORE
-#	data_store.ore_num = 0
-#	data_store.radius = 0
-#	data_store.is_chunks_destroyed = true
-#	data_store.is_ores_collected = true
-
 
 func set_grid_size(size : int):
 	SLOT_NUM = size
-#	grid_size = size
-
 
 func set_current_slot_index(slot_index : int):
 	old_slot_index = current_slot_index
@@ -130,15 +120,9 @@ func set_current_slot_index(slot_index : int):
 	if data.type == Map.MapLocation.STORE:
 		Store.is_reachable = true
 		
-#		InfoPanel.add_label("Markete Erişilebilir", "", Color.gold)
-#		InfoPanel.call_deferred("add_label", "Markete Erişilebilir", "", Color.gold)
 	else:
 		Store.is_reachable = false
-#	if data.type == MapLocation.STORE:
-#		Store.is_reachable = true
-#	else:
-#		Store.is_reachable = false
-	
+
 	data.is_visited = true
 	
 	emit_signal("curr_slot_changed", current_slot_index, data)
@@ -193,10 +177,7 @@ func load_data():
 		if grid_size:
 			SLOT_NUM = grid_size
 			is_init_grid_size = true
-#		else:
-#			initialize(true)
-#			return
-	
+
 	if data.has("datas"):
 		for slot_index in data["datas"]:
 			data["datas"][slot_index] = dict2inst(data["datas"][slot_index])
@@ -216,71 +197,3 @@ func load_data():
 func _on_Notify(notification_type : int):
 	if notification_type == Notification.NotificationTypes.Reset:
 		initialize()
-
-
-#	if current:
-#		if datas.has(current_slot_index2d):
-#			return datas[current_slot_index2d]
-##		if datas.has(current_slot_index):
-##			return datas[current_slot_index]
-#
-#	var data_index2d : Vector2
-#	if data_index >= 0 and data_index < datas.size():
-#		data_index2d = datas.keys()[data_index]
-#	else:
-#		return null
-#
-#	if datas.has(data_index2d):
-#		return datas[data_index2d]
-##	if datas.has(data_index):
-##		return datas[data_index]
-#
-#	return null
-
-
-#func select_current_slot(is_new : bool = false) -> int:
-#	if is_new == true:
-#		current_slot_index = randi() % datas.size()
-#
-#	current_slot_index2d = datas.keys()[current_slot_index]
-#	var slot_data = datas[current_slot_index2d]
-#
-#	emit_signal("curr_slot_changed", current_slot_index, slot_data)
-#	return current_slot_index
-
-
-#func init(is_new : bool = false):
-#	if is_new == false and datas.size() > 0:
-#		emit_signal("init")
-#	else:
-#		init_datas()
-#
-#	select_current_slot(current_slot_index < 0)
-
-
-#func init_datas():
-#	clear_datas()
-#
-#	var slot_num : int = int(pow(grid_size, 2))
-#
-#	var meteor_num = grid_size
-#
-#	var index_x = range(grid_size)
-#	var index_y = range(grid_size)
-#	index_x.shuffle()
-#	index_y.shuffle()
-#
-#
-#	for i in range(grid_size):
-#		var data : Data = Data.new()
-#		var index : Vector2 = Vector2(index_x.pop_front(), index_y.pop_front())
-##		var data_index = randi() % slot_num
-#
-#		data.radius = rand_range(64, 256)
-#		data.ore_num = randi() % 18 + 1
-#
-#		datas[index] = data
-##		datas[data_index] = data
-#
-#	emit_signal("init")
-

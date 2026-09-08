@@ -14,7 +14,7 @@ onready var meteor: Meteor = $Meteor setget , get_meteor
 onready var ore_detector: Area2D = $OreDetector
 onready var supplier_bullet: Supplier = $SupplierBullet
 onready var supplier_fuel: Supplier = $SupplierFuel
-onready var timer_consumption : Timer = $TimerConsumption
+# onready var timer_consumption : Timer = $TimerConsumption
 
 
 func _ready():
