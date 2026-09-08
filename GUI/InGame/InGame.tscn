@@ -78,7 +78,7 @@ anchor_bottom = 0.1
 margin_top = 0.280001
 margin_right = 400.0
 margin_bottom = 132.6
-rect_scale = Vector2( 0.6, 0.6 )
+rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 2
 alignment = 1
 

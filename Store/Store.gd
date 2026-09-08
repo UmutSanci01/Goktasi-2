@@ -21,6 +21,7 @@ var limited_items : Dictionary = {
 	Item.ID.UPGRADE_ENGINE_T3 : 1
 }
 
+var sell_multiplier : float = 0.8
 
 func _ready():
 	for item_id in range(Item.ID.size()):
@@ -77,7 +78,7 @@ func sell(item_id : int, amount : int, from_inv : Inventory) -> int:
 			emit_signal("update_store")
 
 		from_inv.del_item(item_id, amount)
-		from_inv.add_item(id_coin, item_value * amount)
+		from_inv.add_item(id_coin, int((item_value * sell_multiplier) * amount))
 		
 		return from_inv.get_item_amount(item_id)
 	

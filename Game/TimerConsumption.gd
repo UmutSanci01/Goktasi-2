@@ -4,16 +4,16 @@ extends Timer
 onready var fuel_timer: Timer = self
 
 export var base_interval: float = 10.0
-export var soft_capacity: float = 1000
+export var soft_capacity: float = 100
 export var min_interval: float = 0.1 # Safety limit for Game Engine
+
 
 func _ready():
 	if PlayerInventory.connect("update_inv", self, "update_fuel_consumption"): pass
 	if fuel_timer.connect("timeout", self, "_on_FuelTimer_timeout"): pass
 	if Upgrade.connect("engine_upgrated", self, "_on_EngineUpgrated"): pass
 
-	base_interval = (Upgrade.engine_tier * 15) + 10
-
+	calc_base_interval()
 	update_fuel_consumption()
 	fuel_timer.start()
 
@@ -34,7 +34,8 @@ func update_fuel_consumption() -> void:
 		fuel_timer.start(new_interval)
 
 func calc_base_interval():
-	base_interval = (Upgrade.engine_tier * 10) + 10
+	soft_capacity = 500 + (Upgrade.engine_tier * 400) + (pow(Upgrade.engine_tier, 2) * 200)
+	base_interval = 10.0 + (Upgrade.engine_tier * 2.5)
 
 func _on_EngineUpgrated(_new_tier : int):
 	calc_base_interval()

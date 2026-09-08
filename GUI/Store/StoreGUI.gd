@@ -75,7 +75,12 @@ func show_info(info : String, item_value : int):
 		txt_info.text = "..."
 		ConsoleGUI.out(self.name + " show_info item_info not found")
 	
-	label_value.text = str(item_value)
+	var final_value : float
+	if mode == ActionMode.Sell:
+		final_value = item_value * Store.sell_multiplier
+	else:
+		final_value = item_value
+	label_value.text = str(int(final_value))
 
 func update_multbuy():
 	var player_coin : int = PlayerInventory.get_item_amount(Item.ID.COIN)
