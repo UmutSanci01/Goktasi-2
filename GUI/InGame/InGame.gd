@@ -79,11 +79,11 @@ func _on_Notify(notification_type : int):
 	
 	# Yakit gostergesi de isin icine girdiginden buraya yazmisin.
 	elif notification_type == Notification.NotificationTypes.OreDetectorActive:
-		fuel_container.show()
+		# fuel_container.show()
 		ore_detector.show()
 	elif notification_type == Notification.NotificationTypes.OreDetectorDeactive:
 		ore_detector.hide()
-		fuel_container.hide()
+		# fuel_container.hide()
 	elif notification_type == Notification.NotificationTypes.BulletTypeChanged:
 		var bullet_id = GameState.selected_bullet_id
 		bullet_container_texture.texture = ItemDB.get_item(bullet_id).texture

@@ -1,26 +1,6 @@
 extends Node
 
 
-#enum EnumItem {
-#	COIN,
-#	BULLET,
-#	ORE,
-#	FUEL,
-#	OreDetector,
-#	BulletSupplier,
-#	FuelSupplier
-#}
-
-
-# ItemType.gd
-#enum ItemType {
-#	COIN,
-#	BULLET,
-#	FUEL,
-#	ORE,
-#	TOOL
-#}
-
 enum {
 	TYPE,
 	NAME,
@@ -47,13 +27,16 @@ func get_item(item : int = -1) -> Item:
 	if item == -1:
 		return items.get(checked_item_id)
 	return items.get(item)
-#	if items.has(item):
-#		if data >= 0:
-#			return items[item].get(data, false)
-#		if data >= 0 and items[item].has(data):
-#			return items[item][data]
-#		return items[item]
 
+func set_item_visible(item_id : int, visible : bool = true):
+	var item : Item = get_item(item_id)
+	if item:
+		item.visible = visible
+
+func set_item_cansale(item_id : int, cansale : bool = true):
+	var item : Item = get_item(item_id)
+	if item:
+		item.can_sale = cansale
 
 func check_item(item_id : int):
 	if items.has(item_id):
@@ -62,70 +45,8 @@ func check_item(item_id : int):
 	
 	return false
 
-#var items : Dictionary = {
-#	EnumItem.COIN : {
-#		TYPE : "coin",
-#		SCENE: "", 
-#		NAME : "Coin", 
-#		INFO : "Para",
-#		IMAGE: load("res://Images/coin_icon.png"),
-#		VALUE: 1,
-#		VISIBLE : false
-#	},
-#	EnumItem.BULLET : {
-#		TYPE : "bullet",
-#		SCENE: "res://Bullet/Bullet.tscn", 
-#		NAME : "Mermi", 
-#		INFO : "Normal Mermi",
-#		IMAGE: load("res://Images/bullet_red.png"),
-#		VALUE: 10,
-#		VISIBLE : true
-#	},
-#	EnumItem.FUEL : {
-#		TYPE : "fuel",
-#		SCENE: "", 
-#		NAME : "Yakıt", 
-#		INFO : "Gemi Yakıtı",
-#		IMAGE: load("res://Images/fuel_ore.png"),
-#		VALUE : 5,
-#		VISIBLE : true
-#	},
-#	EnumItem.ORE : {
-#		TYPE : "ore",
-#		SCENE : "",
-#		NAME : "Maden",
-#		INFO : "Maden",
-#		IMAGE : load("res://Images/icon_ore.png"),
-#		VALUE : 50,
-#		VISIBLE : true
-#	},
-#	EnumItem.OreDetector : {
-#		TYPE : "tool",
-#		SCENE : "",
-#		NAME : "Ore Detector",
-#		INFO : "Maden Dedektörü, yakıt kullanarak ışının nüfuz ettiği alandaki maden yoğunluğunu gösterir.",
-#		IMAGE : load("res://Images/circuit.png"),
-#		VALUE : 4000,
-#		VISIBLE : true
-#	},
-#	EnumItem.BulletSupplier : {
-#		TYPE : "tool",
-#		SCENE : "",
-#		NAME : "Bullet Supplier",
-#		INFO : "Mermi üreticisi, madenlerden mermi üretir.",
-#		IMAGE : load("res://Images/Gear.png"),
-#		VALUE : 5000,
-#		VISIBLE : true
-#	},
-#	EnumItem.FuelSupplier : {
-#		TYPE : "tool",
-#		SCENE : "",
-#		NAME : "Fuel Supplier",
-#		INFO : "Yakıt üreticisi, madenlerden yakıt üretir.",
-#		IMAGE : load("res://Images/Gear.png"),
-#		VALUE : 5000,
-#		VISIBLE : true
-#	}
-#}
-
-
+func check_item_type_from_id(item_id : int, item_type : int) -> bool:
+	var item : Item = get_item(item_id)
+	if item and item.type == item_type:
+		return true
+	return false

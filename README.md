@@ -14,5 +14,11 @@ Supplier/Supplier.gd
 ItemDB/Items/Supplier.tscn
 Supplier nodes in Main/Game/Supplier to adjust settings on inspector.
 
+Adding NEW ITEM
+Add new ID of item to Item.gd ID Enum. Create new resource with Item.gd. Fill the properties in inspector. Save it to ItemDB/Items folder. Add the new item to ItemDB items member in inspector.
+
+Show Info
+InfoPanel.add_label(text). Use this function to show information on the Rigth top corner of the screen. The text will be shown for 3 seconds.
+
 GETTING ITEM DATA
 ItemDB.check_item(item_id) function returns true if item is valid. After, ItemDB.get_item() fuction returns the checked item data.

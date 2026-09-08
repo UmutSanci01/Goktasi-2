@@ -16,7 +16,7 @@ func add_label(title = null, value = null, color = null):
 	infos.add_child(label)
 	
 	if title and value:
-		label.set_text(tr(str(title)), tr(value))
+		label.set_text(tr(str(title)), tr(str(value)))
 	
 	elif title:
 		label.set_title(tr(str(title)))

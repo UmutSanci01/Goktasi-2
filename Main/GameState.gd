@@ -31,7 +31,6 @@ var touch_position : Vector2 = Vector2.ZERO
 var is_bullet_menu_opened : bool = false
 var selected_bullet_id : int = -1 setget set_selected_bullet_id
 
-
 func _ready():
 #	Console.add_command(self, "decrease")
 	Notification.register_observer(self, Notification.NotificationTypes.Reset)

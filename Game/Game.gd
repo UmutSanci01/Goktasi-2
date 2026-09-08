@@ -14,7 +14,7 @@ onready var meteor: Meteor = $Meteor setget , get_meteor
 onready var ore_detector: Area2D = $OreDetector
 onready var supplier_bullet: Supplier = $SupplierBullet
 onready var supplier_fuel: Supplier = $SupplierFuel
-onready var timer_consumption : Timer = $TimerConsumption
+# onready var timer_consumption : Timer = $TimerConsumption
 
 
 func _ready():
@@ -82,16 +82,21 @@ func _on_Notify(notification_type: int):
 		ore_detector.disable()
 	
 	elif notification_type == Notification.NotificationTypes.SupplierBulletActive:
+		if not supplier_bullet.is_active:
+			supplier_bullet.enable()
+		else: supplier_bullet.disable()
+	elif notification_type == Notification.NotificationTypes.SupplierBulletDeactive:
 		if supplier_bullet.is_active:
 			supplier_bullet.disable()
-		else:
-			supplier_bullet.enable()
 	
 	elif notification_type == Notification.NotificationTypes.SupplierFuelActive:
+		if not supplier_fuel.is_active:
+			supplier_fuel.enable()
+		else: supplier_fuel.disable()
+	elif notification_type == Notification.NotificationTypes.SupplierFuelDeactive:
 		if supplier_fuel.is_active:
 			supplier_fuel.disable()
-		else:
-			supplier_fuel.enable()
+
 	elif notification_type == Notification.NotificationTypes.ResetTutor:
 		TutorialOverlay.reset()
 
