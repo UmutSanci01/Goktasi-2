@@ -25,7 +25,6 @@ func set_engine_tier(value: int):
 	
 	Store.emit_signal("update_store")
 	emit_signal("engine_upgraded", engine_tier)
-	InfoPanel.add_label("Tier", str(engine_tier))
 
 func _update_inventory_and_store():
 	ItemDB.set_item_cansale(Item.ID.UPGRADE_ENGINE_T1, false)
