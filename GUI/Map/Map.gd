@@ -261,7 +261,9 @@ func _on_MapGrid_drag():
 
 func _on_Map_init():
 	slot_num = Map.SLOT_NUM
-	
+	target_slot_index = Map.current_slot_index
+	infopanel.hide()
+
 	init_gui()
 	
 	go_current_location(0.5)

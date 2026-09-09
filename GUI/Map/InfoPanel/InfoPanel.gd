@@ -35,5 +35,5 @@ func pop(base_pos: Vector2, slot_scaled_size: Vector2) -> void:
 
 func set_data(ore_num : int, radius : float, dist : int):
 	label_ore_num.text = str(ore_num)
-	label_radius.text = str(radius)
+	label_radius.text = "%.2f" % radius
 	label_dist.text = str(dist)
