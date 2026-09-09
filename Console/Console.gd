@@ -68,6 +68,7 @@ func call_cmd(cmd_name : String):
 func get_last_cmd():
 	if len(last_cmd) > 0:
 		return last_cmd
+	return null
 
 
 #func _on_ConsoleGUI_enter_code(entered_code : String):

@@ -24,6 +24,8 @@ func get_bullet(bullet_id) -> Bullet:
 		var bullet_scene
 		if bullet_data:
 			bullet_scene = bullet_data.scene
+			if not bullet_scene:
+				print_debug("There is not bullet scene in the bullet_data")
 
 		# add pool
 		bullet_pool = Node2D.new()

@@ -28,9 +28,9 @@ func _input(event):
 					var lst_cmd = Console.get_last_cmd()
 					if not lst_cmd:
 						push_text_to_hist("KEY_CONSOLE_INVALID_CMD")
-					
-					cmd_line.clear()
-					cmd_line.text = lst_cmd
+					else:
+						cmd_line.clear()
+						cmd_line.text = lst_cmd
 					
 		else: # event.released
 			pass
@@ -47,7 +47,7 @@ func change_state():
 
 
 func push_text_to_hist(hist_text : String, newline : bool = true):
-	cmd_hist.add_text(hist_text)
+	cmd_hist.add_text(tr(hist_text))
 	if newline:
 		cmd_hist.newline()
 
