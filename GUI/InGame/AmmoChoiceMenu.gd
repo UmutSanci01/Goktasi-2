@@ -34,7 +34,8 @@ func _refresh_slots():
 		
 		var new_slot = slot_scene.instance()
 		slot_container.add_child(new_slot)
-		
+		new_slot.texture_normal = null
+
 		new_slot.call_deferred("set_item", item_id, amount, data.texture)
 		
 		if not new_slot.is_connected("button_up", self, "_on_Slot_button_up"):

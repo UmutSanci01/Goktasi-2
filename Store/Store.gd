@@ -134,7 +134,6 @@ func calc_nuke_limit():
 	nuke_count = 0
 
 	emit_signal("update_store", true)
-	InfoPanel.add_label("Nuke Limit", limited_items[Item.ID.BULLET_NUKE])
 
 func _on_Map_init():
 	calc_nuke_limit()
