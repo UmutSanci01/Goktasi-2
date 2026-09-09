@@ -48,6 +48,13 @@ func get_invisible_items():
 func hide_slot_outline():
 	slot_outline.hide()
 
+func show_nuke_limit():
+	var slot : Slot
+	for slot_child in slots.get_children():
+		slot = slot_child as Slot
+		if slot.get_item() == Item.ID.BULLET_NUKE:
+			slot.set_amount_string("%d/%d" % [Store.nuke_count, Store.limited_items[Item.ID.BULLET_NUKE]])
+
 # Player inventory is updating
 func update_slots():
 	assert(inv, "inv is null")

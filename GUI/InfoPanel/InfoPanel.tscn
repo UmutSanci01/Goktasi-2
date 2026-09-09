@@ -117,7 +117,6 @@ tracks/3/keys = {
 [node name="InfoPanel" type="CanvasLayer"]
 layer = 4
 script = ExtResource( 2 )
-is_out = false
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 light_mask = 0

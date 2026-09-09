@@ -12,6 +12,6 @@ name = "KEY_BULLET_NUKE"
 info = "KEY_BULLET_NUKE_INFO"
 texture = ExtResource( 2 )
 scene = ExtResource( 3 )
-value = 816
+value = 440
 visible = true
 can_sale = true

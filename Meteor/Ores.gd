@@ -7,11 +7,11 @@ onready var ore_scene = preload("res://Ores/Base/Ore.tscn")
 
 
 var ore_weights : Dictionary = {
-	Item.ID.ORE_COPPER : 100,
+	Item.ID.ORE_COPPER : 65,
 	Item.ID.ORE_IRON : 20,
 	Item.ID.ORE_SILVER : 1,
 	Item.ID.ORE_GOLD : 5,
-	Item.ID.ORE_BLUE : 65
+	Item.ID.ORE_BLUE : 100
 }
 var weights_sum = 0
 var percent : float = 100

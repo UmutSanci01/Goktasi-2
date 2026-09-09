@@ -43,6 +43,8 @@ func _ready():
 	invpanel_store.set_inv(Store.inv)
 	invpanel_store.set_title("Market")
 
+	invpanel_store.show_nuke_limit()
+
 func show():
 	.show()
 
@@ -105,8 +107,11 @@ func _on_Return_pressed():
 	
 	emit_signal("press_return")
 
-func _on_StoreUpdate():
-	invpanel_store.update_slots()
+func _on_StoreUpdate(just_limit : bool = false):
+	if just_limit:
+		invpanel_store.show_nuke_limit()
+	else:
+		invpanel_store.update_slots()
 
 # inventory parametresi verilerek iki fonksiyon birlestirilebilir.
 func _on_PlayerInv_slot_selected(slot, p_item_id):

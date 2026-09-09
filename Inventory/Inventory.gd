@@ -58,6 +58,7 @@ func del_item(item, amount : int = 1, clear : bool = false) -> bool:
 		items[item] = item_num
 
 	is_coin = false
+
 	emit_signal("update_inv")
 
 	return true
@@ -147,6 +148,8 @@ func use_item(item, amount : int = 1) -> int:
 	# aynı türdeki eşyaların toplam sayısına baktım
 		# öncelikle talep edilen eşyayı kullanıyor
 	
+	if item == Item.ID.BULLET_NUKE:
+		emit_signal("nuke_fired")
 	emit_signal("update_inv")
 	
 	return used_num

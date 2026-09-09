@@ -19,6 +19,13 @@ func set_item(p_item_id : int, p_item_num : int, image : Texture):
 
 	$ItemImage.texture = image
 
+func set_amount_string(new_amount : String):
+	if new_amount.empty():
+		$ItemNum.hide()
+	else:
+		$ItemNum.show()
+		$ItemNum.text = new_amount
+
 func set_amount(new_amount : int):
 	if new_amount > 1:
 		$ItemNum.show()

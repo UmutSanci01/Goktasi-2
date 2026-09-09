@@ -3,7 +3,7 @@ extends Node
 
 signal entered
 signal exited
-signal update_store
+signal update_store(just_limit)
 
 
 var is_reachable : bool = false setget set_reachable, get_reachable
@@ -11,6 +11,7 @@ var is_reachable : bool = false setget set_reachable, get_reachable
 
 var inv : Inventory = Inventory.new()
 var id_coin : int = Item.ID.COIN
+var nuke_count : int = 0
 
 var limited_items : Dictionary = {
 	Item.ID.SUPPLIER_BULLET : 1,
@@ -18,12 +19,20 @@ var limited_items : Dictionary = {
 	Item.ID.DETECTOR_ORE : 1,
 	Item.ID.UPGRADE_ENGINE_T1 : 1,
 	Item.ID.UPGRADE_ENGINE_T2 : 1,
-	Item.ID.UPGRADE_ENGINE_T3 : 1
+	Item.ID.UPGRADE_ENGINE_T3 : 1,
+	Item.ID.BULLET_NUKE : 1
 }
 
 var sell_multiplier : float = 0.8
 
 func _ready():
+	add_to_group("save_data")
+
+	calc_nuke_limit()
+	load_data()
+
+	Map.connect("init", self, "_on_Map_init")
+
 	for item_id in range(Item.ID.size()):
 		if ItemDB.get_item(item_id).can_sale:
 			inv.add_item(item_id)
@@ -34,7 +43,13 @@ func buy(item_id : int, amount : int, to_inv : Inventory) -> int:
 		return 0
 	
 	if limited_items.has(item_id):
-		if limited_items[item_id] < (to_inv.get_item_amount(item_id) + amount):
+		var temp : int = 0
+		if item_id == Item.ID.BULLET_NUKE:
+			temp = nuke_count + amount
+		else:
+			temp = to_inv.get_item_amount(item_id) + amount
+				
+		if limited_items[item_id] < temp:
 			InfoPanel.add_label("KEY_CAN_HAVE", str(limited_items[item_id]))
 			return 0
 	
@@ -55,6 +70,9 @@ func buy(item_id : int, amount : int, to_inv : Inventory) -> int:
 		if item.type == Item.Type.UPGRADE:
 			Upgrade.buy_engine_upgrade(item_id)
 			emit_signal("update_store")
+		if item.id == Item.ID.BULLET_NUKE:
+			nuke_count += amount
+			emit_signal("update_store", true)
 
 		return to_inv.get_item_amount(item_id)
 	else: # disabled
@@ -76,10 +94,15 @@ func sell(item_id : int, amount : int, from_inv : Inventory) -> int:
 		if item.type == Item.Type.UPGRADE:
 			Upgrade.sell_engine_upgrade(item_id)
 			emit_signal("update_store")
+		if item.id == Item.ID.BULLET_NUKE:
+			nuke_count -= amount
+			if nuke_count < 0: nuke_count = 0
+			emit_signal("update_store", true)
 
 		from_inv.del_item(item_id, amount)
 		from_inv.add_item(id_coin, int((item_value * sell_multiplier) * amount))
-		
+
+
 		return from_inv.get_item_amount(item_id)
 	
 	InfoPanel.add_label("KEY_INSUFFICIENT_ITEMS", "", Color.sandybrown)
@@ -103,3 +126,23 @@ func set_reachable(val):
 
 func get_reachable() -> bool:
 	return is_reachable
+
+func calc_nuke_limit():
+	var nuke_limit : int = int(clamp(Map.SLOT_NUM / 15.0, 1, 4))
+
+	limited_items[Item.ID.BULLET_NUKE] = nuke_limit
+	nuke_count = 0
+
+	emit_signal("update_store", true)
+	InfoPanel.add_label("Nuke Limit", limited_items[Item.ID.BULLET_NUKE])
+
+func _on_Map_init():
+	calc_nuke_limit()
+
+func save_data():
+	DataBase.save_data({"nuke_count" : nuke_count}, "Store")
+
+func load_data():
+	var data : Dictionary = DataBase.load_data("Store")
+	if not data.empty():
+		nuke_count = data["nuke_count"]

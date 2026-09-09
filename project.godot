@@ -159,6 +159,7 @@ config/quit_on_go_back=false
 
 [autoload]
 
+InfoPanel="*res://GUI/InfoPanel/InfoPanel.tscn"
 GameState="*res://Main/GameState.gd"
 Random="*res://Random/Random.gd"
 ItemDB="*res://ItemDB/ItemDB.tscn"
@@ -169,9 +170,8 @@ Console="*res://Console/Console.gd"
 Map="*res://Map/Map.gd"
 PlayerInventory="*res://Player/PlayerInventory.gd"
 Store="*res://Store/Store.gd"
-ConsoleGUI="*res://Console/ConsoleGUI.tscn"
 Notification="*res://Notification/Notification.gd"
-InfoPanel="*res://GUI/InfoPanel/InfoPanel.tscn"
+ConsoleGUI="*res://Console/ConsoleGUI.tscn"
 TutorialOverlay="*res://Tutorial/TutorialOverlay.tscn"
 Upgrade="*res://Game/Upgrade.gd"
 
