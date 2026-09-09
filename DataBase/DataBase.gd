@@ -29,8 +29,7 @@ func load_data(data_owner : String = "data") -> Dictionary:
 		if file.open(data_store_path + "/" + data_owner, File.READ):
 			pass
 			
-		# Sanirim bu guvenlik aciklarina sebep oluyormus.
-		data = file.get_var()
+		data = file.get_var(false)
 		file.close()
 		
 		emit_signal("load_data", data)

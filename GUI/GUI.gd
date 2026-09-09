@@ -18,7 +18,6 @@ onready var settings = $Settings
 
 var menu setget set_menu
 var stack_menu : Array = []
-var menu_history : Array = []
 
 
 func _ready():
@@ -32,18 +31,10 @@ func _ready():
 	
 	set_menu(title)
 
-func set_menu(next_menu, is_return : bool = false):
+func set_menu(next_menu : Control, is_return : bool = false):
 	if menu:
 		menu.hide()
 		if not is_return: stack_menu.append(menu)
-	
-	if menu_history.size() == 6:
-		menu_history.pop_front()
-	menu_history.append(menu)
-	# if menu_history.count(settings) == 2 and menu_history.count(map) == 1:
-	# 	GameState.show_safe_area = true
-	if next_menu == ingame:
-		menu_history.clear()
 	
 	menu = next_menu
 	menu.show()
