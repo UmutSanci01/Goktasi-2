@@ -29,33 +29,16 @@ func init_explode_particle():
 	
 	particle.emitting = false
 	particle.one_shot = true
-#	particle.linear_accel = -80
-#	particle.linear_accel_random = true
-#	particle.direction = Vector2.UP
 	particle.gravity = Vector2.ZERO
-#	particle.direction = Vector2.ZERO
 	particle.spread = 180
 	particle.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
 	particle.emission_sphere_radius = 8
 	particle.scale *= 3
-#	particle.scale_amount_random = true
 	particle.lifetime = 4
 	particle.lifetime_randomness = true
 	particle.explosiveness = 1
 	particle.initial_velocity_random = true
 	particle.z_index = 1
-#	particle.color = Color(0.921569, 0.970588, 0.972549)
-
-
-# func set_particle_dust(pos : Vector2):
-# 	var d_particle : Particles2D = particle_dust.duplicate()
-# 	add_child(d_particle)
-# 	d_particle.emitting = false
-# 	d_particle.one_shot = true
-# 	d_particle.connect("finished", self, "_when_d_particle_clear", [d_particle])
-# 	d_particle.restart()
-
-# 	d_particle.position = pos
 
 func set_particle(pos : Vector2, color : Color = Color.white, amount : int = 16):	
 	particle = get_child(particle_iter)

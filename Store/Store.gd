@@ -3,7 +3,7 @@ extends Node
 
 signal entered
 signal exited
-signal update_store(just_limit)
+signal update_store
 
 
 var is_reachable : bool = false setget set_reachable, get_reachable
@@ -72,7 +72,7 @@ func buy(item_id : int, amount : int, to_inv : Inventory) -> int:
 			emit_signal("update_store")
 		if item.id == Item.ID.BULLET_NUKE:
 			nuke_count += amount
-			emit_signal("update_store", true)
+			emit_signal("update_store")
 
 		return to_inv.get_item_amount(item_id)
 	else: # disabled
@@ -97,11 +97,10 @@ func sell(item_id : int, amount : int, from_inv : Inventory) -> int:
 		if item.id == Item.ID.BULLET_NUKE:
 			nuke_count -= amount
 			if nuke_count < 0: nuke_count = 0
-			emit_signal("update_store", true)
+			emit_signal("update_store")
 
 		from_inv.del_item(item_id, amount)
 		from_inv.add_item(id_coin, int((item_value * sell_multiplier) * amount))
-
 
 		return from_inv.get_item_amount(item_id)
 	
@@ -133,7 +132,7 @@ func calc_nuke_limit():
 	limited_items[Item.ID.BULLET_NUKE] = nuke_limit
 	nuke_count = 0
 
-	emit_signal("update_store", true)
+	emit_signal("update_store")
 
 func _on_Map_init():
 	calc_nuke_limit()

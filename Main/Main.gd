@@ -16,8 +16,10 @@ func _ready():
 	GameState.meteor = GAME.get_meteor()
 	
 	InfoPanel.add_label("KEY_GAME_START", "", Color.green)
-	
+
 	GameState.is_activate_detector = false
+
+	GlobalParticles.set_particle(Vector2.ONE * 99999)
 
 func _input(event):
 	if event is InputEventKey:

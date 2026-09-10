@@ -107,11 +107,9 @@ func _on_Return_pressed():
 	
 	emit_signal("press_return")
 
-func _on_StoreUpdate(just_limit : bool = false):
-	if just_limit:
-		invpanel_store.show_nuke_limit()
-	else:
-		invpanel_store.update_slots()
+func _on_StoreUpdate():
+	invpanel_store.update_slots()
+	invpanel_store.show_nuke_limit()
 
 # inventory parametresi verilerek iki fonksiyon birlestirilebilir.
 func _on_PlayerInv_slot_selected(slot, p_item_id):
