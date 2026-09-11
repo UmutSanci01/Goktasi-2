@@ -22,8 +22,6 @@ func update_fuel_consumption() -> void:
 	var load_ratio: float = float(total_items) / soft_capacity
 	var new_interval: float = base_interval / (1.0 + pow(load_ratio, 2.0))
 
-	InfoPanel.add_label("Total amount:", total_items)
-	
 	new_interval = max(new_interval, min_interval)
 	
 	var old_time_left = fuel_timer.time_left
