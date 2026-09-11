@@ -139,6 +139,7 @@ func use_item(item, amount : int = 1) -> int:
 	if item_num >= amount:
 		item_num -= amount
 		used_num = amount
+		total_amount -= amount
 		
 		# tukenen esyayi temizledim
 		if item_num <= 0:

@@ -5,7 +5,7 @@ onready var fuel_container = $PanelContainer/VBoxContainer/FuelContainer
 
 
 var player_fuel
-var base_fuel : int = 300
+var base_fuel : int = 150
 var remain_fuel : int = 0
 
 
