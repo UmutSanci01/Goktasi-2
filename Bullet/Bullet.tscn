@@ -24,7 +24,6 @@ shape = SubResource( 3 )
 [node name="AreaExplosive" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 16
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaExplosive"]
 shape = SubResource( 2 )

@@ -23,6 +23,9 @@ var collide_list : Array
 func _ready():
 	disable()
 
+	area_explosive.monitoring = true
+	area_explosive.monitorable = true
+
 	var shape_2d : CircleShape2D = area_explosive.get_node("CollisionShape2D").shape
 	shape_2d.radius = explosive_radius
 
@@ -40,10 +43,35 @@ func _physics_process(delta : float):
 			Notification.notify(Notification.NotificationTypes.OreMined)
 		
 		elif collide.collider is Chunk:
-			collide_list = area_explosive.get_overlapping_bodies()
+			collide_list = _collect_chunk_hits()
 			emit_signal("collision_meteor", collide.position, collide_list, self)
 		
 		disable()
+
+
+func _collect_chunk_hits() -> Array:
+	var hits : Array = []
+	
+	# Direct physics query for reliable chunk detection
+	var space_state = get_world_2d().direct_space_state
+	var query = Physics2DShapeQueryParameters.new()
+	var circle_shape = CircleShape2D.new()
+	circle_shape.radius = explosive_radius
+	query.set_shape(circle_shape)
+	query.transform = Transform2D(0, global_position)
+	query.collision_layer = 16
+	
+	var results = space_state.intersect_shape(query, 32)
+	for result in results:
+		var body = result.collider
+		if body is Chunk and not hits.has(body):
+			hits.append(body)
+	
+	# Always include the directly collided chunk as fallback
+	if collide and collide.collider is Chunk and not hits.has(collide.collider):
+		hits.append(collide.collider)
+	
+	return hits
 
 
 func enable(_direction : Vector2, _position : Vector2):
