@@ -17,4 +17,4 @@ info = "KEY_ENGINE_UPGRADE_INFO_T2"
 texture = SubResource( 1 )
 value = 7700
 visible = true
-can_sale = true
+can_sale = false

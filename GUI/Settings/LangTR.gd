@@ -21,14 +21,14 @@ func set_active(value : bool):
 		deactivate()
 
 func activate():
-	texture_active.hide()
-	texture_passive.show()
-	TranslationServer.set_locale("en")
-
-func deactivate():
 	texture_active.show()
 	texture_passive.hide()
 	TranslationServer.set_locale("tr")
+
+func deactivate():
+	texture_active.hide()
+	texture_passive.show()
+	TranslationServer.set_locale("en")
 
 func save_data():
 	var data : Dictionary = {

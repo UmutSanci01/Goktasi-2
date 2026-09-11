@@ -124,11 +124,12 @@ func _apply_zoom(factor: float, center_pos: Vector2) -> void:
 	if old_scale == new_scale:
 		return
 
-	var local_center: Vector2 = (center_pos - content.rect_global_position) / old_scale
-	content.rect_pivot_offset = local_center
-	content.rect_position += (local_center * old_scale) - (local_center * new_scale)
+	var local_pos: Vector2 = center_pos - content.rect_global_position
 
 	content.rect_scale = new_scale
+
+	var scale_ratio: Vector2 = new_scale / old_scale
+	content.rect_global_position = center_pos - (local_pos * scale_ratio)
 
 
 func add_slot(slot_position : Vector2, slot_texture : Texture):

@@ -15,11 +15,11 @@ font_data = SubResource( 1 )
 
 [node name="Slot" type="TextureButton"]
 show_behind_parent = true
-anchor_right = 0.213333
-anchor_bottom = 0.125
-margin_right = -104.0
-margin_bottom = -64.0
-rect_min_size = Vector2( 128, 128 )
+anchor_right = 0.16
+anchor_bottom = 0.094
+margin_right = -72.0002
+margin_bottom = -32.256
+rect_min_size = Vector2( 96, 96 )
 texture_normal = ExtResource( 1 )
 expand = true
 script = ExtResource( 2 )

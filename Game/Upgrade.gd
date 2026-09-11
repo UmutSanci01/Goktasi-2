@@ -42,6 +42,8 @@ func _update_inventory_and_store():
 		
 	if data["next"] != null:
 		ItemDB.set_item_cansale(data["next"], true)
+	
+	Store.refresh_store_inventory()
 
 func buy_engine_upgrade(item_id: int):
 	var data = UPGRADE_DATA[engine_tier]

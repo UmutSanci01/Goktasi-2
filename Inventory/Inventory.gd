@@ -176,15 +176,16 @@ func use_item_by_type(item_type : int, amount : int = 1) -> int:
 	
 	return used_amount
 
-func check_item(item, amount : int = 1):
-	if amount <= 0: return false
+# Return sellable amount
+func check_item(item, amount : int = 1) -> int:
+	if amount <= 0: return 0
 	
 	if not has_item(item):
-		return false
+		return 0
 	
 	var item_num = get_item_amount(item)
 	
 	if item_num < amount:
-		return false
+		return item_num
 	
-	return true
+	return amount
