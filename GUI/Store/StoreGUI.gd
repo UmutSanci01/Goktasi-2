@@ -97,6 +97,11 @@ func update_multbuy():
 		max_value = int(floor(player_coin) / floor(item_value))
 	elif mode == ActionMode.Sell:
 		max_value = self.item_amount_inv
+
+	if mode == ActionMode.Buy:
+		var item_limit : int = Store.limited_items.get(item_data.id, 0)
+		if item_limit:
+			max_value = [item_limit, max_value].min()
 	
 	multiple_slider.update_data(self.item_amount_store, max_value)
 
